@@ -1,0 +1,47 @@
+export const crop_recomendation1 = [
+  "Alluvial",
+  "Red",
+  "Black",
+  "Loam",
+  "Sandy loam ",
+  "Red laterite",
+  "Black cotton",
+  "Sandy",
+  "Laterite",
+  "Teelah",
+  "Clay",
+  "Clay loam",
+  "Arid and Desert",
+  "loamy sand",
+  "River basins",
+  "clay",
+  "Light sandy",
+  "Heavy clay",
+  "Dry sandy ",
+  "Heavy cotton",
+  "Sandy loam",
+  "Sandy clay loam",
+  "Well drained",
+  "Drained loam",
+  "Red ",
+  "Gravelly sand",
+  "Medium textured clay",
+  "Medium textured ",
+];
+export const crop_recomendation2 = ["loamy", "clayey", "sandy", "black", "red"];
+
+export const fertilizer_soil = ["Sandy", "Loamy", "Black", "Red", "Clayey"];
+
+export const fertilizer_crops = [
+  "Maize",
+  "Sugarcane",
+  "Cotton",
+  "Tobacco",
+  "Paddy",
+  "Barley",
+  "Wheat",
+  "Millets",
+  "Oil seeds",
+  "Pulses",
+  "Ground Nuts",
+];
