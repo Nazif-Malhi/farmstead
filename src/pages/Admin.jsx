@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { Dashboard, Reports, TestResults, Profile } from "../layouts/admin";
+import {
+  Dashboard,
+  Reports,
+  TestResults,
+  Profile,
+  ProfitLoss,
+} from "../layouts/admin";
 import { Route, Routes } from "react-router-dom";
 import { Settings, SideNavbar, UpperNavbar } from "../components";
 import styled from "styled-components";
@@ -33,6 +39,7 @@ const Admin = () => {
           <Route path="test-results" element={<TestResults />} />
           <Route path="reports" element={<Reports />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="profit-loss" element={<ProfitLoss />} />
         </Routes>
       </div>
     </Container>
