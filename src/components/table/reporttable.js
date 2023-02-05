@@ -5,6 +5,8 @@ import { AiFillDelete } from "react-icons/ai";
 import { RxUpdate } from "react-icons/rx";
 import { BsFillPrinterFill } from "react-icons/bs";
 import { Pagination } from "@mui/material";
+// import { DeleteModal}  from "./modal/DeleteModal.jsx";
+import DeleteModal from '../modal/DeleteModal.jsx';
 
 const TableContainer = styled.div`
   width: 95%;
@@ -189,6 +191,8 @@ const CustomProgress = styled(ProgressBar)`
 `;
 
 const ReportTable = ({ col, row }) => {
+  const [modalShow, setModalShow] = useState(false);
+  let rowIndex="";
   return (
     <TableContainer>
       <Row className="header">
@@ -227,14 +231,21 @@ const ReportTable = ({ col, row }) => {
                     );
                   })}
                   <Col className="col-body-full">
-                    <Row className="last-col">
+                    <Row className="last-col" key={id}>
                       <div className="button edit">
                         <RxUpdate color="white" fontSize={"1.2rem"} />
                       </div>
-
-                      <div className="button del">
-                        <AiFillDelete color="white" fontSize={"1.2rem"} />
+                      <div className="button del" style={{cursor:"pointer"}}  onClick={() =>
+                        { 
+                          rowIndex=id;
+                          console.log(rowIndex)  
+                          setModalShow(true)}} >
+                        <AiFillDelete color="white" fontSize={"1.2rem"}  />
                       </div>
+                      {
+                        row.indexOf(element)==rowIndex? <DeleteModal show={modalShow} onHide={() => setModalShow(false)} onDelete={()=>{console.log(element);setModalShow(false)}} key={id}  centered  element={element} />
+                        : ""
+                      }
                       <div className="button print">
                         <BsFillPrinterFill color="white" fontSize={"1.2rem"} />
                       </div>

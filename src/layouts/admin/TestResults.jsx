@@ -28,13 +28,13 @@ const TestResults = () => {
     { name: "Actions" },
   ];
   const row = [
-    ["Fertilzer Prediction", "12/27/2022", "56%"],
-    ["Fert Prediction", "12/27/2022", "56%"],
-    ["Fert Prediction", "12/27/2022", "56%"],
-    ["Fert Prediction", "12/27/2022", "56%"],
-    ["Fert Prediction", "12/27/2022", "56%"],
-    ["Fert Prediction", "12/27/2022", "56%"],
-    ["Fert Prediction", "12/27/2022", "56%"],
+    ["Fertilzer Prediction0", "12/27/2022", "56%"],
+    ["Fert Prediction1", "12/27/2022", "56%"],
+    ["Fert Prediction2", "12/27/2022", "56%"],
+    ["Fert Prediction3", "12/27/2022", "56%"],
+    ["Fert Prediction4", "12/27/2022", "56%"],
+    ["Fert Prediction5", "12/27/2022", "56%"],
+    ["Fert Prediction6", "12/27/2022", "56%"],
   ];
   return (
     <TestContainer>

@@ -3,15 +3,23 @@ import styled from "styled-components";
 import { Row, Col } from "react-bootstrap";
 import { MdCancel } from "react-icons/md";
 import Switch from "@mui/material/Switch";
+//   transition: all 2s ease-out;
+
+//   // font-size: 14px;
+//   transition-property: width;
+//   transition-duration: 4s;
+//   transition-delay: 2s;
+// }
 
 const Container = styled.div`
-  transition: 0.5s ease-in-out;
 
   .show {
+    width: 350px;
     font-family: "Rubik", sans-serif;
     font-style: normal;
-    width: 350px;
-    // width: ${(props) => (props.active ? "350px" : "0px")};
+    animation: showAnimation 0.5s linear;
+    
+   // width: ${(props) => (props.active ? "350px" : "0px")};
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -125,13 +133,155 @@ const Container = styled.div`
       }
     }
   }
-  .hide {
-    transition: 0.5s ease-in-out;
-    width: 0px;
-    display: none;
-  }
-`;
 
+  .hide {
+    width: 0px;
+    height: 100%;
+    // padding: 20px;
+    backdrop-filter: saturate(200%) blur(30px);
+    background-color: #fffc !important;
+    
+    position:absolute;
+    right: 0;
+    top: 0;
+    // animation: hideAnimation  1.5s;
+    display: none;
+
+    .head {
+      height: auto;
+      h4 {
+        color: #344767;
+      }
+      h6 {
+        color: #6b6a77;
+      }
+      .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+    .body {
+      .language {
+        h5 {
+          color: #344767;
+          font-weight: 400;
+        }
+        .setting {
+          width: 100%;
+          align-items: center;
+          p {
+            width: auto;
+            margin: 0;
+            width: auto;
+            color: #9c27b0;
+          }
+        }
+      }
+      .horizontal-dark {
+        display: flex;
+        width: 100%;
+        
+        background-color: transparent;
+        height: 2px;
+        margin: 1rem 0;
+        color: inherit;
+        border: 0;
+        opacity: 0.25;
+      }
+      .about {
+        width: 100%;
+        margin-top: 20px;
+        justify-content: center;
+        h5 {
+          color: #344767;
+          font-weight: 400;
+        }
+      }
+    }
+    .linear-gr {
+      margin-bottom: 1rem;
+      letter-spacing: -0.025rem;
+      text-transform: uppercase;
+      box-shadow: 0 4px 7px -1px #0000001c, 0 2px 4px -1px #00000012;
+      background-size: 150%;
+      background-position-x: 25%;
+      width: 80%;
+      height: 40px;
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    .green {
+      background-image: linear-gradient(310deg, #17ad37 0%, #98ec2d 100%);
+    }
+    .blue {
+      background-image: linear-gradient(310deg, #2152ff 0%, #21d4fd 100%);
+    }
+    .outlined {
+      border: 1px solid #141727;
+      color: #141727;
+      background-image: white;
+      background-image: linear-gradient(310deg, #ffff 0%, #ffff 100%);
+
+  }
+  }
+  @keyframes showAnimation {
+    0% {
+      width:50px;
+      .head, .body{
+          display:none;
+      }
+      .linear-gr{
+        display:none;
+      } 
+
+    }
+    80% {
+     width:280px;
+     
+     .head, .body{
+      display:block;
+      }
+      .linear-gr{
+        display:none;
+      } 
+
+    }
+    100% {
+      width:350px;
+      
+     display:block;
+     .head, .body{
+      display:block;
+      }
+    }
+  }
+  // @keyframes hideAnimation {
+  //   0% {
+  //     width:350px;
+  //     padding:20px;
+  //     .linear-gr{
+  //       display:none;
+  //     } 
+  //   }
+  //   100% {
+  //     width:0px;
+  //     display: none !important;
+  //     padding:20px;
+  //     .row{
+  //       margin:0px;
+  //     }
+  //     .linear-gr{
+  //       display:none;
+  //     }
+  //   }
+  // } 
+`;
 const Settings = ({ handleState }) => {
   const [active, setActive] = useState(handleState);
   useEffect(() => {
@@ -140,13 +290,12 @@ const Settings = ({ handleState }) => {
 
   return (
     <Container>
-      <div className={`${active ? "show" : "hide"}`}>
+      {/* ,width:(active ? "350px" : "")  */}
+      <div className={`${active ? "show" : "hide"}`} style={{zIndex:"99" }}>
         <Row className={`"head" `}>
           <Col>
-            <h4>Settings</h4>
-            <h6>Configure Settings</h6>
-          </Col>
-          <Col md={"auto"} className="icon">
+          <div style={{display: "flex",justifyContent: "space-between"}}>
+            <h4>Settings</h4> 
             <MdCancel
               fontSize={"1.5rem"}
               color="#344767"
@@ -155,7 +304,11 @@ const Settings = ({ handleState }) => {
               }}
               className="cross"
             />
+
+          </div>
+            <h6 style={{width:"180px"}}>Configure Settings</h6>
           </Col>
+          
         </Row>
         <Row className="body">
           <Row className="language">

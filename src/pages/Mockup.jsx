@@ -1,4 +1,5 @@
 import React from "react";
+import {NavbarHeader }from "../components/navbar";
 import {
   Aboutus,
   Blog,
@@ -7,11 +8,13 @@ import {
   TestingArea,
   TractorAnimation,
   Work,
+  Footer,
 } from "../layouts";
 
 const Mockup = () => {
   return (
     <React.Fragment>
+      <NavbarHeader/>
       <Home />
       <TractorAnimation />
       <TestingArea />
@@ -19,6 +22,7 @@ const Mockup = () => {
       <Work />
       <Blog />
       <Aboutus />
+      <Footer/>
     </React.Fragment>
   );
 };

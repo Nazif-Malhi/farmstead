@@ -1,9 +1,11 @@
-import React from "react";
+import React ,{ useEffect, useState } from "react";
 import styled from "styled-components";
 import { BsPersonFill } from "react-icons/bs";
 import { BiSearch } from "react-icons/bi";
 import { InputSearch } from "../input";
 import { Row, Col, Breadcrumb } from "react-bootstrap";
+import { useLocation } from "react-router-dom";
+
 
 const Container = styled.div`
   width: 100%;
@@ -68,19 +70,37 @@ const Container = styled.div`
     }
   }
 `;
+
+
 const UpperNavbar = () => {
   // const handleProfile = () => {};
   // const handleLogout = () => {};
 
+  
+
+  let location = useLocation();
+  const [currentPath,setCurrentPath]=  useState(location.pathname.replace("http://localhost:3000/","").split("/").map(String));
+  
+  useEffect(() => {
+    console.log("Current page", location.pathname);
+    setCurrentPath(location.pathname.replace("http://localhost:3000/","").split("/").map(String));
+  }, [location]);
+
+  let isActiveIndex=currentPath.length-1;
   return (
     <Container>
       <div className="left">
         <Breadcrumb>
-          <Breadcrumb.Item href="#">Farmstead</Breadcrumb.Item>
-          <Breadcrumb.Item href="#" active>
-            Dashboard
-          </Breadcrumb.Item>
-          {/* <Breadcrumb.Item active>Data</Breadcrumb.Item> */}
+          {
+            currentPath.map(i =>{
+              if(currentPath[isActiveIndex]===i){
+                return <Breadcrumb.Item href="#"  active key={i}>{i}</Breadcrumb.Item> 
+              }
+              else{
+                return <Breadcrumb.Item href="#" key={i}>{i}</Breadcrumb.Item> 
+              }
+            })
+          }
         </Breadcrumb>
         <h5>Dashboard</h5>
       </div>

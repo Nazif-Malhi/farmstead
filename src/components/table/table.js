@@ -3,6 +3,8 @@ import { Col, Row } from "react-bootstrap";
 import styled from "styled-components";
 import { AiFillEye, AiFillDelete } from "react-icons/ai";
 import { Pagination } from "@mui/material";
+// import  {DeleteModal}  from "../modal";
+import DeleteModal from '../modal/DeleteModal.jsx';
 
 const TableContainer = styled.div`
   width: 95%;
@@ -139,13 +141,13 @@ const TableContainer = styled.div`
       background: white;
       border-bottom-left-radius: 20px;
       border-bottom-right-radius: 20px;
-      //   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px;
-      //   //   rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
     }
   }
 `;
 
 const Table = ({ col, row }) => {
+  const [modalShow, setModalShow] = useState(false);
+  let rowIndex="";
   return (
     <TableContainer>
       <Row className="header">
@@ -162,7 +164,7 @@ const Table = ({ col, row }) => {
           {row.map((element, id) => {
             return (
               <>
-                <Row className="row-body-full">
+                <Row className="row-body-full"  key={id}>
                   {element.map((_element, _id) => {
                     return (
                       <Col
@@ -175,13 +177,25 @@ const Table = ({ col, row }) => {
                     );
                   })}
                   <Col className="col-body-full">
-                    <Row className="last-col">
+                    <Row className="last-col" key={id}>
                       <div className="button edit">
                         <AiFillEye color="white" fontSize={"1.2rem"} />
                       </div>
-                      <div className="button del">
-                        <AiFillDelete color="white" fontSize={"1.2rem"} />
+                      <div className="button del" style={{cursor:"pointer"}}  onClick={() =>
+                        { 
+                          console.log("deletedsdsd",element,id);
+                          rowIndex=id;
+                          // console.log(rowIndex)  
+                          setModalShow(true)}} >
+
+                        <AiFillDelete color="white" fontSize={"1.2rem"}  />
                       </div>
+                      {
+                          row.indexOf(element)==rowIndex? (
+                            <DeleteModal show={modalShow} onHide={() => setModalShow(false)} onDelete={()=>{console.log('element :',rowIndex );setModalShow(false)}} key={id}  centered  element={element} />
+                          ) 
+                        : ""
+                      }
                     </Row>
                   </Col>
                 </Row>
