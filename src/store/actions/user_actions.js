@@ -31,7 +31,7 @@ export const register = (register_payload) => async (dispatch) => {
       type: USER_REG_REQUEST,
     });
     const user_reg_data = await axios.post(
-      `${process.env.REACT_APP_API_URL}/api/users/register/`,
+      `${process.env.REACT_APP_API_URL}/auth/register/`,
       register_payload
     );
     console.log(user_reg_data);
@@ -60,7 +60,7 @@ export const login = (login_payload) => async (dispatch) => {
       type: USER_AUTH_REQUEST,
     });
     const user_auth_login_data = await axios.post(
-      `${process.env.REACT_APP_API_URL}/api/users/login/`,
+      `${process.env.REACT_APP_API_URL}/auth/login/`,
       login_payload
     );
     console.log(user_auth_login_data);
@@ -89,7 +89,7 @@ export const get_user = () => async (dispatch) => {
       type: USER_DATA_REQUEST,
     });
     const user_data = await axios.get(
-      `${process.env.REACT_APP_API_URL}/api/users/profile/`
+      `${process.env.REACT_APP_API_URL}/auth/profile/`
     );
     dispatch({
       type: USER_DATA_SUCCESS,
@@ -116,7 +116,7 @@ export const reset_password = (email_payload) => async (dispatch) => {
       type: CHANGE_PASSWORD_REQUEST,
     });
     const reset_email = await axios.post(
-      `${process.env.REACT_APP_API_URL}/api/users/reset-email/`,
+      `${process.env.REACT_APP_API_URL}/auth/reset-email/`,
       email_payload
     );
     dispatch({
@@ -141,7 +141,7 @@ export const change_pass_on_email = (password_payload) => async (dispatch) => {
     let token = _urlpath.slice(32, _urlpath.length);
 
     const reset_password = await axios.post(
-      `${process.env.REACT_APP_API_URL}/api/users/reset-password` + token + `/`,
+      `${process.env.REACT_APP_API_URL}/auth/reset-password` + token + `/`,
       password_payload
     );
     dispatch({
@@ -162,7 +162,7 @@ export const update_user = (update_payload, id) => async (dispatch) => {
       type: UPDATE_USER_REQUEST,
     });
     const update_user = await axios.patch(
-      `${process.env.REACT_APP_API_URL}/api/users/${id}/`,
+      `${process.env.REACT_APP_API_URL}/auth/users/update-profile/${id}/`,
       update_payload
     );
     dispatch({
@@ -188,7 +188,7 @@ export const changePassword = (password_payload) => async (dispatch) => {
       type: CHANGE_PASSWORD_REQUEST,
     });
     const change_pass = await axios.put(
-      `${process.env.REACT_APP_API_URL}/api/change-password/`,
+      `${process.env.REACT_APP_API_URL}/auth/change_password/`,
       password_payload
     );
     console.log(change_pass);
