@@ -7,6 +7,7 @@ import { BsFillPrinterFill } from "react-icons/bs";
 import { Pagination } from "@mui/material";
 // import { DeleteModal}  from "./modal/DeleteModal.jsx";
 import DeleteModal from '../modal/DeleteModal.jsx';
+import PrintModal from "../modal/PrintModal.jsx";
 
 const TableContainer = styled.div`
   width: 95%;
@@ -189,10 +190,11 @@ const CustomProgress = styled(ProgressBar)`
         : null};
   }
 `;
-
+let rowIndex='';
 const ReportTable = ({ col, row }) => {
-  const [modalShow, setModalShow] = useState(false);
-  let rowIndex="";
+  const [deleteModalShow, setDeleteModalShow] = useState(false);
+  const [printModalShow, setPrintModalShow] = useState(false);
+  
   return (
     <TableContainer>
       <Row className="header">
@@ -209,7 +211,7 @@ const ReportTable = ({ col, row }) => {
           {row.map((element, id) => {
             return (
               <>
-                <Row className="row-body-full">
+                <Row className="row-body-full" key={id}>
                   {element.map((_element, _id) => {
                     return (
                       <Col
@@ -239,16 +241,26 @@ const ReportTable = ({ col, row }) => {
                         { 
                           rowIndex=id;
                           console.log(rowIndex)  
-                          setModalShow(true)}} >
+                          setDeleteModalShow(true)}} >
                         <AiFillDelete color="white" fontSize={"1.2rem"}  />
                       </div>
                       {
-                        row.indexOf(element)==rowIndex? <DeleteModal show={modalShow} onHide={() => setModalShow(false)} onDelete={()=>{console.log(element);setModalShow(false)}} key={id}  centered  element={element} />
+                        row.indexOf(element)==rowIndex? <DeleteModal show={deleteModalShow} onHide={() => setDeleteModalShow(false)} onDelete={()=>{console.log(element);setDeleteModalShow(false)}} key={id}  centered  element={element} />
                         : ""
                       }
-                      <div className="button print">
+                      <div className="button print"  onClick={() =>
+                        { 
+                          rowIndex=id;
+                          console.log(rowIndex)  
+                          setPrintModalShow(true)}} >
                         <BsFillPrinterFill color="white" fontSize={"1.2rem"} />
                       </div>
+                      {console.log("eeee",rowIndex,row[rowIndex])}
+                      {
+                        
+                        row.indexOf(element)==rowIndex? <PrintModal show={printModalShow} onHide={() => setPrintModalShow(false)}  key={id}  centered  element={row[rowIndex]} />
+                        : ""
+                      }
                     </Row>
                   </Col>
                 </Row>
