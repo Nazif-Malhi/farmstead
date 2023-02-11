@@ -6,21 +6,22 @@ Input Feilds of Profit and Loss Material UI with Heading wise
 
 ADNAN:
 TODO:
-Header, Footer, crumbs,
-|
+|\_Header   ✓ !
+|\_Footer   ✓
+|\_crumbs   ✓
 |\_Settings:
-| |**\_\_** Transitions
-| |**\_\_** z-index 10
+| |**\_\_** Transitions     ✓
+| |**\_\_** z-index         ✓
 |\_Profile:
-| |**\_\_\_** Change Password
-| |**\_\_\_** Edit Profile
-| |**\_\_\_** remove who are you
-| |**\_\_\_** update button
+| |**\_\_\_** Change Password     ✓!
+| |**\_\_\_** Edit Profile        ✓
+| |**\_\_\_** remove who are you  ✓
+| |**\_\_\_** update button       ✓
 |\_Reports:
-| |**\_\_\_** Print
-| |**\_\_\_** Modal Delete
+| |**\_\_\_** Print           ✓  (need proper styling)
+| |**\_\_\_** Modal Delete    ✓
 |\_Test Results:
-|**\_** Modal Delete
+|**\_** Modal Delete          ✓        
 NAZIF:
 TODO:
 Store

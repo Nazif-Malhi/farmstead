@@ -1,9 +1,9 @@
-import React, { useState, useMemo } from "react";
+import React, { useState} from "react";
 import styled from "styled-components";
-import { Row, Col, Button, Spinner } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 import {
   InputLabel,
-  MenuItem,
+  // MenuItem,
   FormControl,
   Select,
   OutlinedInput,
@@ -22,7 +22,9 @@ import {
 
 // import { useDispatch, useSelector } from "react-redux";
 // import { update_user, update_user_clearErrors } from "../../store";
-import { useEffect } from "react";
+// import { useEffect } from "react";
+import ChangePasswordModal from "../../components/modal/ChangePasswordModal";
+import EditProfileModal from "../../components/modal/EditProfileModal";
 
 const ProfileContainer = styled.div`
   display: flex;
@@ -103,6 +105,7 @@ const Profile = () => {
   // );
 
   // const options = useMemo(() => countryList().getData(), []);
+
   const [firstName, setFirstName] = useState("Nazif");
   const [lastName, setLastName] = useState("Malhi");
   const [email, setEmail] = useState("nazifmalhi@gmail.com");
@@ -114,15 +117,15 @@ const Profile = () => {
   const [country, setCountry] = useState("");
 
   const [companyName, setCompanyName] = useState("");
-  const [companyType, setCompanyType] = useState("");
+  // const [companyType, setCompanyType] = useState("");
 
-  const [industry, setIndustry] = useState("");
-  const [annual, setAnnual] = useState("");
+  // const [industry, setIndustry] = useState("");
+  // const [annual, setAnnual] = useState("");
 
-  const [totalHeadCount, setTotalHeadCount] = useState("");
-  const [marketShare, setMarketShare] = useState("");
+  // const [totalHeadCount, setTotalHeadCount] = useState("");
+  // const [marketShare, setMarketShare] = useState("");
 
-  const [type, setType] = useState("");
+  // const [type, setType] = useState("");
   const [user_package, setUser_package] = useState("");
 
   // const [editProfileModal, setEditProfileModal] = useState(false);
@@ -186,9 +189,10 @@ const Profile = () => {
   //   setText_error("");
   //   setEditProfileModal(false);
   // };
-
+  const [editModalShow, setEditModalShow] = useState(false);
+  const [modalShow, setModalShow] = useState(false);
   return (
-    <>
+  <>
       <ProfileContainer>
         <Row style={{ width: "100%", padding: "20px" }}>
           <Col xs={12} md={4}>
@@ -205,22 +209,42 @@ const Profile = () => {
                   <p>Contact Number: {contact}</p>
                 </div>
                 <div className="button-wrapper">
-                  <Button
+                  {/* <Button
                     variant="outline-primary"
                     onClick={() => {
                       // setEditProfileModal(true);
                     }}
                   >
                     Edit
+                  </Button> */}
+                  <Button
+                    variant="outline-primary"
+                    onClick={() => {
+                      // setEditProfileModal(true);
+                      setEditModalShow(true)
+                    }}
+                  >
+                    Edit
                   </Button>
+                  <EditProfileModal show={editModalShow} onHide={() => setEditModalShow(false)}
+                  //  onConfirm={()=>{setModalShow(false)}} 
+                    email={email}
+                    contact={contact}
+                    centered/>
+
+
                   <Button
                     variant="danger"
                     onClick={() => {
                       // setChangePasswordModal(true);
+                      setModalShow(true)
                     }}
                   >
                     Change Password
                   </Button>
+                  <ChangePasswordModal show={modalShow} onHide={() => setModalShow(false)}
+                  //  onConfirm={()=>{setModalShow(false)}} 
+                    centered/>
                 </div>
               </div>
             </Row>
@@ -228,7 +252,8 @@ const Profile = () => {
               <div className="container_profile card-slots">
                 <div className="slots">
                   <h6>
-                    Who you are ? : <span>{type}</span>
+                    {/* Who you are ? : <span>{type}</span> */}
+                    Account Details
                   </h6>
                 </div>
                 <div className="slots">
@@ -369,6 +394,8 @@ const Profile = () => {
                     alignItems: "center",
                   }}
                 >
+                  {/* companyName,city, province,country,address */}
+                  <Button variant="primary" onClick={()=>{console.log(companyName,city, province,country,address)}}>Update</Button>
                   {/* <CustomButton
                     type={"cancel textnormal margin-top margin-right20"}
                     width="120px"

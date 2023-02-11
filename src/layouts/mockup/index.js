@@ -5,3 +5,4 @@ export { default as Focusing } from "./Focusing";
 export { default as Work } from "./Work";
 export { default as Blog } from "./Blog";
 export { default as Aboutus } from "./Aboutus";
+export { default as Footer } from "./Footer";
