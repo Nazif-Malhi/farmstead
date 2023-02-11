@@ -129,12 +129,12 @@ const SignIn = () => {
     if (user_data_succeed) {
       setSpinner_trigger(false);
       if (user_last_login === null) {
-        navigate("/360tens/admin/profile");
+        navigate("/farmstead/admin/profile");
         dispatch(login_clearErrors());
         dispatch(user_data_clearErrors());
       } else {
         if (user_last_login.length > 1) {
-          navigate("/360tens/admin/dashboard");
+          navigate("/farmstead/admin/dashboard");
           dispatch(login_clearErrors());
           dispatch(user_data_clearErrors());
         }
