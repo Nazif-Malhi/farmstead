@@ -5,7 +5,6 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 
 import styled from "styled-components";
 import { MdExpandMore } from "react-icons/md";
-import { Box } from "@mui/system";
 import { TextField } from "@mui/material";
 import { CustomButton } from "../../components";
 import { Col, Row } from "react-bootstrap";
