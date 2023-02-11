@@ -6,24 +6,50 @@ Input Feilds of Profit and Loss Material UI with Heading wise
 
 ADNAN:
 TODO:
-|\_Header   ✓ !
-|\_Footer   ✓
-|\_crumbs   ✓
-|\_Settings:
-| |**\_\_** Transitions     ✓
-| |**\_\_** z-index         ✓
-|\_Profile:
-| |**\_\_\_** Change Password     ✓!
-| |**\_\_\_** Edit Profile        ✓
-| |**\_\_\_** remove who are you  ✓
-| |**\_\_\_** update button       ✓
-|\_Reports:
-| |**\_\_\_** Print           ✓  (need proper styling)
-| |**\_\_\_** Modal Delete    ✓
-|\_Test Results:
-|**\_** Modal Delete          ✓        
+|\_Header ✓ !
+|\_Footer ✓ |
+|\_crumbs ✓ |
+|\_Settings: |
+| |**\_\_** Transitions ✓ |
+| |**\_\_** z-index ✓ |
+|\_Profile: |
+| |**\_\_\_** Change Password ✓! |
+| |**\_\_\_** Edit Profile ✓ |
+| |**\_\_\_** remove who are you ✓ |
+| |**\_\_\_** update button ✓ |
+|\_Reports: |
+| |**\_\_\_** Print ✓ (need proper styling) |
+| |**\_\_\_** Modal Delete ✓ |
+|\_Test Results: |
+|**\_** Modal Delete ✓ |
 NAZIF:
 TODO:
 Store
 Pagination
 Profit/Loss calculation
+
+REVIEW:
+ADNAN:
+Header -> COMMENTS:
+
+1. header is not that what i ask for
+2. Log In, Register button was not there
+3. Scroll not working on click navbar
+
+Footer -> COMMENTS:
+
+1. Footer is not that what you done before back color fill with green color please check
+
+Settings -> COMMENTS:
+
+1. Animation is not perfect
+
+Modals -> COMMENTS:
+
+1. Buttons standard are not maintained
+
+Crumbs -> COMMENTS:
+
+1. Links are not working
+
+NOTE: I need this all work today no need to extend this please
