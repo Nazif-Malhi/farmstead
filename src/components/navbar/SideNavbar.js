@@ -1,10 +1,11 @@
-// complete
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Logo, side_navbar } from "../../assets";
 import { side_navbar_others } from "../../assets/data/navbar";
 import { FiLogOut } from "react-icons/fi";
+import Settings2 from "../navbar/Settings2";
+
 
 const Container = styled.div`
   width: 235px;
@@ -155,6 +156,7 @@ const SideNavbar = ({ activeSettings }) => {
 
         if (val.title === "Settings") {
           activeSettings(true);
+  
         } else {
           navigate(url);
         }
@@ -163,11 +165,17 @@ const SideNavbar = ({ activeSettings }) => {
         break;
     }
   };
-  const handle_logout = () => {
+
+const handle_logout = () => {
     localStorage.clear();
     navigate("/farmstead/authentication/login");
     window.location.reload();
   };
+  const [showSettings, setShowSettings] = useState(false);
+
+  const handleCloseSettings = () => setShowSettings(false);
+  const handleShowSettings = () => setShowSettings(true);
+
   return (
     <Container>
       <div className="head">
@@ -200,28 +208,61 @@ const SideNavbar = ({ activeSettings }) => {
           <h6>Others</h6>
         </div>
         {side_navbar_others.map((val, id) => {
-          return (
-            <div
-              key={id}
-              className={`items-container ${
-                id === other_index ? "items-container-active" : ""
-              }`}
-              onClick={() => {
-                handleIndex(id, "other", val.path, val);
-              }}
-            >
-              <div
-                className={`icons ${id === other_index ? "icon-active" : ""}`}
-              >
-                {id === other_index ? val.ico_active : val.ico}
-              </div>
-              <div
-                className={`title ${id === other_index ? "title-active" : ""}`}
-              >
-                <h6>{val.title}</h6>
-              </div>
-            </div>
-          );
+          
+          if(val.title=="Settings"){
+            return(
+              <>
+                <div
+                    key={id}
+                    className={`items-container ${
+                      id === other_index ? "items-container-active" : ""
+                    }`}
+                    onClick={
+                      // () => {
+                      // handleIndex(id, "other", val.path, val);
+                      handleShowSettings
+                    // }
+                  }
+                  >
+                    <div
+                      className={`icons ${id === other_index ? "icon-active" : ""}`}
+                    >
+                      {id === other_index ? val.ico_active : val.ico}
+                    </div>
+                    <div
+                      className={`title ${id === other_index ? "title-active" : ""}`}
+                    >
+                      <h6>{val.title}</h6>
+                    </div>
+                  </div>
+                  <Settings2 show={showSettings}  handleCloseSettings={handleCloseSettings} />
+              </>
+            );
+          }
+          else{
+              return (
+                <div
+                  key={id}
+                  className={`items-container ${
+                    id === other_index ? "items-container-active" : ""
+                  }`}
+                  onClick={() => {
+                    handleIndex(id, "other", val.path, val);
+                  }}
+                >
+                  <div
+                    className={`icons ${id === other_index ? "icon-active" : ""}`}
+                  >
+                    {id === other_index ? val.ico_active : val.ico}
+                  </div>
+                  <div
+                    className={`title ${id === other_index ? "title-active" : ""}`}
+                  >
+                    <h6>{val.title}</h6>
+                  </div>
+                </div>
+              );
+          }
         })}
         <div className="linear-dr-blue" onClick={handle_logout}>
           <FiLogOut fontSize="1.5rem" color="white" /> <p>Logout</p>

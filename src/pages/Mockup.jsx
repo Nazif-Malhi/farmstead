@@ -1,5 +1,6 @@
 import React from "react";
-import {NavbarHeader }from "../components/navbar";
+// import {NavbarHeader }from "../components/navbar";
+import NavbarHeader2 from "../components/navbar/NavbarHeader2";
 import {
   Aboutus,
   Blog,
@@ -14,7 +15,9 @@ import {
 const Mockup = () => {
   return (
     <React.Fragment>
-      <NavbarHeader/>
+      {/* <NavbarHeader/> */}
+      <br/>
+      <NavbarHeader2/>
       <Home />
       <TractorAnimation />
       <TestingArea />

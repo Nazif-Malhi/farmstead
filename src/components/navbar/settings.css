@@ -1,69 +1,34 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import { Row, Col } from "react-bootstrap";
-import { MdCancel } from "react-icons/md";
-import Switch from "@mui/material/Switch";
 
-
-const Container = styled.div`
-
-  .show {
-    width: 350px;
-    font-family: "Rubik", sans-serif;
-    font-style: normal;
-    
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    box-shadow: inset 0 0 2px #fefefed1;
-    -webkit-backdrop-filter: saturate(200%) blur(30px);
-    backdrop-filter: saturate(200%) blur(30px);
-    background-color: #fffc !important;
-    right: 0;
-    top: 0;
-    padding: 20px;
-    .head {
+.head {
       width: 100%;
       height: auto;
-      h4 {
+}
+.head > h4 {
         color: #344767;
-      }
-      h6 {
+}
+.head >h6 {
         color: #6b6a77;
-      }
-      .icon {
+}
+.head >  .icon {
         display: flex;
         align-items: center;
         justify-content: center;
-        .cross {
-          :hover {
-            cursor: pointer;
+}
+ .icon >   .cross:hover {
+         cursor: pointer;
           }
-        }
-      }
-    }
-    .body {
-      .language {
-        width: 100%;
-        margin-top: 20px;
-        h5 {
+    
+.body >.language>  h5 {
           color: #344767;
-
-          font-weight: 400;
-        }
-        .setting {
-          width: 100%;
-          align-items: center;
-          p {
+         font-weight: 400;
+}
+.setting> p {
             width: auto;
             margin: 0;
             width: auto;
             color: #9c27b0;
-          }
-        }
-      }
-      .horizontal-dark {
+}
+/* .horizontal-dark {
         display: flex;
         width: 100%;
         background-image: linear-gradient(
@@ -78,17 +43,18 @@ const Container = styled.div`
         color: inherit;
         border: 0;
         opacity: 0.25;
-      }
-      .about {
+      } */
+.about {
         width: 100%;
         margin-top: 20px;
         justify-content: center;
-        h5 {
+}
+.about >      h5 {
           color: #344767;
           font-weight: 400;
         }
-      }
-    }
+      
+    
     .linear-gr {
       margin-bottom: 1rem;
       letter-spacing: -0.025rem;
@@ -117,44 +83,16 @@ const Container = styled.div`
       color: #141727;
       background-image: white;
       background-image: linear-gradient(310deg, #ffff 0%, #ffff 100%);
-
-      :hover {
+    }
+    .outlined :hover {
         color: white;
         transition: 0.5s ease-in-out;
         background-image: linear-gradient(310deg, #141727 0%, #3a416f 100%);
       }
-    }
-  }
-
-  .hide {
-    width: 0px;
-    height: 100%;
-    // padding: 20px;
-    backdrop-filter: saturate(200%) blur(30px);
-    background-color: #fffc !important;
     
-    position:absolute;
-    right: 0;
-    top: 0;
-    // animation: hideAnimation  1.5s;
-    display: none;
-
-    .head {
-      height: auto;
-      h4 {
-        color: #344767;
-      }
-      h6 {
-        color: #6b6a77;
-      }
-      .icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-    }
-    .body {
-      .language {
+  
+     
+      /* .language {
         h5 {
           color: #344767;
           font-weight: 400;
@@ -190,8 +128,8 @@ const Container = styled.div`
           font-weight: 400;
         }
       }
-    }
-    .linear-gr {
+    }*/
+     .linear-gr {
       margin-bottom: 1rem;
       letter-spacing: -0.025rem;
       text-transform: uppercase;
@@ -221,60 +159,4 @@ const Container = styled.div`
       background-image: linear-gradient(310deg, #ffff 0%, #ffff 100%);
 
   }
-  }
-`;
-
-
-const Settings = ({ handleState }) => {
-  const [active, setActive] = useState(handleState);
-  useEffect(() => {
-    setActive(handleState);
-  }, [handleState]);
-
-  return (
-    <Container>
-      {/* ,width:(active ? "350px" : "")  */}
-      <div className={`${active ? "show" : "hide"}`} style={{zIndex:"99" }}>
-        <Row className={`"head" `}>
-          <Col>
-          <div style={{display: "flex",justifyContent: "space-between"}}>
-            <h4>Settings</h4> 
-            <MdCancel
-              fontSize={"1.5rem"}
-              color="#344767"
-              onClick={() => {
-                setActive(!active);
-              }}
-              className="cross"
-            />
-
-          </div>
-            <h6 style={{width:"180px"}}>Configure Settings</h6>
-          </Col>
-          
-        </Row>
-        <Row className="body">
-          <Col className="language">
-            <h5>Select Language</h5>
-            <Row className="setting">
-              <Switch defaultChecked color="secondary" />
-              <p>
-                <b>Urdu</b>
-              </p>
-            </Row>
-          </Col>
-          <hr className="horizontal-dark" />
-          <Row className="about">
-            <h5>Other</h5>
-            <div className="linear-gr green">Contact Us</div>
-            <div className="linear-gr blue">About Us</div>
-            <div className="linear-gr outlined">View Documentation</div>
-          </Row>
-        </Row>
-      </div>
-    </Container>
-
-      
-  )};
-
-export default Settings;
+  

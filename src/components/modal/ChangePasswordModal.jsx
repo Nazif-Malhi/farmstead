@@ -1,92 +1,84 @@
 import React,{useState} from 'react';
 import Container from 'react-bootstrap/Container';
 import Modal from 'react-bootstrap/Modal';
-import { Row, Col, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import styled from "styled-components";
 import {TextField} from "@mui/material";
 import Box from '@mui/material/Box';
+import FormControl from '@mui/material/FormControl';
+import FormHelperText from '@mui/material/FormHelperText';
+import {AiFillEye,AiFillEyeInvisible} from 'react-icons/ai';
 
 
 const ModalBtnContainer = styled.div`
     display:flex;
     .modalBtn{
         margin: 20px;
-        border-radius: 50px;
+        border-radius: 5px;
         font-size: 18px;
         width: 140px;
     }
-    
 `;
 
-
-
 const ChangePasswordModal=(props)=> {
-    // {console.log("modal   ----",props.element)}
 
-    
+const [errorMessageOld, setErrorMessageOld] = useState({});
+const [errorMessageNew, setErrorMessageNew] = useState({});
+const [errorMessageConfirm, setErrorMessageConfirm] = useState({});
 
-    const [input, setInput] = useState({
-        oldPassword: '',
-        newPassword: '',
-        confirmPassword: ''
-      });
-     
-      const [error, setError] = useState({
-        oldPassword: '',
-        newPassword: '',
-        confirmPassword: ''
-      })
-     
-    
-    const onInputChange = e => {
-        const { name, value } = e.target;
-        setInput(prev => ({
-          ...prev,
-          [name]: value
-        }));
-        validateInput(e);
-      }
-      
-      const validateInput = e => {
-        let { name, value } = e.target;
-        setError(prev => {
-          const stateObj = { ...prev, [name]: "" };
-      
-          switch (name) {
-            case "oldPassword":
-              if (!value) {
-                stateObj[name] = "Please enter Password";
-              }
-              break;
-      
-            case "newPassword":
-              if (!value) {
-                stateObj[name] = "Please enter new Password.";
-              } else if (input.newPassword && value !== input.confirmPassword) {
-                stateObj["confirmPassword"] = "Password and Confirm Password does not match.";
-              } else {
-                stateObj["confirmPassword"] = input.confirmPassword ? "" : error.confirmPassword;
-              }
-              break;
-      
-            case "confirmPassword":
-              if (!value) {
-                stateObj[name] = "Please enter Confirm Password.";
-              } else if (input.newPassword && value !== input.confirmPassword) {
-                stateObj[name] = "Password and Confirm Password does not match.";
-              }
-              break;
-      
-            default:
-              break;
-          }
-      
-          return stateObj;
-        });
-      }
-    
+const [oldPassword, setOldPassword] = useState("");
+const [newPassword, setNewPassword] = useState("");
+const [confirmPassword, setConfirmPassword] = useState("");
+
+const [oldHide, setOldHide] = useState(true);
+const [newHide, setNewHide] = useState(true);
+const [newConfirmHide, setNewConfirmHide] = useState(true);
 
 
+const onInputChangeOLdPassword = e => {
+  const { value } = e.target;
+  if (value===""){
+    setErrorMessageOld({message:"Enter your old password!", status:true})
+  }
+  else if(value.length<5){
+    setErrorMessageOld({message:"Password must be greater than 5", status:true})
+  }
+  else{
+    setErrorMessageOld({message:"", status:false});
+    setOldPassword(value);
+
+  }
+}
+
+const onInputChangeNewPassword = e => {
+  const { value } = e.target;
+  if (value===""){
+    setErrorMessageNew({message:"Enter your new password!", status:true})
+  }
+  else if(value.length<5){
+    setErrorMessageNew({message:"Password must be greater than 5", status:true})
+  }
+  else{
+    setErrorMessageNew({message:"", status:false});
+    setNewPassword(value);
+  }
+}
+const onInputChangeConfirmNewPassword = e => {
+  const { value } = e.target;
+  if (value===""){
+    setErrorMessageConfirm({message:"Enter your old password!", status:true})
+  }
+  else if(value.length<5){
+    setErrorMessageConfirm({message:"Password must be greater than 5", status:true})
+  }
+  else if(value.length>5 && value!==newPassword){
+    setErrorMessageConfirm({message:"Password does not match", status:true})
+  }
+  else{
+    setErrorMessageConfirm({message:"", status:false});
+    setConfirmPassword(value);
+  }
+}
     return (
     <Modal {...props} aria-labelledby="contained-modal-title-vcenter">
       <Modal.Header closeButton style={{borderBottom:"none"}}>
@@ -104,58 +96,82 @@ const ChangePasswordModal=(props)=> {
             noValidate
             autoComplete="off"
             >
-            <div style={{display:"flex", justifyContent:"center"}}>
-                <TextField
-                // error)
-                id="outlined-error-helper-text"
-                label="Old Password"
-                name="oldPassword"
-                value={input.oldPassword}
-                onChange={onInputChange}
-                onBlur={validateInput}
-           />
+          <FormControl  variant="standard"  style={{margin: '19px'}}>
+            <div style={{height: '85px'}}>
+              <div>
+                <TextField label="Old Password" type= {oldHide===true?  "password" : "text"}
+                    error={errorMessageOld.status}
+                    color="primary" onChange={onInputChangeOLdPassword} />
+                {
+                  oldHide=== true? 
+                  <AiFillEyeInvisible onClick={()=>setOldHide(!oldHide)}
+                     style={{ position: 'absolute',display: 'flex',right: '19px',top: '25px',fontSize: '24px'}}/>
+                  :
+                  <AiFillEye onClick={()=> setOldHide(!oldHide)}
+                    style={{ position: 'absolute',display: 'flex',right: '19px',top: '25px',fontSize: '24px'}}/> 
+                }
+              </div>
+              {
+                errorMessageOld.status &&
+                <FormHelperText style={{marginLeft: '14px',marginTop: '-10px'}} id="component-error-text" error>{errorMessageOld.message}</FormHelperText>
+              }
             </div>
-            <p style={{margin: '0px',fontSize: '10px',lineHeight: '.4',marginLeft: '36px',color:"red"}}>
-                {error.oldPassword && <span className='err'>{error.oldPassword}</span>}
-            </p>
-            <div style={{display:"flex", justifyContent:"center"}}>
-                <TextField
-                name="newPassword"
-                // error
-                id="outlined-error-helper-text"
-                label="New Password"
-                value={input.newPassword}
-                onChange={onInputChange}
-                onBlur={validateInput}
-           />
+            <div style={{height: '85px'}}>
+              <div>
+                <TextField type={newHide===true ? "password" : "text"} label="New Password"
+                  error={errorMessageNew.status}  color="primary" 
+                  onChange={onInputChangeNewPassword} />
+                {
+                  newHide=== true? 
+                  <AiFillEyeInvisible onClick={()=>setNewHide(!newHide)} style={{ position: 'absolute',display: 'flex',right: '19px',top: '110px',fontSize: '24px'}}/>
+                  :
+                  <AiFillEye onClick={()=>setNewHide(!newHide)} style={{ position: 'absolute',display: 'flex',right: '19px',top: '110px',fontSize: '24px'}}/> 
+                }
+              </div>
+              {
+                errorMessageNew.status &&
+                <FormHelperText style={{marginLeft: '14px',marginTop: '-10px'}} id="component-error-text" error>{errorMessageNew.message}</FormHelperText>
+              }
             </div>
-            <p style={{margin: '0px',fontSize: '10px',lineHeight: '.4',marginLeft: '36px',color:"red"}}>
-                {error.newPassword && <span className='err'>{error.newPassword}</span>}
-            </p>
-            <div style={{display:"flex", justifyContent:"center"}}>
-                <TextField
-                // error
-                name="confirmPassword"
-                id="outlined-error-helper-text"
-                label="Confirm New Password"
-                value={input.confirmPassword}
-                onChange={onInputChange}
-                onBlur={validateInput}
-           />
+            <div style={{height: '85px'}}>
+              <div>
+                <TextField label="Confirm New Password"
+                 type={newConfirmHide===true ? "password" : "text"} 
+                 error={errorMessageConfirm.status} color="primary"
+                  onChange={onInputChangeConfirmNewPassword} />
+                {
+                  newConfirmHide=== true?
+                   <AiFillEyeInvisible onClick={()=>setNewConfirmHide(!newConfirmHide)} style={{ position: 'absolute',display: 'flex',right: '19px',top: '195px',fontSize: '24px'}}/>
+                  :
+                  <AiFillEye onClick={()=>setNewConfirmHide(!newConfirmHide)} style={{ position: 'absolute',display: 'flex',right: '19px',top: '195px',fontSize: '24px'}}/> 
+                }
+              </div>
+              {
+                errorMessageConfirm.status &&
+                <FormHelperText style={{marginLeft: '14px',marginTop: '-10px'}} id="component-error-text" error>{errorMessageConfirm.message}</FormHelperText>
+              }
             </div>
-            <p style={{margin: '0px',fontSize: '10px',lineHeight: '.4',marginLeft: '36px',color:"red"}}>
-                {error.confirmPassword && <span className='err'>{error.confirmPassword}</span>}
-            </p>
+          </FormControl>
         </Box>
         </Container>
       </Modal.Body>
-      <Modal.Footer style={{borderTop:"none",justifyContent: "center"}}>
+      <Modal.Footer style={{borderTop:"none",justifyContent: "center",marginTop: '-45px',marginBottom: '10px'}}>
         <ModalBtnContainer >
             <Button className='modalBtn' onClick={props.onHide} variant="secondary">Cancel</Button>
-            <Button className='modalBtn '  onClick={()=>{
-                // props.onConfirm;
-                console.log("old password: ",input.oldPassword, " new :" ,input.newPassword, " confirm :" ,input.confirmPassword)
-                }}>Save Changes</Button>
+            {
+              (errorMessageOld.status===false && errorMessageNew.status===false && errorMessageConfirm.status===false ) ?
+              <Button className='modalBtn '  onClick={()=>{
+                  // props.onConfirm;
+                  // console.log("old password: ",input.oldPassword, " new :" ,input.newPassword, " confirm :" ,input.confirmPassword)
+                  }}>Save Changes</Button>
+                  :
+                  <Button className='modalBtn '  disabled onClick={()=>{
+                    // props.onConfirm;
+                    // console.log("old password: ",input.oldPassword, " new :" ,input.newPassword, " confirm :" ,input.confirmPassword)
+                    }}>Save Changes</Button>
+                    
+
+            }
         </ModalBtnContainer>
       </Modal.Footer>
     </Modal>
