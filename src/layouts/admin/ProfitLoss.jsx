@@ -52,6 +52,15 @@ const Container = styled.div`
   .row-mg {
     margin-bottom: 10px;
   }
+
+  .result{
+    font-family: "Rubik", sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    color: #333333;
+    margin-top: 20px;
+    font-weight: bold;
+  }
 `;
 
 const ProfitLoss = () => {
@@ -159,6 +168,9 @@ const ProfitLoss = () => {
             <Col />
             <Col />
           </Row>
+
+
+          <label className="result">Total Gross Revenue: {} </label>
         </AccordionDetails>
       </Accordion>
 
@@ -544,6 +556,11 @@ const ProfitLoss = () => {
             </Col>
             <Col />
           </Row>
+
+          <label className="result">Total Variable Costs : {} </label>
+          <br></br>
+          <label className="result">Return Over Variable Costs : {} </label>
+
         </AccordionDetails>
       </Accordion>
 
@@ -629,6 +646,10 @@ const ProfitLoss = () => {
             <Col />
             <Col />
           </Row>
+
+          <label className="result">Total Fixed Costs : {} </label><br></br>
+          <label className="result">Total Variable & Fixed Costs : {} </label><br></br>
+          <label className="result" >Net Farm Income : {} </label>
         </AccordionDetails>
       </Accordion>
 
@@ -677,6 +698,11 @@ const ProfitLoss = () => {
             </Col>
             <Col />
           </Row>
+
+          <label className="result">Total Financing : {} </label><br></br>
+          <label className="result">Total Variable, Fixed, and Financing : {} </label><br></br>
+          <label className="result">Net Cash Flow : {} </label>
+
         </AccordionDetails>
       </Accordion>
 
