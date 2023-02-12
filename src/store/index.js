@@ -9,4 +9,6 @@ export {
   reset_password,
   change_password_clearErrors,
   change_pass_on_email,
+  update_user,
+  update_user_clearErrors,
 } from "./actions";

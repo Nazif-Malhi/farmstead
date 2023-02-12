@@ -1,30 +1,20 @@
-import React, { useState} from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import styled from "styled-components";
-import { Row, Col, Button } from "react-bootstrap";
+import { Row, Col, Button, Spinner } from "react-bootstrap";
 import {
   InputLabel,
-  // MenuItem,
+  MenuItem,
   FormControl,
   Select,
   OutlinedInput,
   TextField,
 } from "@mui/material";
-// import countryList from "react-select-country-list";
+import countryList from "react-select-country-list";
 
-// import {
-//   annualData,
-//   companyTypeData,
-//   headCount,
-//   industries,
-//   MarketShare,
-// } from "../../assets";
-// import { ChangePassword, CustomButton, EditProfile } from "../../components";
-
-// import { useDispatch, useSelector } from "react-redux";
-// import { update_user, update_user_clearErrors } from "../../store";
-// import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ChangePasswordModal from "../../components/modal/ChangePasswordModal";
 import EditProfileModal from "../../components/modal/EditProfileModal";
+import { get_user, update_user, update_user_clearErrors } from "../../store";
 
 const ProfileContainer = styled.div`
   display: flex;
@@ -95,104 +85,120 @@ const ProfileContainer = styled.div`
 `;
 
 const Profile = () => {
-  // const dispatch = useDispatch();
-  // const { user_data, user_data_error, user_data_succeed } = useSelector(
-  //   (state) => state.user_data
-  // );
-
-  // const { is_updated_user, update_user_error } = useSelector(
-  //   (state) => state.update_user
-  // );
-
-  // const options = useMemo(() => countryList().getData(), []);
-
-  const [firstName, setFirstName] = useState("Nazif");
-  const [lastName, setLastName] = useState("Malhi");
-  const [email, setEmail] = useState("nazifmalhi@gmail.com");
-  const [contact, setContact] = useState("03409351491");
-
-  const [address, setAddress] = useState("Street 7");
-  const [city, setCity] = useState("Karachi");
-  const [province, setProvince] = useState("Sindh");
-  const [country, setCountry] = useState("");
-
-  const [companyName, setCompanyName] = useState("");
-  // const [companyType, setCompanyType] = useState("");
-
-  // const [industry, setIndustry] = useState("");
-  // const [annual, setAnnual] = useState("");
-
-  // const [totalHeadCount, setTotalHeadCount] = useState("");
-  // const [marketShare, setMarketShare] = useState("");
-
-  // const [type, setType] = useState("");
-  const [user_package, setUser_package] = useState("");
-
-  // const [editProfileModal, setEditProfileModal] = useState(false);
-  // const [changePasswordModal, setChangePasswordModal] = useState(false);
-
-  // const [text_error, setText_error] = useState("");
-  // const [spinner_trigger, setSpinner_trigger] = useState(false);
-
-  // useEffect(() => {
-  //   if (!is_updated_user) {
-  //     if (update_user_error) {
-  //       update_user_error.feild === "email"
-  //         ? setText_error(update_user_error.error)
-  //         : setText_error(
-  //             update_user_error.feild + " : " + update_user_error.error
-  //           );
-  //       setSpinner_trigger(false);
-  //     }
-  //   } else if (is_updated_user) {
-  //     setText_error("");
-  //     setSpinner_trigger(false);
-  //   }
-  // }, [is_updated_user]);
-
-  // const ready_to_change = () => {
-  //   if (data.type === "Company") {
-  //     if (companyName.length === 0) {
-  //       setText_error("Company Name must be filled");
-  //       return false;
-  //     } else if (companyName.length > 0) {
-  //       setText_error("");
-  //       return true;
-  //     }
-  //   } else {
-  //     return true;
-  //   }
-  // };
-
-  // const handleUpadate = () => {
-  //   if (ready_to_change()) {
-  //     const payload_update = {
-  //       address: address,
-  //       city: city,
-  //       province: province,
-  //       country: country,
-  //       company_type: companyType,
-  //       industry: industry,
-  //       revenue: annual,
-  //       headcount: totalHeadCount,
-  //       market_share: marketShare,
-  //     };
-  //     if (!spinner_trigger) {
-  //       dispatch(update_user_clearErrors());
-  //       setSpinner_trigger(true);
-  //       dispatch(update_user(payload_update, data.id));
-  //     }
-  //   }
-  // };
-
-  // const editprofile_onclose = () => {
-  //   setText_error("");
-  //   setEditProfileModal(false);
-  // };
+  const dispatch = useDispatch();
   const [editModalShow, setEditModalShow] = useState(false);
   const [modalShow, setModalShow] = useState(false);
+
+  const { user_data, user_data_error, user_data_succeed } = useSelector(
+    (state) => state.user_data
+  );
+
+  const { is_updated_user, update_user_error } = useSelector(
+    (state) => state.update_user
+  );
+
+  const options = useMemo(() => countryList().getData(), []);
+
+  const [user_name, setUserName] = useState(
+    user_data.user_name ? user_data.user_name : ""
+  );
+  const [firstName, setFirstName] = useState(
+    user_data.first_name ? user_data.first_name : ""
+  );
+  const [lastName, setLastName] = useState(
+    user_data.last_name ? user_data.last_name : ""
+  );
+  const [email, setEmail] = useState(user_data.email ? user_data.email : "");
+  const [contact, setContact] = useState(
+    user_data.phone ? user_data.phone : ""
+  );
+
+  const [address, setAddress] = useState(
+    user_data.address ? user_data.address : ""
+  );
+  const [city, setCity] = useState(user_data.city ? user_data.city : "");
+  const [province, setProvince] = useState(
+    user_data.province ? user_data.province : ""
+  );
+  const [country, setCountry] = useState(
+    user_data.country ? user_data.country : ""
+  );
+
+  const [no_of_acres, setNo_Of_Acres] = useState(
+    user_data.no_of_acres ? user_data.no_of_acres : ""
+  );
+
+  const [user_package, setUser_package] = useState(
+    user_data.package ? user_data.package : ""
+  );
+  const [text_error, setText_error] = useState("");
+  const [spinner_trigger, setSpinner_trigger] = useState(false);
+
+  useEffect(() => {
+    if (!is_updated_user) {
+      if (update_user_error) {
+        update_user_error.feild === "email"
+          ? setText_error(update_user_error.error)
+          : setText_error(
+              update_user_error.feild + " : " + update_user_error.error
+            );
+        setSpinner_trigger(false);
+      }
+    } else if (is_updated_user) {
+      setText_error("");
+      setSpinner_trigger(false);
+    }
+  }, [is_updated_user]);
+
+  const edit_modal_on_hide = () => {
+    setEditModalShow(false);
+  };
+
+  const is_ready_for_payload = () => {
+    let state = false;
+    if (
+      firstName.length === 0 &&
+      lastName.length === 0 &&
+      address.length === 0 &&
+      city.length === 0 &&
+      country.length === 0 &&
+      no_of_acres.length === 0
+    ) {
+      state = false;
+    } else if (
+      firstName.length > 0 &&
+      lastName.length > 0 &&
+      address.length > 0 &&
+      city.length > 0 &&
+      country.length > 0 &&
+      no_of_acres.length > 0
+    ) {
+      state = true;
+    }
+    return true;
+  };
+  const handle_update_profile = () => {
+    if (is_ready_for_payload()) {
+      const profile_payload = {
+        first_name: firstName,
+        last_name: lastName,
+        address: address,
+        city: city,
+        province: province,
+        country: country,
+        no_of_acres: no_of_acres,
+      };
+      if (!spinner_trigger) {
+        dispatch(update_user_clearErrors());
+        setSpinner_trigger(true);
+        dispatch(update_user(profile_payload, user_data.id));
+      }
+    } else {
+      console.log("no");
+    }
+  };
   return (
-  <>
+    <>
       <ProfileContainer>
         <Row style={{ width: "100%", padding: "20px" }}>
           <Col xs={12} md={4}>
@@ -202,64 +208,64 @@ const Profile = () => {
                 style={{ padding: "20px 0px" }}
               >
                 <div className="header">
-                  <h3>{firstName + " " + lastName}</h3>
+                  <h3>{user_name}</h3>
                 </div>
                 <div className="body">
                   <p>Email: {email}</p>
                   <p>Contact Number: {contact}</p>
                 </div>
                 <div className="button-wrapper">
-                  {/* <Button
-                    variant="outline-primary"
-                    onClick={() => {
-                      // setEditProfileModal(true);
-                    }}
-                  >
-                    Edit
-                  </Button> */}
                   <Button
                     variant="outline-primary"
                     onClick={() => {
-                      // setEditProfileModal(true);
-                      setEditModalShow(true)
+                      setEditModalShow(true);
                     }}
                   >
                     Edit
                   </Button>
-                  <EditProfileModal show={editModalShow} onHide={() => setEditModalShow(false)}
-                  //  onConfirm={()=>{setModalShow(false)}} 
+                  <EditProfileModal
+                    show={editModalShow}
+                    onHide={() => {
+                      edit_modal_on_hide();
+                    }}
                     email={email}
                     contact={contact}
-                    centered/>
-
+                    user_name={user_name}
+                    id={user_data.id}
+                    centered
+                  />
 
                   <Button
                     variant="danger"
                     onClick={() => {
-                      // setChangePasswordModal(true);
-                      setModalShow(true)
+                      setModalShow(true);
                     }}
                   >
                     Change Password
                   </Button>
-                  <ChangePasswordModal show={modalShow} onHide={() => setModalShow(false)}
-                  //  onConfirm={()=>{setModalShow(false)}} 
-                    centered/>
+                  <ChangePasswordModal
+                    show={modalShow}
+                    onHide={() => setModalShow(false)}
+                    centered
+                  />
                 </div>
               </div>
             </Row>
             <Row>
               <div className="container_profile card-slots">
                 <div className="slots">
-                  <h6>
-                    {/* Who you are ? : <span>{type}</span> */}
-                    Account Details
-                  </h6>
+                  <h6>Account Details</h6>
                 </div>
                 <div className="slots">
                   <h6>
                     Package :{" "}
-                    <span>{user_package === "1" ? "Standard" : "Custom"}</span>
+                    <span>
+                      {user_package === "1"
+                        ? "Standard"
+                        : user_package === "2"
+                        ? "Custom"
+                        : "None"}
+                    </span>
                   </h6>
                 </div>
                 <div className="slots">
@@ -268,7 +274,7 @@ const Profile = () => {
                     <span>
                       <input
                         type={"checkbox"}
-                        // checked={data.is_verified}
+                        checked={user_data.is_verified}
                         value="verfication"
                         readOnly
                       />
@@ -285,6 +291,33 @@ const Profile = () => {
             <div className="container_profile ">
               <Row className="personal_details">
                 <h5>Personal Details</h5>
+              </Row>
+              <Row className="less_width">
+                <Col>
+                  <TextField
+                    id="outlined-name"
+                    label="First Name"
+                    size="small"
+                    fullWidth
+                    value={firstName}
+                    onChange={(e) => {
+                      setFirstName(e.target.value);
+                    }}
+                  />
+                </Col>
+
+                <Col>
+                  <TextField
+                    id="outlined-address"
+                    label="Last Name"
+                    size="small"
+                    fullWidth
+                    value={lastName}
+                    onChange={(e) => {
+                      setLastName(e.target.value);
+                    }}
+                  />
+                </Col>
               </Row>
               <Row className="less_width">
                 <Col>
@@ -343,19 +376,19 @@ const Profile = () => {
                       onChange={(e) => setCountry(e.target.value)}
                       input={<OutlinedInput label="Name" />}
                     >
-                      {/* {options.map((val, id) => {
+                      {options.map((val, id) => {
                         return (
                           <MenuItem key={val.value} value={val.value}>
                             {val.label}
                           </MenuItem>
                         );
-                      })} */}
+                      })}
                     </Select>
                   </FormControl>
                 </Col>
               </Row>
               <Row className="personal_details">
-                <h5>Company Details</h5>
+                <h5>No Of Acres</h5>
               </Row>
               <Row className="less_width">
                 <Col>
@@ -364,9 +397,9 @@ const Profile = () => {
                     label="No of Acres"
                     size="small"
                     fullWidth
-                    value={companyName}
+                    value={no_of_acres}
                     onChange={(e) => {
-                      setCompanyName(e.target.value);
+                      setNo_Of_Acres(e.target.value);
                     }}
                   />
                 </Col>
@@ -374,11 +407,11 @@ const Profile = () => {
 
               <p
                 style={{
-                  // color: text_error.length === 0 ? "white" : "red",
+                  color: text_error.length === 0 ? "white" : "red",
                   textAlign: "center",
                 }}
               >
-                {/* {text_error} */}
+                {text_error}
               </p>
               <Row
                 style={{
@@ -394,21 +427,10 @@ const Profile = () => {
                     alignItems: "center",
                   }}
                 >
-                  {/* companyName,city, province,country,address */}
-                  <Button variant="primary" onClick={()=>{console.log(companyName,city, province,country,address)}}>Update</Button>
-                  {/* <CustomButton
-                    type={"cancel textnormal margin-top margin-right20"}
-                    width="120px"
-                    height="40px"
-                  >
-                    Cancel
-                  </CustomButton>
-                  <CustomButton
-                    type={"normal textnormal margin-top "}
-                    width="120px"
-                    height="40px"
+                  <Button
+                    variant="primary"
                     onClick={() => {
-                      handleUpadate();
+                      handle_update_profile();
                     }}
                   >
                     {spinner_trigger ? (
@@ -416,29 +438,13 @@ const Profile = () => {
                     ) : (
                       "Update"
                     )}
-                  </CustomButton> */}
+                  </Button>
                 </Col>
               </Row>
             </div>
           </Col>
         </Row>
       </ProfileContainer>
-      {/* <EditProfile
-        show={editProfileModal}
-        onHide={() => {
-          editprofile_onclose();
-        }}
-        first_name={data.first_name}
-        last_name={data.last_name}
-        contact={data.contact_num}
-        id={data.id}
-      />
-      <ChangePassword
-        show={changePasswordModal}
-        onHide={() => {
-          setChangePasswordModal(false);
-        }}
-      /> */}
     </>
   );
 };

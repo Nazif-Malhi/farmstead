@@ -25,6 +25,7 @@ import {
 import { user_errors } from "../ErrorsHandler";
 import { isHandled_AuthToken } from "../../utils";
 
+// Register
 export const register = (register_payload) => async (dispatch) => {
   try {
     dispatch({
@@ -48,12 +49,14 @@ export const register = (register_payload) => async (dispatch) => {
     });
   }
 };
+
 export const user_reg_clearErrors = () => async (dispatch) => {
   dispatch({
     type: USER_REG_CLEAR_ERRORS,
   });
 };
 
+// Login
 export const login = (login_payload) => async (dispatch) => {
   try {
     dispatch({
@@ -83,6 +86,7 @@ export const login_clearErrors = () => async (dispatch) => {
   });
 };
 
+// Get Profile
 export const get_user = () => async (dispatch) => {
   try {
     dispatch({
@@ -109,6 +113,7 @@ export const user_data_clearErrors = () => async (dispatch) => {
   });
 };
 
+// Reset Password
 export const reset_password = (email_payload) => async (dispatch) => {
   console.log(email_payload);
   try {
@@ -132,6 +137,7 @@ export const reset_password = (email_payload) => async (dispatch) => {
   }
 };
 
+// Change Password
 export const change_pass_on_email = (password_payload) => async (dispatch) => {
   try {
     dispatch({
@@ -156,6 +162,7 @@ export const change_pass_on_email = (password_payload) => async (dispatch) => {
   }
 };
 
+// Update user
 export const update_user = (update_payload, id) => async (dispatch) => {
   try {
     dispatch({
@@ -165,10 +172,12 @@ export const update_user = (update_payload, id) => async (dispatch) => {
       `${process.env.REACT_APP_API_URL}/auth/users/update-profile/${id}/`,
       update_payload
     );
+
     dispatch({
       type: UPDATE_USER_SUCCESS,
       payload: update_user,
     });
+    return true;
   } catch (error) {
     dispatch({
       type: UPDATE_USER_FAIL,
