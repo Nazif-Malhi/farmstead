@@ -166,6 +166,11 @@ const SideNavbar = ({ activeSettings }) => {
     }
   };
 
+const handle_logout = () => {
+    localStorage.clear();
+    navigate("/farmstead/authentication/login");
+    window.location.reload();
+  };
   const [showSettings, setShowSettings] = useState(false);
 
   const handleCloseSettings = () => setShowSettings(false);
@@ -259,7 +264,7 @@ const SideNavbar = ({ activeSettings }) => {
               );
           }
         })}
-        <div className="linear-dr-blue">
+        <div className="linear-dr-blue" onClick={handle_logout}>
           <FiLogOut fontSize="1.5rem" color="white" /> <p>Logout</p>
         </div>
       </div>
