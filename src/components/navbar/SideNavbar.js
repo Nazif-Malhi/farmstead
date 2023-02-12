@@ -1,10 +1,11 @@
-// complete
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Logo, side_navbar } from "../../assets";
 import { side_navbar_others } from "../../assets/data/navbar";
 import { FiLogOut } from "react-icons/fi";
+
+
 
 const Container = styled.div`
   width: 235px;
@@ -155,6 +156,7 @@ const SideNavbar = ({ activeSettings }) => {
 
         if (val.title === "Settings") {
           activeSettings(true);
+  
         } else {
           navigate(url);
         }

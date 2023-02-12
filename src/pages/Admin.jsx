@@ -7,7 +7,9 @@ import {
   ProfitLoss,
 } from "../layouts/admin";
 import { Route, Routes } from "react-router-dom";
-import { Settings, SideNavbar, UpperNavbar } from "../components";
+import { 
+  Settings,
+   SideNavbar, UpperNavbar } from "../components";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -28,6 +30,8 @@ const Admin = () => {
   const handleActive = (val) => {
     setActive(!active);
   };
+
+  
   return (
     <Container className="admin">
       <SideNavbar activeSettings={handleActive} />

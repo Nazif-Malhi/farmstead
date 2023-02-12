@@ -21,6 +21,7 @@ const Container = styled.div`
       color: #344767;
       font-family: "Rubik", sans-serif;
       font-style: normal;
+      text-transform: capitalize;
     }
   }
   .right {
@@ -94,15 +95,21 @@ const UpperNavbar = () => {
           {
             currentPath.map(i =>{
               if(currentPath[isActiveIndex]===i){
-                return <Breadcrumb.Item href="#"  active key={i}>{i}</Breadcrumb.Item> 
+                return <Breadcrumb.Item   active key={i}>{i}</Breadcrumb.Item> 
+              }
+              else if(i === "farmstead"){
+                return <Breadcrumb.Item href="/farmstead" key={i}>{i}</Breadcrumb.Item> 
+              }
+              else if(i === "Admin"){
+                return <Breadcrumb.Item href="/farmstead/Admin" key={i}>{i}</Breadcrumb.Item> 
               }
               else{
-                return <Breadcrumb.Item href="#" key={i}>{i}</Breadcrumb.Item> 
+                return <Breadcrumb.Item href={"/"+i}  key={i}>{i}</Breadcrumb.Item> 
               }
             })
           }
         </Breadcrumb>
-        <h5>Dashboard</h5>
+        <h5 >{(currentPath[isActiveIndex]).replace('-', ' ')}</h5>
       </div>
       <div className="right">
         <Row className="row-search">

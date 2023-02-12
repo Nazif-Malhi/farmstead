@@ -3,13 +3,7 @@ import styled from "styled-components";
 import { Row, Col } from "react-bootstrap";
 import { MdCancel } from "react-icons/md";
 import Switch from "@mui/material/Switch";
-//   transition: all 2s ease-out;
 
-//   // font-size: 14px;
-//   transition-property: width;
-//   transition-duration: 4s;
-//   transition-delay: 2s;
-// }
 
 const Container = styled.div`
 
@@ -17,7 +11,7 @@ const Container = styled.div`
     width: 350px;
     font-family: "Rubik", sans-serif;
     font-style: normal;
-    animation: showAnimation 0.5s linear;
+    animation: showAnimation 5s linear;
     
    // width: ${(props) => (props.active ? "350px" : "0px")};
     height: 100%;
@@ -282,6 +276,8 @@ const Container = styled.div`
   //   }
   // } 
 `;
+
+
 const Settings = ({ handleState }) => {
   const [active, setActive] = useState(handleState);
   useEffect(() => {
@@ -330,7 +326,8 @@ const Settings = ({ handleState }) => {
         </Row>
       </div>
     </Container>
-  );
-};
+
+      
+  )};
 
 export default Settings;
