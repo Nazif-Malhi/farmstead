@@ -8,7 +8,7 @@ import {
 } from "../layouts/admin";
 import { Route, Routes } from "react-router-dom";
 import { 
-  Settings,
+  // Settings,
    SideNavbar, UpperNavbar } from "../components";
 import styled from "styled-components";
 
@@ -37,7 +37,9 @@ const Admin = () => {
       <SideNavbar activeSettings={handleActive} />
       <div className="main">
         <UpperNavbar />
-        <Settings handleState={active} />
+        {/* <Settings handleState={active} /> */}
+        
+
         <Routes>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="test-results" element={<TestResults />} />

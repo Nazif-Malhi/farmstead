@@ -40,7 +40,7 @@ const onInputChangeOLdPassword = e => {
   if (value===""){
     setErrorMessageOld({message:"Enter your old password!", status:true})
   }
-  else if(value.length>5){
+  else if(value.length<5){
     setErrorMessageOld({message:"Password must be greater than 5", status:true})
   }
   else{

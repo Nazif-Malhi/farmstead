@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import Container from 'react-bootstrap/Container';
 import Modal from 'react-bootstrap/Modal';
-import { Row, Col, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import styled from "styled-components";
 import {TextField} from "@mui/material";
 import Box from '@mui/material/Box';
