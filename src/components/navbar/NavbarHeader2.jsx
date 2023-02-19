@@ -1,16 +1,16 @@
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+// import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Logo2 } from "../../assets";
 import './navbarHeader2.css';
 import { CustomButton } from "../button";
 import { useNavigate } from "react-router";
+import {Link} from 'react-scroll'
 
-
-function NavScrollExample() {
+function NavScrollExample(props) {
     
   const navigate = useNavigate();
 
@@ -18,10 +18,14 @@ function NavScrollExample() {
     navigate(url);
   };
 
+ 
+
   return (
     <Navbar fixed="top" expand="lg" style={{    zIndex: 99,width: '95%',height: '80px',top: '15px',left: '35px',backgroundColor:"#ffffff", borderRadius:"6px",boxShadow: 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px'}}>
       <Container >
-        <Navbar.Brand href="#">
+        <Navbar.Brand
+         href="#"
+         >
             <div className="logo">
                 <img src={Logo2} alt={"logo"}  style={{ width: '206px',marginLeft: '-75px'}}/>
             </div>
@@ -33,10 +37,24 @@ function NavScrollExample() {
             style={{ maxHeight: '100px' }}
             
           >
-            <Nav.Link href="#action1" className="nav-links">Home</Nav.Link>
-            <Nav.Link href="#services" className="nav-links">Services</Nav.Link>
+            <Nav.Link 
+              href="#action1" 
+              className="nav-links"
+              >
+                Home
+            </Nav.Link>
+            <Nav.Link  className="nav-links"
+            >
+              Services
+            </Nav.Link>
             <Nav.Link href="#action3" className="nav-links">Pricing</Nav.Link>
-            <Nav.Link href="#action4" className="nav-links">About</Nav.Link>
+            <Nav.Link
+            //  href="#action4" 
+             className="nav-links"
+            //  to="about_section" spy={true} smooth={true}  
+             >
+              <Link  to="aboutsection" spy={true} smooth={true}>About</Link>
+            </Nav.Link>
             <Nav.Link href="#action5" className="nav-links">Blog</Nav.Link>
             {/* <NavDropdown title="Link" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">Action</NavDropdown.Item>

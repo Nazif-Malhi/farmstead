@@ -12,19 +12,23 @@ import {
   Footer,
 } from "../layouts";
 
+
+
 const Mockup = () => {
+  
+  
   return (
     <React.Fragment>
       {/* <NavbarHeader/> */}
       <br/>
-      <NavbarHeader2/>
-      <Home />
-      <TractorAnimation />
-      <TestingArea />
-      <Focusing />
-      <Work />
-      <Blog />
-      <Aboutus />
+      <NavbarHeader2  />
+      <Home  id="home_section" />
+      <TractorAnimation  />
+      <TestingArea  id="tests_section" />
+      <Focusing  id="focusing_section" />
+      <Work id="work_section"  />
+      <Blog  />
+      <Aboutus id="aboutsection" />
       <Footer/>
     </React.Fragment>
   );
