@@ -13,10 +13,10 @@ import {
 } from "../images";
 
 export const _testdata = [
-  { type: "Crops Prediction", url: "crop_recomendation" },
-  { type: "Crops Diseases Detection", url: "crop_disease_detection" },
-  { type: "Fertilizer Prediction", url: "fertilizer_recomendation" },
-  { type: "Pest's Detection", url: "pest_detection" },
+  { type: "Crops Prediction", url: "simple-crop-recomendation" },
+  { type: "Crops Diseases Detection", url: "crop-disease-detection" },
+  { type: "Fertilizer Prediction", url: "fertilizer-recomendation" },
+  { type: "Pest's Detection", url: "pest-detection" },
 ];
 export const _focusdata = [
   { num: 0, img: { no_poverty }, clr: "#ffbb00", head: "No Poverty" },

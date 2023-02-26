@@ -7,3 +7,4 @@ export * from "./input";
 export * from "./charts.js";
 export * from "./table";
 export * from "./modal";
+export * from "./models_feild";

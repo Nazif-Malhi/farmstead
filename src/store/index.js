@@ -11,4 +11,7 @@ export {
   change_pass_on_email,
   update_user,
   update_user_clearErrors,
+  // Models
+  get_simple_crop,
+  simple_crop_clear_errors,
 } from "./actions";
