@@ -6,6 +6,7 @@ import { InputSearch } from "../input";
 import { Row, Col, Breadcrumb } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 
+import {useSelector } from "react-redux";
 
 const Container = styled.div`
   width: 100%;
@@ -77,7 +78,14 @@ const UpperNavbar = () => {
   // const handleProfile = () => {};
   // const handleLogout = () => {};
 
+  const { user_data} = useSelector(
+    (state) => state.user_data
+  );
+
   
+  const [user_name, setUserName] = useState(
+    user_data.user_name ? user_data.user_name : ""
+  );
 
   let location = useLocation();
   const [currentPath,setCurrentPath]=  useState(location.pathname.replace("http://localhost:3000/","").split("/").map(String));
@@ -100,8 +108,8 @@ const UpperNavbar = () => {
               else if(i === "farmstead"){
                 return <Breadcrumb.Item href="/farmstead" key={i}>{i}</Breadcrumb.Item> 
               }
-              else if(i === "Admin"){
-                return <Breadcrumb.Item href="/farmstead/Admin" key={i}>{i}</Breadcrumb.Item> 
+              else if(i === "admin"){
+                return <Breadcrumb.Item href="/farmstead/admin/dashboard" key={i}>{i}</Breadcrumb.Item> 
               }
               else{
                 return <Breadcrumb.Item href={"/"+i}  key={i}>{i}</Breadcrumb.Item> 
@@ -126,7 +134,9 @@ const UpperNavbar = () => {
           <div className="circle">
             <BsPersonFill fontSize={"1.2rem"} color="white" />
           </div>
-          <div className="name">Nazif Malhi</div>
+          <div className="name">
+            {user_name=="" ? "User" : user_name}
+          </div>
         </div>
       </div>
     </Container>

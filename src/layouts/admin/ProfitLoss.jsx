@@ -10,22 +10,16 @@ import { CustomButton } from "../../components";
 import { Col, Row } from "react-bootstrap";
 
 const Container = styled.div`
-  // width: 80%;
-  // height: 100%;
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: center;
-  // margin: 30px;
   overflow-y: scroll;
-  // background-color: white;
-  // border-radius: 7px;
   width: 100%;
   height: 100%;
   margin-top: 20px;
+  padding: 0px 45px;
   h4 {
     font-family: "Rubik", sans-serif;
     font-style: normal;
     color: #333333;
+    padding-top:16px;
   }
   h5 {
     font-family: "Rubik", sans-serif;

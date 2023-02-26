@@ -153,8 +153,8 @@ const SignIn = () => {
             error={email_validation_error}
             type={"email"}
             label="Email"
-            value={email}
             placeholder="Enter Your Email"
+            value={email}
             onChange={(e) => handleEmail_Validation(e.target.value)}
             size="small"
           />
