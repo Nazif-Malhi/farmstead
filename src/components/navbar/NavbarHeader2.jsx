@@ -9,6 +9,7 @@ import './navbarHeader2.css';
 import { CustomButton } from "../button";
 import { useNavigate } from "react-router";
 import {Link} from 'react-scroll'
+import { farmsteadlogo } from "../../assets";
 
 function NavScrollExample(props) {
     
@@ -24,10 +25,11 @@ function NavScrollExample(props) {
     <Navbar fixed="top" expand="lg" style={{    zIndex: 99,width: '95%',height: '80px',top: '15px',left: '35px',backgroundColor:"#ffffff", borderRadius:"6px",boxShadow: 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px'}}>
       <Container >
         <Navbar.Brand
-         href="#"
+         href="farmstead"
          >
             <div className="logo">
-                <img src={Logo2} alt={"logo"}  style={{ width: '206px',marginLeft: '-75px'}}/>
+                {/* <img src={Logo2} alt={"logo"}  style={{ width: '206px',marginLeft: '-75px'}}/> */}
+                <img src={farmsteadlogo} alt={"logo"}  style={{ width: '70px',}}/>
             </div>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -77,7 +79,7 @@ function NavScrollExample(props) {
               width={"100px"}
               height="45px"
               style={{
-                // color: '#209e2e',
+                // color: '#209e2e ',
                 fontWeight: '600',
                 letterSpacing: '.7px'
               }}
