@@ -74,7 +74,7 @@ const TestingCards = ({ type, url }) => {
   const navigate = useNavigate();
 
   const route_to = (url) => {
-    navigate("test/models/" + url);
+    navigate("models/" + url);
   };
   return (
     <TestCardContainer type={type}>

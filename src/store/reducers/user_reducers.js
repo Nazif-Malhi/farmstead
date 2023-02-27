@@ -177,8 +177,6 @@ export const change_pass_reducer = (
   },
   action
 ) => {
-  console.log(action.payload);
-
   switch (action.type) {
     case CHANGE_PASSWORD_REQUEST:
       return {
