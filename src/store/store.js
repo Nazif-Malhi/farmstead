@@ -2,9 +2,13 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import {
+  advance_crop_reducer,
   change_pass_reducer,
   simple_crop_reducer,
   update_user_reducer,
+  fertilizer_reducer,
+  pest_reducer,
+  crop_disease_reducer,
 } from "./reducers";
 import {
   user_auth_reducer,
@@ -20,6 +24,10 @@ const reducer = combineReducers({
   update_user: update_user_reducer,
   //Models
   simple_crop: simple_crop_reducer,
+  advance_crop: advance_crop_reducer,
+  fertilizer: fertilizer_reducer,
+  pest: pest_reducer,
+  crop_disease: crop_disease_reducer,
 });
 let initialState = {};
 

@@ -6,6 +6,9 @@ import { Row, Container, Modal, Button, Spinner, Col } from "react-bootstrap";
 import { CustomButton } from "../button";
 import { StyledContainer, Wrapper } from "./container";
 
+import { useDispatch, useSelector } from "react-redux";
+import { get_pest, pest_clear_errors } from "../../store";
+
 const Upload = styled.div`
   border-radius: 7px;
   width: 100%;
@@ -35,9 +38,28 @@ const Upload = styled.div`
   }
 `;
 const PestDetection = () => {
+  const { pest, pest_error, loading } = useSelector((state) => state.pest);
+  const dispatch = useDispatch();
+
   const inputRef = useRef(null);
 
   const [img, setImg] = useState();
+  const [ansState, setAnsState] = useState(false);
+
+  useEffect(() => {
+    if (!loading) {
+      if (pest_error) {
+        console.log(pest_error);
+      }
+      dispatch(pest_clear_errors());
+    }
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (pest["result"]) {
+      setAnsState(true);
+    }
+  }, [pest["result"]]);
 
   const handleDragOver = (event) => {
     event.preventDefault();
@@ -52,41 +74,15 @@ const PestDetection = () => {
   };
 
   const handleRequest = () => {
-    // if (!spinner_trigger) {
-    //   if (csv_file === null) {
-    //     setText_error("Please upload file");
-    //     setSpinner_trigger(false);
-    //   } else {
-    //     setSpinner_trigger(true);
-    //     dispatch(bulk_emp_clearErrors());
-    //     dispatch(bulk_add_emp(csv_file));
-    //     // if (import_fail) {
-    //     //   setText_error(
-    //     //     "Not Imported File format wrong or server down or data may be already present"
-    //     //   );
-    //     // } else if (!import_fail) {
-    //     //   setText_error("");
-    //     //   handleClose();
-    //     // }
-    //   }
-    // }
+    if (!loading) {
+      setAnsState(false);
+      if (img === null) {
+        console.log("no image");
+      } else {
+        dispatch(get_pest(img));
+      }
+    }
   };
-
-  //   useEffect(() => {
-  //     if (bulk_emp_error) {
-  //       setText_error(
-  //         "Not Imported File format wrong or server down or data may be already present"
-  //       );
-  //       setSpinner_trigger(false);
-  //     } else {
-  //       if (!import_fail) {
-  //         dispatch(get_employees(props.company_name));
-  //         setText_error("");
-  //         setSpinner_trigger(false);
-  //         handleClose();
-  //       }
-  //     }
-  //   }, [import_fail, bulk_emp_error]);
 
   return (
     <StyledContainer>
@@ -94,56 +90,95 @@ const PestDetection = () => {
         <div className="header">
           <h1>Pest Detection</h1>
         </div>
-        <Container>
-          <p style={{ color: "#a2abb6" }}>*.jpeg/*.jpg/*.png</p>
-          {!img ? (
-            <Upload onDragOver={handleDragOver} onDrop={handleDrop}>
-              <AiOutlineUpload
-                style={{ fontSize: "5.7rem", color: "a2abb6" }}
-              />
-
-              <h6>Drag & Drop here</h6>
-              <input
-                type={"file"}
-                onChange={(e) => {
-                  setImg(e.target.files[0]);
-                }}
-                hidden
-                multiple
-                ref={inputRef}
-              />
-            </Upload>
-          ) : (
-            <Upload>
-              <h6>{img.name}</h6>
-            </Upload>
-          )}
-
-          <Row style={{ margin: "40px" }}>
-            <Col>
+        {ansState ? (
+          <>
+            <h6>{pest["result"]}</h6>
+            <Row className="center-row btn">
               <CustomButton
                 type="outline border-fill"
-                width="130px"
-                height="40px"
+                width="160px"
+                height="50px"
                 onClick={() => {
+                  setAnsState(false);
                   setImg();
                 }}
               >
-                Cancel
+                New Test
               </CustomButton>
-            </Col>
-            <Col>
-              <CustomButton
-                type="filled"
-                width="130px"
-                height="40px"
-                onClick={onButtonClick}
-              >
-                Click to upload
-              </CustomButton>
-            </Col>
-          </Row>
-        </Container>
+            </Row>
+          </>
+        ) : (
+          <>
+            <Container>
+              <p style={{ color: "#a2abb6" }}>*.jpeg/*.jpg/*.png</p>
+              {!img ? (
+                <Upload onDragOver={handleDragOver} onDrop={handleDrop}>
+                  <AiOutlineUpload
+                    style={{ fontSize: "5.7rem", color: "a2abb6" }}
+                  />
+
+                  <h6>Drag & Drop here</h6>
+                  <input
+                    type={"file"}
+                    onChange={(e) => {
+                      setImg(e.target.files[0]);
+                    }}
+                    hidden
+                    multiple
+                    ref={inputRef}
+                  />
+                </Upload>
+              ) : (
+                <Upload>
+                  <h6>{img.name}</h6>
+                </Upload>
+              )}
+
+              <Row style={{ margin: "40px" }}>
+                <Col>
+                  <CustomButton
+                    type="outline border-fill"
+                    width="130px"
+                    height="40px"
+                    onClick={() => {
+                      setImg();
+                    }}
+                  >
+                    Cancel
+                  </CustomButton>
+                </Col>
+                <Col>
+                  <CustomButton
+                    type="filled"
+                    width="130px"
+                    height="40px"
+                    onClick={onButtonClick}
+                  >
+                    Click to upload
+                  </CustomButton>
+                </Col>
+              </Row>
+              <Row style={{ margin: "40px" }}>
+                <Col>
+                  <CustomButton
+                    type="filled"
+                    width="170px"
+                    height="40px"
+                    onClick={() => {
+                      handleRequest();
+                    }}
+                  >
+                    {loading ? (
+                      <Spinner animation="border" variant="light" />
+                    ) : (
+                      "Test"
+                    )}
+                  </CustomButton>
+                </Col>
+              </Row>
+            </Container>
+          </>
+        )}
       </Wrapper>
     </StyledContainer>
   );
