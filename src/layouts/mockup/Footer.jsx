@@ -11,7 +11,7 @@ import Col from 'react-bootstrap/Col';
 export default function Footer() {
   return (
     <>
-      <section className=''>
+      <section style={{ backgroundColor: 'rgb(32 158 46)',color: 'white',opacity: 0.83 }}>
         <hr/>
         <Container >
           <Row >
@@ -103,8 +103,9 @@ export default function Footer() {
           </Row>
         </Container>
       </section>
-
+      
       <div className='text-center  p-4' style={{ backgroundColor: 'rgb(32 158 46)',color: 'white',opacity: 0.83 }}>
+      <hr/>
         © 2022 Copyright:&nbsp;
         <a className='text-reset fw-bold' href='https://mdbootstrap.com/'>
          FarmStead.com

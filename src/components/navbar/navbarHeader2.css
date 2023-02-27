@@ -1,0 +1,17 @@
+.nav-container{
+    
+}
+.nav-links{
+    color: '#209e2e' !important;
+    font-weight: 600;
+    padding: 10px 15px!important;
+    font-weight: 600;
+    letter-spacing: .7px;
+}
+.nav-links:hover{
+    padding: 9px 14px!important;
+    border: 1px solid #209e2e;
+    background-color: #eefbf2;
+    border-radius: 5px;
+    color: #209e2e;
+}

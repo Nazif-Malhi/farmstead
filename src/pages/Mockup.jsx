@@ -1,5 +1,6 @@
 import React from "react";
-import {NavbarHeader }from "../components/navbar";
+// import {NavbarHeader }from "../components/navbar";
+import NavbarHeader2 from "../components/navbar/NavbarHeader2";
 import {
   Aboutus,
   Blog,
@@ -11,17 +12,23 @@ import {
   Footer,
 } from "../layouts";
 
+
+
 const Mockup = () => {
+  
+  
   return (
     <React.Fragment>
-      <NavbarHeader/>
-      <Home />
-      <TractorAnimation />
-      <TestingArea />
-      <Focusing />
-      <Work />
-      <Blog />
-      <Aboutus />
+      {/* <NavbarHeader/> */}
+      <br/>
+      <NavbarHeader2  />
+      <Home  id="home_section" />
+      <TractorAnimation  />
+      <TestingArea  id="tests_section" />
+      <Focusing  id="focusing_section" />
+      <Work id="work_section"  />
+      <Blog  />
+      <Aboutus id="aboutsection" />
       <Footer/>
     </React.Fragment>
   );

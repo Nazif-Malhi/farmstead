@@ -8,4 +8,6 @@ export {
   reset_password,
   change_password_clearErrors,
   change_pass_on_email,
+  update_user_clearErrors,
+  update_user,
 } from "./user_actions";

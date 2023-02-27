@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Dashboard,
   Reports,
@@ -7,8 +7,13 @@ import {
   ProfitLoss,
 } from "../layouts/admin";
 import { Route, Routes } from "react-router-dom";
-import { Settings, SideNavbar, UpperNavbar } from "../components";
+import { 
+Settings, 
+SideNavbar, UpperNavbar } from "../components";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { get_user, user_data_clearErrors } from "../store";
+import { isHandled_AuthToken, set_authtoken_toHeader } from "../utils";
 
 const Container = styled.div`
   display: flex;
@@ -24,10 +29,23 @@ const Container = styled.div`
   }
 `;
 const Admin = () => {
+  const dispatch = useDispatch();
   const [active, setActive] = useState(false);
   const handleActive = (val) => {
     setActive(!active);
   };
+  const { user_data, user_data_error, user_data_succeed } = useSelector(
+    (state) => state.user_data
+  );
+
+  useEffect(() => {
+    if (user_data_error) {
+      console.log(user_data_error);
+      dispatch(user_data_clearErrors());
+    }
+    set_authtoken_toHeader(localStorage.getItem("token"));
+    dispatch(get_user());
+  }, [dispatch]);
   return (
     <Container className="admin">
       <SideNavbar activeSettings={handleActive} />
@@ -35,11 +53,15 @@ const Admin = () => {
         <UpperNavbar />
         <Settings handleState={active} />
         <Routes>
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="test-results" element={<TestResults />} />
-          <Route path="reports" element={<Reports />} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="profit-loss" element={<ProfitLoss />} />
+          {user_data.user_name && (
+            <React.Fragment>
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="test-results" element={<TestResults />} />
+              <Route path="reports" element={<Reports />} />
+              <Route path="profile" element={<Profile />} />
+              <Route path="profit-loss" element={<ProfitLoss />} />
+            </React.Fragment>
+          )}
         </Routes>
       </div>
     </Container>

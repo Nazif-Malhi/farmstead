@@ -248,7 +248,7 @@ const ReportTable = ({ col, row }) => {
                         row.indexOf(element)==rowIndex? <DeleteModal show={deleteModalShow} onHide={() => setDeleteModalShow(false)} onDelete={()=>{console.log(element);setDeleteModalShow(false)}} key={id}  centered  element={element} />
                         : ""
                       }
-                      <div className="button print"  onClick={() =>
+                      <div className="button print"  style={{cursor:"pointer"}} onClick={() =>
                         { 
                           rowIndex=id;
                           console.log(rowIndex)  

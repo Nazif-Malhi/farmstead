@@ -13,7 +13,7 @@ TODO:
 | |**\_\_** Transitions ✓ |
 | |**\_\_** z-index ✓ |
 |\_Profile: |
-| |**\_\_\_** Change Password ✓! |
+| |**\_\_\_** Change Password ✓! | validation & hide / view
 | |**\_\_\_** Edit Profile ✓ |
 | |**\_\_\_** remove who are you ✓ |
 | |**\_\_\_** update button ✓ |
@@ -24,7 +24,8 @@ TODO:
 |**\_** Modal Delete ✓ |
 NAZIF:
 TODO:
-Store
+Store ->
+Update Profile Done
 Pagination
 Profit/Loss calculation
 
@@ -36,19 +37,19 @@ Header -> COMMENTS:
 2. Log In, Register button was not there
 3. Scroll not working on click navbar
 
-Footer -> COMMENTS:
+Footer -> COMMENTS:  ✓ DONE
 
 1. Footer is not that what you done before back color fill with green color please check
 
-Settings -> COMMENTS:
+Settings -> COMMENTS:  ✓ DONE
 
 1. Animation is not perfect
 
-Modals -> COMMENTS:
+Modals -> COMMENTS: ✓ DONE
 
 1. Buttons standard are not maintained
 
-Crumbs -> COMMENTS:
+Crumbs -> COMMENTS:  ✓ DONE
 
 1. Links are not working
 

@@ -23,6 +23,7 @@ const HomeContainer = styled.div`
   width: 100%;
   height: auto;
   display: flex;
+  margin-top:-14px !important;
   .row-style {
     height: auto;
     width: 100%;
