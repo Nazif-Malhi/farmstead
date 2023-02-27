@@ -1,4 +1,4 @@
-export { default as sunnylandscape } from "./sunnylandscape.png";
+export { default as sunnylandscape } from "./sunnylandscape.jpg";
 export { default as cardshapehover } from "./card-shape-hover.png";
 export { default as cardshape } from "./card-shape.png";
 export { default as cultivate } from "./cultivate.jpg";
