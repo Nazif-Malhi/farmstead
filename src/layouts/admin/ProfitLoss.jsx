@@ -12,7 +12,6 @@ import { Col, Row } from "react-bootstrap";
 
 
 const Container = styled.div`
-
   // height: 100%;
   // display: flex;
   // flex-direction: column;
