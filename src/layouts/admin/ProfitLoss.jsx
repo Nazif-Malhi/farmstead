@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -58,31 +58,101 @@ const Container = styled.div`
 `;
 
 const ProfitLoss = () => {
+  const grossPerAcre = useRef(0);
+  const grossTotalAcres = useRef(0);
+  const [incomeGrossRevenue, setIncomeGrossRevenue] = useState({
+    cashPrice: null,
+    expectedYield: null,
+    totalAcres: null,
+    governmentPayment: null,
+    cropInsuranceIndemnity: null,
+  });
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+
+    let _value = parseFloat(value == "" ? 0 : value);
+    // console.log(_value);
+    // console.log(typeof _value);
+    grossPerAcre.current =
+      (incomeGrossRevenue.cashPrice * incomeGrossRevenue.expectedYield == 0
+        ? 1
+        : incomeGrossRevenue.expectedYield) +
+      incomeGrossRevenue.governmentPayment +
+      incomeGrossRevenue.cropInsuranceIndemnity;
+    console.log(grossPerAcre.current);
+    setIncomeGrossRevenue({
+      ...incomeGrossRevenue,
+      [name]: _value,
+    });
+
+    // total
+
+    // let calculateGrossTotalAcres =
+    //   incomeGrossRevenue.calculateGrossPerAcre * incomeGrossRevenue.totalAcres;
+    // setIncomeGrossRevenue({
+    //   ...incomeGrossRevenue,
+    //   ["grossPerAcre"]: calculateGrossPerAcre,
+    // });
+  };
+
   //1st Accordian
-  const [cashPrice, setCashPrice] = useState("");
-  const [expectedYield, setExpectedYield] = useState("");
-  const [totalAcres, setTotalAcres] = useState("");
-  const [governmentPayment, setGovernmentPayment] = useState("");
-  const [cropInsuranceIndemnity, setCropInsuranceIndemnity] = useState("");
+  // const [cashPrice, setCashPrice] = useRef("");
+  // const [expectedYield, setExpectedYield] = useRef("");
+  // const [totalAcres, setTotalAcres] = useRef("");
+  // const [governmentPayment, setGovernmentPayment] = useRef("");
+  // const [cropInsuranceIndemnity, setCropInsuranceIndemnity] = useRef("");
+  // const [grossPerAcre, setGrossPerAcre] = useRef(0);
+  // const [grossTotalAcres, setGrossTotalAcres] = useRef(0);
 
-  const [grossPerAcre, setGrossPerAcre] = useState(0);
-  const [grossTotalAcres, setGrossTotalAcres] = useState(0);
+  // const handleOnChange = (type, value) => {
+  //   let _value = parseFloat(value == null ? 0 : value);
+  //   switch (type) {
+  //     case "cashPrice":
+  //       setCashPrice(_value);
+  //       break;
+  //     case "expectedYield":
+  //       setExpectedYield(_value);
+  //       break;
+  //     case "totalAcres":
+  //       setTotalAcres(_value);
+  //       break;
+  //     case "governmentPayment":
+  //       setGovernmentPayment(_value);
+  //       break;
+  //     case "cropInsuranceIndemnity":
+  //       setCropInsuranceIndemnity(_value);
+  //       break;
+  //     default:
+  //       console.log("dev error");
+  //       break;
+  //   }
+  //   handleCropCalculation();
+  // };
+  // const handleCropCalculation = () => {
+  //   console.log("hit");
+  //   let calculateGrossPerAcre =
+  //     cashPrice * expectedYield + governmentPayment + cropInsuranceIndemnity;
+  //   setGrossPerAcre(calculateGrossPerAcre);
 
-  const handleCashPriceChange = (event) => {
-    setCashPrice(event.target.value);
-  };
-  const handleExpectedYieldChange = (event) => {
-    setExpectedYield(event.target.value);
-  };
-  const handleAcresChange = (event) => {
-    setTotalAcres(event.target.value);
-  };
-  const handlegovernmentPaymentsChange = (event) => {
-    setGovernmentPayment(event.target.value);
-  };
-  const handleCropInsuranceIndemnityChange = (event) => {
-    setCropInsuranceIndemnity(event.target.value);
-  };
+  //   let calculateGrossTotalAcres = calculateGrossPerAcre * totalAcres;
+  //   setGrossTotalAcres(calculateGrossTotalAcres);
+  // };
+
+  // const handleCashPriceChange = (event) => {
+  //   setCashPrice(event.target.value);
+  // };
+  // const handleExpectedYieldChange = (event) => {
+  //   setExpectedYield(event.target.value);
+  // };
+  // const handleAcresChange = (event) => {
+  //   setTotalAcres(event.target.value);
+  // };
+  // const handlegovernmentPaymentsChange = (event) => {
+  //   setGovernmentPayment(event.target.value);
+  // };
+  // const handleCropInsuranceIndemnityChange = (event) => {
+  //   setCropInsuranceIndemnity(event.target.value);
+  // };
 
   //2nd Accordian
   const [seed, setSeed] = useState("");
@@ -126,97 +196,97 @@ const ProfitLoss = () => {
   const [returnOverCostsPerAcre, setReturnOverCostsPerAcre] = useState(0);
   const [returnOverCostsTotalAcres, setReturnOverCostsTotalAcres] = useState(0);
 
-  const handleSeedChange = (event) => {
-    setSeed(event.target.value);
-  };
+  // const handleSeedChange = (event) => {
+  //   setSeed(event.target.value);
+  // };
 
-  const handleNitrogeneChange = (event) => {
-    setNitrogen(event.target.value);
-  };
-  const handlePhosphorusChange = (event) => {
-    setPhosphorus(event.target.value);
-  };
-  const handlePotassiumChange = (event) => {
-    setPotash(event.target.value);
-  };
-  const handleSulfurChange = (event) => {
-    setSulfur(event.target.value);
-  };
-  const handleLimeStoneChange = (event) => {
-    setLimeStone(event.target.value);
-  };
-  const handleOtherFertilizersChange = (event) => {
-    setOtherertilizers(event.target.value);
-  };
+  // const handleNitrogeneChange = (event) => {
+  //   setNitrogen(event.target.value);
+  // };
+  // const handlePhosphorusChange = (event) => {
+  //   setPhosphorus(event.target.value);
+  // };
+  // const handlePotassiumChange = (event) => {
+  //   setPotash(event.target.value);
+  // };
+  // const handleSulfurChange = (event) => {
+  //   setSulfur(event.target.value);
+  // };
+  // const handleLimeStoneChange = (event) => {
+  //   setLimeStone(event.target.value);
+  // };
+  // const handleOtherFertilizersChange = (event) => {
+  //   setOtherertilizers(event.target.value);
+  // };
 
-  const handleHerbicidesChange = (event) => {
-    setHerbicides(event.target.value);
-  };
-  const handleFungicidesChange = (event) => {
-    setFungicides(event.target.value);
-  };
-  const handleInsecticidesChange = (event) => {
-    setInsecticides(event.target.value);
-  };
+  // const handleHerbicidesChange = (event) => {
+  //   setHerbicides(event.target.value);
+  // };
+  // const handleFungicidesChange = (event) => {
+  //   setFungicides(event.target.value);
+  // };
+  // const handleInsecticidesChange = (event) => {
+  //   setInsecticides(event.target.value);
+  // };
 
-  const handleFuelChange = (event) => {
-    setFuel(event.target.value);
-  };
-  const handlePropaneChange = (event) => {
-    setPropane(event.target.value);
-  };
+  // const handleFuelChange = (event) => {
+  //   setFuel(event.target.value);
+  // };
+  // const handlePropaneChange = (event) => {
+  //   setPropane(event.target.value);
+  // };
 
-  const handleRepairMachineryChange = (event) => {
-    setRepairMachinery(event.target.value);
-  };
-  const handleRepairBuildingsChange = (event) => {
-    setRepairBuildings(event.target.value);
-  };
+  // const handleRepairMachineryChange = (event) => {
+  //   setRepairMachinery(event.target.value);
+  // };
+  // const handleRepairBuildingsChange = (event) => {
+  //   setRepairBuildings(event.target.value);
+  // };
 
-  const handleDriverHireChange = (event) => {
-    setDriverHire(event.target.value);
-  };
-  const handleEquipmentHireChange = (event) => {
-    setEquipmentHire(event.target.value);
-  };
-  const handleCustomAppChange = (event) => {
-    setCustomApp(event.target.value);
-  };
+  // const handleDriverHireChange = (event) => {
+  //   setDriverHire(event.target.value);
+  // };
+  // const handleEquipmentHireChange = (event) => {
+  //   setEquipmentHire(event.target.value);
+  // };
+  // const handleCustomAppChange = (event) => {
+  //   setCustomApp(event.target.value);
+  // };
 
-  const handleRepairsChange = (event) => {
-    setRepairs(event.target.value);
-  };
-  const handleGasChange = (event) => {
-    setGas(event.target.value);
-  };
+  // const handleRepairsChange = (event) => {
+  //   setRepairs(event.target.value);
+  // };
+  // const handleGasChange = (event) => {
+  //   setGas(event.target.value);
+  // };
 
-  const handleCropInsuranceChange = (event) => {
-    setCropInsurance(event.target.value);
-  };
-  const handleCropMiscellChange = (event) => {
-    setCropMiscell(event.target.value);
-  };
-  const handleSuppliesChange = (event) => {
-    setSupplies(event.target.value);
-  };
-  const handleFrieghtChange = (event) => {
-    setFrieght(event.target.value);
-  };
-  const handleStorageChange = (event) => {
-    setStorage(event.target.value);
-  };
-  const handleUtilitiesChange = (event) => {
-    setUtilities(event.target.value);
-  };
-  const handleHiredLabourChange = (event) => {
-    setHiredLabour(event.target.value);
-  };
-  const handleInterestChange = (event) => {
-    setInterest(event.target.value);
-  };
-  const handleOtherChange = (event) => {
-    setOther(event.target.value);
-  };
+  // const handleCropInsuranceChange = (event) => {
+  //   setCropInsurance(event.target.value);
+  // };
+  // const handleCropMiscellChange = (event) => {
+  //   setCropMiscell(event.target.value);
+  // };
+  // const handleSuppliesChange = (event) => {
+  //   setSupplies(event.target.value);
+  // };
+  // const handleFrieghtChange = (event) => {
+  //   setFrieght(event.target.value);
+  // };
+  // const handleStorageChange = (event) => {
+  //   setStorage(event.target.value);
+  // };
+  // const handleUtilitiesChange = (event) => {
+  //   setUtilities(event.target.value);
+  // };
+  // const handleHiredLabourChange = (event) => {
+  //   setHiredLabour(event.target.value);
+  // };
+  // const handleInterestChange = (event) => {
+  //   setInterest(event.target.value);
+  // };
+  // const handleOtherChange = (event) => {
+  //   setOther(event.target.value);
+  // };
 
   //3rd Accordian
   const [farmInsurance, setFarmInsurance] = useState("");
@@ -237,24 +307,24 @@ const ProfitLoss = () => {
   const [netFarmIncomePerAcre, setNetFarmIncomePerAcre] = useState(0);
   const [netFarmIncomeTotalAcres, setNetFarmIncomeTotalAcres] = useState(0);
 
-  const handleFarmInsuranceChange = (event) => {
-    setFarmInsurance(event.target.value);
-  };
-  const handleTaxesChange = (event) => {
-    setTaxes(event.target.value);
-  };
-  const handleLandrentChange = (event) => {
-    setLandRent(event.target.value);
-  };
-  const handleTermInterestChange = (event) => {
-    setTermInterest(event.target.value);
-  };
-  const handleDepreciationChange = (event) => {
-    setDepreciation(event.target.value);
-  };
-  const handleOtherCostChange = (event) => {
-    setOtherCost(event.target.value);
-  };
+  // const handleFarmInsuranceChange = (event) => {
+  //   setFarmInsurance(event.target.value);
+  // };
+  // const handleTaxesChange = (event) => {
+  //   setTaxes(event.target.value);
+  // };
+  // const handleLandrentChange = (event) => {
+  //   setLandRent(event.target.value);
+  // };
+  // const handleTermInterestChange = (event) => {
+  //   setTermInterest(event.target.value);
+  // };
+  // const handleDepreciationChange = (event) => {
+  //   setDepreciation(event.target.value);
+  // };
+  // const handleOtherCostChange = (event) => {
+  //   setOtherCost(event.target.value);
+  // };
 
   //4th Accordian
   const [incomeTaxes, setIncomeTaxes] = useState("");
@@ -268,132 +338,132 @@ const ProfitLoss = () => {
   const [netCashFlowPerAcre, setNetCashFlowPerAcre] = useState(0);
   const [netCashFlowTotalAcres, setNetCashFlowTotalAcres] = useState(0);
 
-  const handleIncomeTaxesChange = (event) => {
-    setIncomeTaxes(event.target.value);
-  };
-  const handleOwnerWithdrawlChange = (event) => {
-    setOwnerWithdrawl(event.target.value);
-  };
-  const handlePrincipalPaymentChange = (event) => {
-    setPrincipalPayment(event.target.value);
-  };
+  // const handleIncomeTaxesChange = (event) => {
+  //   setIncomeTaxes(event.target.value);
+  // };
+  // const handleOwnerWithdrawlChange = (event) => {
+  //   setOwnerWithdrawl(event.target.value);
+  // };
+  // const handlePrincipalPaymentChange = (event) => {
+  //   setPrincipalPayment(event.target.value);
+  // };
 
   //calculation
 
-  const handleSubmitClick = () => {
-    //1ST
-    var calculateGrossPerAcre =
-      Number(cashPrice) * Number(expectedYield) +
-      Number(governmentPayment) +
-      Number(cropInsuranceIndemnity);
-    setGrossPerAcre(calculateGrossPerAcre);
+  // const handleSubmitClick = () => {
+  //   //1ST
+  //   var calculateGrossPerAcre =
+  //     Number(cashPrice) * Number(expectedYield) +
+  //     Number(governmentPayment) +
+  //     Number(cropInsuranceIndemnity);
+  //   setGrossPerAcre(calculateGrossPerAcre);
 
-    var calculateGrossTotalAcres = calculateGrossPerAcre * Number(totalAcres);
-    setGrossTotalAcres(calculateGrossTotalAcres);
+  //   var calculateGrossTotalAcres = calculateGrossPerAcre * Number(totalAcres);
+  //   setGrossTotalAcres(calculateGrossTotalAcres);
 
-    //2ND
-    var calculateVariableCostPerAcre =
-      Number(seed) +
-      Number(nitrogen) +
-      Number(phosphorus) +
-      Number(potash) +
-      Number(sulfur) +
-      Number(limeStone) +
-      Number(otherFertilizers) +
-      Number(herbicides) +
-      Number(fungicides) +
-      Number(insecticides) +
-      Number(fuel) +
-      Number(propane) +
-      Number(repairMachinery) +
-      Number(repairBuildings) +
-      Number(driverHire) +
-      Number(equipmentHire) +
-      Number(customApp) +
-      Number(repairs) +
-      Number(gas) +
-      Number(cropInsurance) +
-      Number(cropMiscell) +
-      Number(supplies) +
-      Number(frieght) +
-      Number(storage) +
-      Number(utilities) +
-      Number(hiredLabour) +
-      Number(interest) +
-      Number(other);
-    setVariableCostPerAcre(calculateVariableCostPerAcre);
+  //   //2ND
+  //   var calculateVariableCostPerAcre =
+  //     Number(seed) +
+  //     Number(nitrogen) +
+  //     Number(phosphorus) +
+  //     Number(potash) +
+  //     Number(sulfur) +
+  //     Number(limeStone) +
+  //     Number(otherFertilizers) +
+  //     Number(herbicides) +
+  //     Number(fungicides) +
+  //     Number(insecticides) +
+  //     Number(fuel) +
+  //     Number(propane) +
+  //     Number(repairMachinery) +
+  //     Number(repairBuildings) +
+  //     Number(driverHire) +
+  //     Number(equipmentHire) +
+  //     Number(customApp) +
+  //     Number(repairs) +
+  //     Number(gas) +
+  //     Number(cropInsurance) +
+  //     Number(cropMiscell) +
+  //     Number(supplies) +
+  //     Number(frieght) +
+  //     Number(storage) +
+  //     Number(utilities) +
+  //     Number(hiredLabour) +
+  //     Number(interest) +
+  //     Number(other);
+  //   setVariableCostPerAcre(calculateVariableCostPerAcre);
 
-    var calculateVariableCostTotalAcres =
-      calculateVariableCostPerAcre * Number(totalAcres);
-    setVariableCostTotalAcres(calculateVariableCostTotalAcres);
+  //   var calculateVariableCostTotalAcres =
+  //     calculateVariableCostPerAcre * Number(totalAcres);
+  //   setVariableCostTotalAcres(calculateVariableCostTotalAcres);
 
-    var calculateReturnOverInvestmentPerAcre =
-      calculateGrossPerAcre - calculateVariableCostPerAcre;
-    setReturnOverCostsPerAcre(calculateReturnOverInvestmentPerAcre);
+  //   var calculateReturnOverInvestmentPerAcre =
+  //     calculateGrossPerAcre - calculateVariableCostPerAcre;
+  //   setReturnOverCostsPerAcre(calculateReturnOverInvestmentPerAcre);
 
-    var calculateReturnOverInvestmentTotalAcres =
-      calculateGrossTotalAcres - calculateVariableCostTotalAcres;
-    setReturnOverCostsTotalAcres(calculateReturnOverInvestmentTotalAcres);
+  //   var calculateReturnOverInvestmentTotalAcres =
+  //     calculateGrossTotalAcres - calculateVariableCostTotalAcres;
+  //   setReturnOverCostsTotalAcres(calculateReturnOverInvestmentTotalAcres);
 
-    //3RD
-    var calculateTotalFixedCostPerAcre =
-      Number(farmInsurance) +
-      Number(taxes) +
-      Number(landRent) +
-      Number(termInterest) +
-      Number(depreciation) +
-      Number(otherCost);
-    setTotalFixedCostPerAcre(calculateTotalFixedCostPerAcre);
+  //   //3RD
+  //   var calculateTotalFixedCostPerAcre =
+  //     Number(farmInsurance) +
+  //     Number(taxes) +
+  //     Number(landRent) +
+  //     Number(termInterest) +
+  //     Number(depreciation) +
+  //     Number(otherCost);
+  //   setTotalFixedCostPerAcre(calculateTotalFixedCostPerAcre);
 
-    var calculateTotalFixedCostTotalAcres =
-      calculateTotalFixedCostPerAcre * Number(totalAcres);
-    setTotalFixedCostTotalAcres(calculateTotalFixedCostTotalAcres);
+  //   var calculateTotalFixedCostTotalAcres =
+  //     calculateTotalFixedCostPerAcre * Number(totalAcres);
+  //   setTotalFixedCostTotalAcres(calculateTotalFixedCostTotalAcres);
 
-    var calculateTotalVariableFixedCostPerAcre =
-      calculateTotalFixedCostPerAcre + calculateVariableCostPerAcre;
-    setTotalVariableFixedCostPerAcre(calculateTotalVariableFixedCostPerAcre);
+  //   var calculateTotalVariableFixedCostPerAcre =
+  //     calculateTotalFixedCostPerAcre + calculateVariableCostPerAcre;
+  //   setTotalVariableFixedCostPerAcre(calculateTotalVariableFixedCostPerAcre);
 
-    var calculateTotalVariableFixedCostTotalAcres =
-      calculateTotalVariableFixedCostPerAcre * Number(totalAcres);
-    setTtotalVariableFixedCostTotalAcres(
-      calculateTotalVariableFixedCostTotalAcres
-    );
+  //   var calculateTotalVariableFixedCostTotalAcres =
+  //     calculateTotalVariableFixedCostPerAcre * Number(totalAcres);
+  //   setTtotalVariableFixedCostTotalAcres(
+  //     calculateTotalVariableFixedCostTotalAcres
+  //   );
 
-    var calculateNetFarmIncomePerAcre =
-      calculateReturnOverInvestmentPerAcre - calculateTotalFixedCostPerAcre;
-    setNetFarmIncomePerAcre(calculateNetFarmIncomePerAcre);
+  //   var calculateNetFarmIncomePerAcre =
+  //     calculateReturnOverInvestmentPerAcre - calculateTotalFixedCostPerAcre;
+  //   setNetFarmIncomePerAcre(calculateNetFarmIncomePerAcre);
 
-    var calculateNetFarmIncomeTotalAcres =
-      calculateNetFarmIncomePerAcre * Number(totalAcres);
-    setNetFarmIncomeTotalAcres(calculateNetFarmIncomeTotalAcres);
+  //   var calculateNetFarmIncomeTotalAcres =
+  //     calculateNetFarmIncomePerAcre * Number(totalAcres);
+  //   setNetFarmIncomeTotalAcres(calculateNetFarmIncomeTotalAcres);
 
-    //4TH
-    var calculateTotalFinancingPerAcre =
-      Number(incomeTaxes) + Number(ownerWithdrawl) + Number(principalPayment);
-    setTotalFinancingPerAcre(calculateTotalFinancingPerAcre);
+  //   //4TH
+  //   var calculateTotalFinancingPerAcre =
+  //     Number(incomeTaxes) + Number(ownerWithdrawl) + Number(principalPayment);
+  //   setTotalFinancingPerAcre(calculateTotalFinancingPerAcre);
 
-    var calculateTotalFinancingTotalAcres =
-      calculateTotalFinancingPerAcre * Number(totalAcres);
-    setTotalFinancingTotalAcres(calculateTotalFinancingTotalAcres);
+  //   var calculateTotalFinancingTotalAcres =
+  //     calculateTotalFinancingPerAcre * Number(totalAcres);
+  //   setTotalFinancingTotalAcres(calculateTotalFinancingTotalAcres);
 
-    var calculateTotalCostSpentPerAcre =
-      calculateTotalFinancingPerAcre + calculateTotalVariableFixedCostPerAcre;
-    setTotalCostSpentPerAcre(calculateTotalCostSpentPerAcre);
+  //   var calculateTotalCostSpentPerAcre =
+  //     calculateTotalFinancingPerAcre + calculateTotalVariableFixedCostPerAcre;
+  //   setTotalCostSpentPerAcre(calculateTotalCostSpentPerAcre);
 
-    var calculateTotalCostSpentTotalAcre =
-      calculateTotalCostSpentPerAcre * Number(totalAcres);
-    setTotalCostSpentTotalAcres(calculateTotalCostSpentTotalAcre);
+  //   var calculateTotalCostSpentTotalAcre =
+  //     calculateTotalCostSpentPerAcre * Number(totalAcres);
+  //   setTotalCostSpentTotalAcres(calculateTotalCostSpentTotalAcre);
 
-    var calculateNetCashFlowPerAcre =
-      calculateNetFarmIncomePerAcre +
-      Number(depreciation) -
-      calculateTotalFinancingPerAcre;
-    setNetCashFlowPerAcre(calculateNetCashFlowPerAcre);
+  //   var calculateNetCashFlowPerAcre =
+  //     calculateNetFarmIncomePerAcre +
+  //     Number(depreciation) -
+  //     calculateTotalFinancingPerAcre;
+  //   setNetCashFlowPerAcre(calculateNetCashFlowPerAcre);
 
-    var calculateNetCashFlowTotalAcres =
-      calculateNetCashFlowPerAcre * Number(totalAcres);
-    setNetCashFlowTotalAcres(calculateNetCashFlowTotalAcres);
-  };
+  //   var calculateNetCashFlowTotalAcres =
+  //     calculateNetCashFlowPerAcre * Number(totalAcres);
+  //   setNetCashFlowTotalAcres(calculateNetCashFlowTotalAcres);
+  // };
 
   return (
     <Container>
@@ -445,9 +515,14 @@ const ProfitLoss = () => {
                 id="outlined-required"
                 label="Cash Price"
                 type="number"
-                value={cashPrice}
-                onChange={handleCashPriceChange}
+                value={
+                  incomeGrossRevenue.cashPrice == 0
+                    ? ""
+                    : incomeGrossRevenue.cashPrice
+                }
+                onChange={handleInputChange}
                 placeholder="Rs. 00"
+                name={"cashPrice"}
                 variant="outlined"
                 style={{ width: "100%" }}
               />
@@ -459,8 +534,13 @@ const ProfitLoss = () => {
                 id="outlined-required"
                 label="Expected Yield"
                 type="number"
-                value={expectedYield}
-                onChange={handleExpectedYieldChange}
+                value={
+                  incomeGrossRevenue.expectedYield == 0
+                    ? ""
+                    : incomeGrossRevenue.expectedYield
+                }
+                name={"expectedYield"}
+                onChange={handleInputChange}
                 placeholder="00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -473,8 +553,13 @@ const ProfitLoss = () => {
                 id="outlined-required"
                 label="Acres"
                 type="number"
-                value={totalAcres}
-                onChange={handleAcresChange}
+                value={
+                  incomeGrossRevenue.totalAcres == 0
+                    ? ""
+                    : incomeGrossRevenue.totalAcres
+                }
+                name={"totalAcres"}
+                onChange={handleInputChange}
                 placeholder="00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -490,8 +575,13 @@ const ProfitLoss = () => {
                 id="outlined-required"
                 label="Government Payments"
                 type="number"
-                value={governmentPayment}
-                onChange={handlegovernmentPaymentsChange}
+                value={
+                  incomeGrossRevenue.governmentPayment == 0
+                    ? ""
+                    : incomeGrossRevenue.governmentPayment
+                }
+                name={"governmentPayment"}
+                onChange={handleInputChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -504,8 +594,13 @@ const ProfitLoss = () => {
                 id="outlined-required"
                 label="Crop Insurance Indemnity Payments"
                 type="number"
-                value={cropInsuranceIndemnity}
-                onChange={handleCropInsuranceIndemnityChange}
+                value={
+                  incomeGrossRevenue.cropInsuranceIndemnity == 0
+                    ? ""
+                    : incomeGrossRevenue.cropInsuranceIndemnity
+                }
+                name={"cropInsuranceIndemnity"}
+                onChange={handleInputChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -516,11 +611,11 @@ const ProfitLoss = () => {
           </Row>
 
           <label className="result">
-            Total Gross Revenue (Per Acre) : {grossPerAcre}{" "}
+            Total Gross Revenue (Per Acre) : {grossPerAcre.current}{" "}
           </label>
           <br></br>
           <label className="result">
-            Total Gross Revenue (Total Acres) : {grossTotalAcres}{" "}
+            Total Gross Revenue (Total Acres) : {grossTotalAcres.current}{" "}
           </label>
         </AccordionDetails>
       </Accordion>
@@ -545,7 +640,7 @@ const ProfitLoss = () => {
                 label="Seed"
                 type="number"
                 value={seed}
-                onChange={handleSeedChange}
+                // onChange={handleSeedChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -566,7 +661,7 @@ const ProfitLoss = () => {
                 label="Nitrogen"
                 type="number"
                 value={nitrogen}
-                onChange={handleNitrogeneChange}
+                // onChange={handleNitrogeneChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -580,7 +675,7 @@ const ProfitLoss = () => {
                 label="Phosphorus"
                 type="number"
                 value={phosphorus}
-                onChange={handlePhosphorusChange}
+                // onChange={handlePhosphorusChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -594,7 +689,7 @@ const ProfitLoss = () => {
                 label="Potassium (Potash)"
                 type="number"
                 value={potash}
-                onChange={handlePotassiumChange}
+                // onChange={handlePotassiumChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -611,7 +706,7 @@ const ProfitLoss = () => {
                 label="Sulfur"
                 type="number"
                 value={sulfur}
-                onChange={handleSulfurChange}
+                // onChange={handleSulfurChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -625,7 +720,7 @@ const ProfitLoss = () => {
                 label="Limestone"
                 type="number"
                 value={limeStone}
-                onChange={handleLimeStoneChange}
+                // onChange={handleLimeStoneChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -639,7 +734,7 @@ const ProfitLoss = () => {
                 label="Other Fertilizer"
                 type="number"
                 value={otherFertilizers}
-                onChange={handleOtherFertilizersChange}
+                // onChange={handleOtherFertilizersChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -658,7 +753,7 @@ const ProfitLoss = () => {
                 label="Herbicides"
                 type="number"
                 value={herbicides}
-                onChange={handleHerbicidesChange}
+                // onChange={handleHerbicidesChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -672,7 +767,7 @@ const ProfitLoss = () => {
                 label="Fungicides"
                 type="number"
                 value={fungicides}
-                onChange={handleFungicidesChange}
+                // onChange={handleFungicidesChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -686,7 +781,7 @@ const ProfitLoss = () => {
                 label="Insecticides"
                 type="number"
                 value={insecticides}
-                onChange={handleInsecticidesChange}
+                // onChange={handleInsecticidesChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -705,7 +800,7 @@ const ProfitLoss = () => {
                 label="Equipment Fuel"
                 type="number"
                 value={gas}
-                onChange={handleGasChange}
+                // onChange={handleGasChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -719,7 +814,7 @@ const ProfitLoss = () => {
                 label="Drying Propane"
                 type="number"
                 value={propane}
-                onChange={handlePropaneChange}
+                // onChange={handlePropaneChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -739,7 +834,7 @@ const ProfitLoss = () => {
                 label="Repair, Machinery"
                 type="number"
                 value={repairMachinery}
-                onChange={handleRepairMachineryChange}
+                // onChange={handleRepairMachineryChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -753,7 +848,7 @@ const ProfitLoss = () => {
                 label="Repair, Buildings"
                 type="number"
                 value={repairBuildings}
-                onChange={handleRepairBuildingsChange}
+                // onChange={handleRepairBuildingsChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -773,7 +868,7 @@ const ProfitLoss = () => {
                 label="Driver & Equipment Hire"
                 type="number"
                 value={driverHire}
-                onChange={handleDriverHireChange}
+                // onChange={handleDriverHireChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -787,7 +882,7 @@ const ProfitLoss = () => {
                 label="Equipment Hire"
                 type="number"
                 value={equipmentHire}
-                onChange={handleEquipmentHireChange}
+                // onChange={handleEquipmentHireChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -801,7 +896,7 @@ const ProfitLoss = () => {
                 label="Custom Application"
                 type="number"
                 value={customApp}
-                onChange={handleCustomAppChange}
+                // onChange={handleCustomAppChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -820,7 +915,7 @@ const ProfitLoss = () => {
                 label="Repairs"
                 type="number"
                 value={repairs}
-                onChange={handleRepairsChange}
+                // onChange={handleRepairsChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -834,7 +929,7 @@ const ProfitLoss = () => {
                 label="Fuel/Electricity"
                 type="number"
                 value={fuel}
-                onChange={handleFuelChange}
+                // onChange={handleFuelChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -854,7 +949,7 @@ const ProfitLoss = () => {
                 label="Crop Insurance"
                 type="number"
                 value={cropInsurance}
-                onChange={handleCropInsuranceChange}
+                // onChange={handleCropInsuranceChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -868,7 +963,7 @@ const ProfitLoss = () => {
                 label="Crop Miscellaneous"
                 type="number"
                 value={cropMiscell}
-                onChange={handleCropMiscellChange}
+                // onChange={handleCropMiscellChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -882,7 +977,7 @@ const ProfitLoss = () => {
                 label="Supplies"
                 type="number"
                 value={supplies}
-                onChange={handleSuppliesChange}
+                // onChange={handleSuppliesChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -900,7 +995,7 @@ const ProfitLoss = () => {
                 label="Freight & Trucking"
                 type="number"
                 value={frieght}
-                onChange={handleFrieghtChange}
+                // onChange={handleFrieghtChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -914,7 +1009,7 @@ const ProfitLoss = () => {
                 label="Storage"
                 type="number"
                 value={storage}
-                onChange={handleStorageChange}
+                // onChange={handleStorageChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -928,7 +1023,7 @@ const ProfitLoss = () => {
                 label="Utilities"
                 type="number"
                 value={utilities}
-                onChange={handleUtilitiesChange}
+                // onChange={handleUtilitiesChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -946,7 +1041,7 @@ const ProfitLoss = () => {
                 label="Hired Labor"
                 type="number"
                 value={hiredLabour}
-                onChange={handleHiredLabourChange}
+                // onChange={handleHiredLabourChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -960,7 +1055,7 @@ const ProfitLoss = () => {
                 label="Interest (Operating)"
                 type="number"
                 value={interest}
-                onChange={handleInterestChange}
+                // onChange={handleInterestChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -974,7 +1069,7 @@ const ProfitLoss = () => {
                 label="Other"
                 type="number"
                 value={other}
-                onChange={handleOtherChange}
+                // onChange={handleOtherChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -1021,7 +1116,7 @@ const ProfitLoss = () => {
                 label="Farm Insurance"
                 type="number"
                 value={farmInsurance}
-                onChange={handleFarmInsuranceChange}
+                // onChange={handleFarmInsuranceChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -1035,7 +1130,7 @@ const ProfitLoss = () => {
                 label="Real Estate Taxes"
                 type="number"
                 value={taxes}
-                onChange={handleTaxesChange}
+                // onChange={handleTaxesChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -1049,7 +1144,7 @@ const ProfitLoss = () => {
                 label="Land Rent"
                 type="number"
                 value={landRent}
-                onChange={handleLandrentChange}
+                // onChange={handleLandrentChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -1066,7 +1161,7 @@ const ProfitLoss = () => {
                 label="Depreciation (Economic not Taxable)"
                 type="number"
                 value={depreciation}
-                onChange={handleDepreciationChange}
+                // onChange={handleDepreciationChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -1080,7 +1175,7 @@ const ProfitLoss = () => {
                 label="Interest (Term)"
                 type="number"
                 value={termInterest}
-                onChange={handleTermInterestChange}
+                // onChange={handleTermInterestChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -1094,7 +1189,7 @@ const ProfitLoss = () => {
                 label="Other"
                 type="number"
                 value={otherCost}
-                onChange={handleOtherCostChange}
+                // onChange={handleOtherCostChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -1151,7 +1246,7 @@ const ProfitLoss = () => {
                 label="Income Taxes"
                 type="number"
                 value={incomeTaxes}
-                onChange={handleIncomeTaxesChange}
+                // onChange={handleIncomeTaxesChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -1165,7 +1260,7 @@ const ProfitLoss = () => {
                 label="Owner Withdrawal (Family Living)"
                 type="number"
                 value={ownerWithdrawl}
-                onChange={handleOwnerWithdrawlChange}
+                // onChange={handleOwnerWithdrawlChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -1179,7 +1274,7 @@ const ProfitLoss = () => {
                 label="Principal Payment"
                 type="number"
                 value={principalPayment}
-                onChange={handlePrincipalPaymentChange}
+                // onChange={handlePrincipalPaymentChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -1228,7 +1323,7 @@ const ProfitLoss = () => {
 
           <Col className="con-end">
             <CustomButton
-              onClick={handleSubmitClick}
+              // onClick={handleSubmitClick}
               type="filled"
               width="160px"
               height="50px"
