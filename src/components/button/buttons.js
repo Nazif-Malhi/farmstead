@@ -63,6 +63,18 @@ const ButtonStyle = styled.div`
     background-image: linear-gradient(310deg, #17ad37 0%, #98ec2d 100%);
     border-radius: 7px;
   }
+  .update {
+    background: #24a0ed;
+    :hover {
+      background: #00a1ff;
+    }
+  }
+  .danger {
+    background: #dc3545;
+    :hover {
+      background: #f7071b;
+    }
+  }
 `;
 
 const CustomButton = ({

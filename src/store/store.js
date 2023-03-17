@@ -9,6 +9,7 @@ import {
   fertilizer_reducer,
   pest_reducer,
   crop_disease_reducer,
+  crop_budget_details_reducer,
 } from "./reducers";
 import {
   user_auth_reducer,
@@ -28,6 +29,8 @@ const reducer = combineReducers({
   fertilizer: fertilizer_reducer,
   pest: pest_reducer,
   crop_disease: crop_disease_reducer,
+  // budget
+  crop_budget: crop_budget_details_reducer,
 });
 let initialState = {};
 

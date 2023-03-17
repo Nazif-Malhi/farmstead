@@ -9,10 +9,7 @@ import { TextField } from "@mui/material";
 import { CustomButton } from "../../components";
 import { Col, Row } from "react-bootstrap";
 
-
-
 const Container = styled.div`
-
   overflow-y: scroll;
   width: 100%;
   height: 100%;
@@ -22,7 +19,7 @@ const Container = styled.div`
     font-family: "Rubik", sans-serif;
     font-style: normal;
     color: #333333;
-    padding-top:16px;
+    padding-top: 16px;
   }
   h5 {
     font-family: "Rubik", sans-serif;
@@ -50,7 +47,7 @@ const Container = styled.div`
     margin-bottom: 10px;
   }
 
-  .result{
+  .result {
     font-family: "Rubik", sans-serif;
     font-style: normal;
     font-size: 14px;
@@ -61,7 +58,6 @@ const Container = styled.div`
 `;
 
 const ProfitLoss = () => {
-
   //1st Accordian
   const [cashPrice, setCashPrice] = useState("");
   const [expectedYield, setExpectedYield] = useState("");
@@ -72,17 +68,26 @@ const ProfitLoss = () => {
   const [grossPerAcre, setGrossPerAcre] = useState(0);
   const [grossTotalAcres, setGrossTotalAcres] = useState(0);
 
-  const handleCashPriceChange = (event) => { setCashPrice(event.target.value); };
-  const handleExpectedYieldChange = (event) => { setExpectedYield(event.target.value); };
-  const handleAcresChange = (event) => { setTotalAcres(event.target.value); };
-  const handlegovernmentPaymentsChange = (event) => { setGovernmentPayment(event.target.value); };
-  const handleCropInsuranceIndemnityChange = (event) => { setCropInsuranceIndemnity(event.target.value); };
-
+  const handleCashPriceChange = (event) => {
+    setCashPrice(event.target.value);
+  };
+  const handleExpectedYieldChange = (event) => {
+    setExpectedYield(event.target.value);
+  };
+  const handleAcresChange = (event) => {
+    setTotalAcres(event.target.value);
+  };
+  const handlegovernmentPaymentsChange = (event) => {
+    setGovernmentPayment(event.target.value);
+  };
+  const handleCropInsuranceIndemnityChange = (event) => {
+    setCropInsuranceIndemnity(event.target.value);
+  };
 
   //2nd Accordian
   const [seed, setSeed] = useState("");
 
-  const [nitrogen, setNitrogen] =  useState("");
+  const [nitrogen, setNitrogen] = useState("");
   const [phosphorus, setPhosphorus] = useState("");
   const [potash, setPotash] = useState("");
   const [sulfur, setSulfur] = useState("");
@@ -102,7 +107,7 @@ const ProfitLoss = () => {
   const [driverHire, setDriverHire] = useState("");
   const [equipmentHire, setEquipmentHire] = useState("");
   const [customApp, setCustomApp] = useState("");
-  
+
   const [repairs, setRepairs] = useState("");
   const [gas, setGas] = useState("");
 
@@ -115,51 +120,104 @@ const ProfitLoss = () => {
   const [hiredLabour, setHiredLabour] = useState("");
   const [interest, setInterest] = useState("");
   const [other, setOther] = useState("");
-  
+
   const [variableCostPerAcre, setVariableCostPerAcre] = useState(0);
   const [variableCostTotalAcres, setVariableCostTotalAcres] = useState(0);
   const [returnOverCostsPerAcre, setReturnOverCostsPerAcre] = useState(0);
   const [returnOverCostsTotalAcres, setReturnOverCostsTotalAcres] = useState(0);
-  
 
-  const handleSeedChange = (event) => { setSeed(event.target.value); };
+  const handleSeedChange = (event) => {
+    setSeed(event.target.value);
+  };
 
-  const handleNitrogeneChange = (event) => { setNitrogen(event.target.value); };
-  const handlePhosphorusChange = (event) => { setPhosphorus(event.target.value); };
-  const handlePotassiumChange = (event) => { setPotash(event.target.value); };
-  const handleSulfurChange = (event) => { setSulfur(event.target.value); };
-  const handleLimeStoneChange = (event) => { setLimeStone(event.target.value); };
-  const handleOtherFertilizersChange = (event) => { setOtherertilizers(event.target.value); };
-  
-  const handleHerbicidesChange = (event) => { setHerbicides(event.target.value); };
-  const handleFungicidesChange = (event) => { setFungicides(event.target.value); };
-  const handleInsecticidesChange = (event) => { setInsecticides(event.target.value); };
+  const handleNitrogeneChange = (event) => {
+    setNitrogen(event.target.value);
+  };
+  const handlePhosphorusChange = (event) => {
+    setPhosphorus(event.target.value);
+  };
+  const handlePotassiumChange = (event) => {
+    setPotash(event.target.value);
+  };
+  const handleSulfurChange = (event) => {
+    setSulfur(event.target.value);
+  };
+  const handleLimeStoneChange = (event) => {
+    setLimeStone(event.target.value);
+  };
+  const handleOtherFertilizersChange = (event) => {
+    setOtherertilizers(event.target.value);
+  };
 
-  const handleFuelChange = (event) => { setFuel(event.target.value); };
-  const handlePropaneChange = (event) => { setPropane(event.target.value); };
+  const handleHerbicidesChange = (event) => {
+    setHerbicides(event.target.value);
+  };
+  const handleFungicidesChange = (event) => {
+    setFungicides(event.target.value);
+  };
+  const handleInsecticidesChange = (event) => {
+    setInsecticides(event.target.value);
+  };
 
-  const handleRepairMachineryChange = (event) => { setRepairMachinery(event.target.value); };
-  const handleRepairBuildingsChange = (event) => { setRepairBuildings(event.target.value); };
-  
-  const handleDriverHireChange = (event) => { setDriverHire(event.target.value); };
-  const handleEquipmentHireChange = (event) => { setEquipmentHire(event.target.value); };
-  const handleCustomAppChange = (event) => { setCustomApp(event.target.value); };
-  
-  const handleRepairsChange = (event) => { setRepairs(event.target.value); };
-  const handleGasChange = (event) => { setGas(event.target.value); };
-  
-  const handleCropInsuranceChange = (event) => { setCropInsurance(event.target.value); };
-  const handleCropMiscellChange = (event) => { setCropMiscell(event.target.value); };
-  const handleSuppliesChange = (event) => { setSupplies(event.target.value); };
-  const handleFrieghtChange = (event) => { setFrieght(event.target.value); };
-  const handleStorageChange = (event) => { setStorage(event.target.value); };
-  const handleUtilitiesChange = (event) => { setUtilities(event.target.value); };
-  const handleHiredLabourChange = (event) => { setHiredLabour(event.target.value); };
-  const handleInterestChange = (event) => { setInterest(event.target.value); };
-  const handleOtherChange = (event) => { setOther(event.target.value); };
+  const handleFuelChange = (event) => {
+    setFuel(event.target.value);
+  };
+  const handlePropaneChange = (event) => {
+    setPropane(event.target.value);
+  };
 
-  
-  
+  const handleRepairMachineryChange = (event) => {
+    setRepairMachinery(event.target.value);
+  };
+  const handleRepairBuildingsChange = (event) => {
+    setRepairBuildings(event.target.value);
+  };
+
+  const handleDriverHireChange = (event) => {
+    setDriverHire(event.target.value);
+  };
+  const handleEquipmentHireChange = (event) => {
+    setEquipmentHire(event.target.value);
+  };
+  const handleCustomAppChange = (event) => {
+    setCustomApp(event.target.value);
+  };
+
+  const handleRepairsChange = (event) => {
+    setRepairs(event.target.value);
+  };
+  const handleGasChange = (event) => {
+    setGas(event.target.value);
+  };
+
+  const handleCropInsuranceChange = (event) => {
+    setCropInsurance(event.target.value);
+  };
+  const handleCropMiscellChange = (event) => {
+    setCropMiscell(event.target.value);
+  };
+  const handleSuppliesChange = (event) => {
+    setSupplies(event.target.value);
+  };
+  const handleFrieghtChange = (event) => {
+    setFrieght(event.target.value);
+  };
+  const handleStorageChange = (event) => {
+    setStorage(event.target.value);
+  };
+  const handleUtilitiesChange = (event) => {
+    setUtilities(event.target.value);
+  };
+  const handleHiredLabourChange = (event) => {
+    setHiredLabour(event.target.value);
+  };
+  const handleInterestChange = (event) => {
+    setInterest(event.target.value);
+  };
+  const handleOtherChange = (event) => {
+    setOther(event.target.value);
+  };
+
   //3rd Accordian
   const [farmInsurance, setFarmInsurance] = useState("");
   const [taxes, setTaxes] = useState("");
@@ -168,30 +226,41 @@ const ProfitLoss = () => {
   const [depreciation, setDepreciation] = useState("");
   const [otherCost, setOtherCost] = useState("");
 
-  
   const [totalFixedCostPerAcre, setTotalFixedCostPerAcre] = useState(0);
   const [totalFixedCostTotalAcres, setTotalFixedCostTotalAcres] = useState(0);
-  const [totalVariableFixedCostPerAcre, setTotalVariableFixedCostPerAcre] = useState(0);
-  const [totalVariableFixedCostTotalAcres, setTtotalVariableFixedCostTotalAcres] = useState(0);
+  const [totalVariableFixedCostPerAcre, setTotalVariableFixedCostPerAcre] =
+    useState(0);
+  const [
+    totalVariableFixedCostTotalAcres,
+    setTtotalVariableFixedCostTotalAcres,
+  ] = useState(0);
   const [netFarmIncomePerAcre, setNetFarmIncomePerAcre] = useState(0);
   const [netFarmIncomeTotalAcres, setNetFarmIncomeTotalAcres] = useState(0);
 
-
-  const handleFarmInsuranceChange = (event) => { setFarmInsurance(event.target.value); };
-  const handleTaxesChange = (event) => { setTaxes(event.target.value); };
-  const handleLandrentChange = (event) => { setLandRent(event.target.value); };
-  const handleTermInterestChange = (event) => { setTermInterest(event.target.value); };
-  const handleDepreciationChange = (event) => { setDepreciation(event.target.value); };
-  const handleOtherCostChange = (event) => { setOtherCost(event.target.value); };
-
-
+  const handleFarmInsuranceChange = (event) => {
+    setFarmInsurance(event.target.value);
+  };
+  const handleTaxesChange = (event) => {
+    setTaxes(event.target.value);
+  };
+  const handleLandrentChange = (event) => {
+    setLandRent(event.target.value);
+  };
+  const handleTermInterestChange = (event) => {
+    setTermInterest(event.target.value);
+  };
+  const handleDepreciationChange = (event) => {
+    setDepreciation(event.target.value);
+  };
+  const handleOtherCostChange = (event) => {
+    setOtherCost(event.target.value);
+  };
 
   //4th Accordian
   const [incomeTaxes, setIncomeTaxes] = useState("");
   const [ownerWithdrawl, setOwnerWithdrawl] = useState("");
   const [principalPayment, setPrincipalPayment] = useState("");
 
-  
   const [totalFinancingPerAcre, setTotalFinancingPerAcre] = useState(0);
   const [totalFinancingTotalAcres, setTotalFinancingTotalAcres] = useState(0);
   const [totalCostSpentPerAcre, setTotalCostSpentPerAcre] = useState(0);
@@ -199,84 +268,132 @@ const ProfitLoss = () => {
   const [netCashFlowPerAcre, setNetCashFlowPerAcre] = useState(0);
   const [netCashFlowTotalAcres, setNetCashFlowTotalAcres] = useState(0);
 
+  const handleIncomeTaxesChange = (event) => {
+    setIncomeTaxes(event.target.value);
+  };
+  const handleOwnerWithdrawlChange = (event) => {
+    setOwnerWithdrawl(event.target.value);
+  };
+  const handlePrincipalPaymentChange = (event) => {
+    setPrincipalPayment(event.target.value);
+  };
 
-  const handleIncomeTaxesChange = (event) => { setIncomeTaxes(event.target.value); };
-  const handleOwnerWithdrawlChange = (event) => { setOwnerWithdrawl(event.target.value); };
-  const handlePrincipalPaymentChange = (event) => { setPrincipalPayment(event.target.value); };
-  
   //calculation
 
   const handleSubmitClick = () => {
-
     //1ST
-    var calculateGrossPerAcre = (Number(cashPrice) * Number(expectedYield)) + Number(governmentPayment) + Number(cropInsuranceIndemnity);
+    var calculateGrossPerAcre =
+      Number(cashPrice) * Number(expectedYield) +
+      Number(governmentPayment) +
+      Number(cropInsuranceIndemnity);
     setGrossPerAcre(calculateGrossPerAcre);
 
     var calculateGrossTotalAcres = calculateGrossPerAcre * Number(totalAcres);
     setGrossTotalAcres(calculateGrossTotalAcres);
 
     //2ND
-    var calculateVariableCostPerAcre = (Number(seed) + Number(nitrogen) + Number(phosphorus) + Number(potash) + Number(sulfur) + Number(limeStone) + Number(otherFertilizers))
-                                      + Number(herbicides) + Number(fungicides) + Number(insecticides) + Number(fuel) + Number(propane)
-                                      + Number(repairMachinery) + Number(repairBuildings) + Number(driverHire) + Number(equipmentHire)
-                                      + Number(customApp) + Number(repairs) + Number(gas) + Number(cropInsurance) + Number(cropMiscell)
-                                      + Number(supplies) + Number(frieght) + Number(storage) + Number(utilities) + Number(hiredLabour)
-                                      + Number(interest) + Number(other);
+    var calculateVariableCostPerAcre =
+      Number(seed) +
+      Number(nitrogen) +
+      Number(phosphorus) +
+      Number(potash) +
+      Number(sulfur) +
+      Number(limeStone) +
+      Number(otherFertilizers) +
+      Number(herbicides) +
+      Number(fungicides) +
+      Number(insecticides) +
+      Number(fuel) +
+      Number(propane) +
+      Number(repairMachinery) +
+      Number(repairBuildings) +
+      Number(driverHire) +
+      Number(equipmentHire) +
+      Number(customApp) +
+      Number(repairs) +
+      Number(gas) +
+      Number(cropInsurance) +
+      Number(cropMiscell) +
+      Number(supplies) +
+      Number(frieght) +
+      Number(storage) +
+      Number(utilities) +
+      Number(hiredLabour) +
+      Number(interest) +
+      Number(other);
     setVariableCostPerAcre(calculateVariableCostPerAcre);
 
-    var calculateVariableCostTotalAcres = calculateVariableCostPerAcre * Number(totalAcres);
+    var calculateVariableCostTotalAcres =
+      calculateVariableCostPerAcre * Number(totalAcres);
     setVariableCostTotalAcres(calculateVariableCostTotalAcres);
 
-    var calculateReturnOverInvestmentPerAcre = calculateGrossPerAcre - calculateVariableCostPerAcre;
+    var calculateReturnOverInvestmentPerAcre =
+      calculateGrossPerAcre - calculateVariableCostPerAcre;
     setReturnOverCostsPerAcre(calculateReturnOverInvestmentPerAcre);
 
-    var calculateReturnOverInvestmentTotalAcres = calculateGrossTotalAcres - calculateVariableCostTotalAcres;
+    var calculateReturnOverInvestmentTotalAcres =
+      calculateGrossTotalAcres - calculateVariableCostTotalAcres;
     setReturnOverCostsTotalAcres(calculateReturnOverInvestmentTotalAcres);
 
     //3RD
-    var calculateTotalFixedCostPerAcre = Number(farmInsurance) + Number(taxes) + Number(landRent) + Number(termInterest) + Number(depreciation) + Number(otherCost);
+    var calculateTotalFixedCostPerAcre =
+      Number(farmInsurance) +
+      Number(taxes) +
+      Number(landRent) +
+      Number(termInterest) +
+      Number(depreciation) +
+      Number(otherCost);
     setTotalFixedCostPerAcre(calculateTotalFixedCostPerAcre);
 
-    var calculateTotalFixedCostTotalAcres = calculateTotalFixedCostPerAcre * Number(totalAcres);
+    var calculateTotalFixedCostTotalAcres =
+      calculateTotalFixedCostPerAcre * Number(totalAcres);
     setTotalFixedCostTotalAcres(calculateTotalFixedCostTotalAcres);
-   
-    var calculateTotalVariableFixedCostPerAcre = calculateTotalFixedCostPerAcre + calculateVariableCostPerAcre;
+
+    var calculateTotalVariableFixedCostPerAcre =
+      calculateTotalFixedCostPerAcre + calculateVariableCostPerAcre;
     setTotalVariableFixedCostPerAcre(calculateTotalVariableFixedCostPerAcre);
 
-    var calculateTotalVariableFixedCostTotalAcres = calculateTotalVariableFixedCostPerAcre * Number(totalAcres);
-    setTtotalVariableFixedCostTotalAcres(calculateTotalVariableFixedCostTotalAcres);
+    var calculateTotalVariableFixedCostTotalAcres =
+      calculateTotalVariableFixedCostPerAcre * Number(totalAcres);
+    setTtotalVariableFixedCostTotalAcres(
+      calculateTotalVariableFixedCostTotalAcres
+    );
 
-    var calculateNetFarmIncomePerAcre = calculateReturnOverInvestmentPerAcre - calculateTotalFixedCostPerAcre;
+    var calculateNetFarmIncomePerAcre =
+      calculateReturnOverInvestmentPerAcre - calculateTotalFixedCostPerAcre;
     setNetFarmIncomePerAcre(calculateNetFarmIncomePerAcre);
 
-    var calculateNetFarmIncomeTotalAcres = calculateNetFarmIncomePerAcre * Number(totalAcres);
+    var calculateNetFarmIncomeTotalAcres =
+      calculateNetFarmIncomePerAcre * Number(totalAcres);
     setNetFarmIncomeTotalAcres(calculateNetFarmIncomeTotalAcres);
-  
 
     //4TH
-    var calculateTotalFinancingPerAcre = Number(incomeTaxes) + Number(ownerWithdrawl) + Number(principalPayment);
+    var calculateTotalFinancingPerAcre =
+      Number(incomeTaxes) + Number(ownerWithdrawl) + Number(principalPayment);
     setTotalFinancingPerAcre(calculateTotalFinancingPerAcre);
-    
-    var calculateTotalFinancingTotalAcres = calculateTotalFinancingPerAcre * Number(totalAcres);
+
+    var calculateTotalFinancingTotalAcres =
+      calculateTotalFinancingPerAcre * Number(totalAcres);
     setTotalFinancingTotalAcres(calculateTotalFinancingTotalAcres);
 
-    var calculateTotalCostSpentPerAcre = calculateTotalFinancingPerAcre + calculateTotalVariableFixedCostPerAcre;
-    setTotalCostSpentPerAcre(calculateTotalCostSpentPerAcre );
+    var calculateTotalCostSpentPerAcre =
+      calculateTotalFinancingPerAcre + calculateTotalVariableFixedCostPerAcre;
+    setTotalCostSpentPerAcre(calculateTotalCostSpentPerAcre);
 
-    var calculateTotalCostSpentTotalAcre = calculateTotalCostSpentPerAcre * Number(totalAcres);
+    var calculateTotalCostSpentTotalAcre =
+      calculateTotalCostSpentPerAcre * Number(totalAcres);
     setTotalCostSpentTotalAcres(calculateTotalCostSpentTotalAcre);
-    
-    var calculateNetCashFlowPerAcre = (calculateNetFarmIncomePerAcre + Number(depreciation)) - calculateTotalFinancingPerAcre;
+
+    var calculateNetCashFlowPerAcre =
+      calculateNetFarmIncomePerAcre +
+      Number(depreciation) -
+      calculateTotalFinancingPerAcre;
     setNetCashFlowPerAcre(calculateNetCashFlowPerAcre);
-    
-    var calculateNetCashFlowTotalAcres =  calculateNetCashFlowPerAcre * Number(totalAcres);
+
+    var calculateNetCashFlowTotalAcres =
+      calculateNetCashFlowPerAcre * Number(totalAcres);
     setNetCashFlowTotalAcres(calculateNetCashFlowTotalAcres);
-
   };
-  
-
-
-
 
   return (
     <Container>
@@ -397,10 +514,14 @@ const ProfitLoss = () => {
             <Col />
             <Col />
           </Row>
-          
-          <label className="result">Total Gross Revenue (Per Acre) : {grossPerAcre} </label><br></br>
-          <label className="result">Total Gross Revenue (Total Acres) : {grossTotalAcres} </label>
-          
+
+          <label className="result">
+            Total Gross Revenue (Per Acre) : {grossPerAcre}{" "}
+          </label>
+          <br></br>
+          <label className="result">
+            Total Gross Revenue (Total Acres) : {grossTotalAcres}{" "}
+          </label>
         </AccordionDetails>
       </Accordion>
 
@@ -415,7 +536,7 @@ const ProfitLoss = () => {
           <h5>Variable Cost</h5>
         </AccordionSummary>
         <AccordionDetails>
-        <Row className="row-mg">
+          <Row className="row-mg">
             <Col>
               <TextField
                 required
@@ -479,10 +600,10 @@ const ProfitLoss = () => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col/>
+            <Col />
           </Row>
           <Row>
-          <Col>
+            <Col>
               <TextField
                 required
                 size="small"
@@ -525,7 +646,6 @@ const ProfitLoss = () => {
               />
             </Col>
             <Col />
-            
           </Row>
 
           <h6>Crop Chemicals</h6>
@@ -833,7 +953,6 @@ const ProfitLoss = () => {
               />
             </Col>
             <Col>
-              
               <TextField
                 required
                 size="small"
@@ -852,7 +971,7 @@ const ProfitLoss = () => {
                 required
                 size="small"
                 id="outlined-required"
-                label="Other"                
+                label="Other"
                 type="number"
                 value={other}
                 onChange={handleOtherChange}
@@ -864,13 +983,23 @@ const ProfitLoss = () => {
             <Col />
           </Row>
 
-          <label className="result">Total Variable Costs (Per Acre) : {variableCostPerAcre} </label><br></br>
-          <label className="result">Total Variable Costs (Total Acres) : {variableCostTotalAcres} </label><br></br>
-          
-          <label className="result">Return Over Variable Costs (Per Acre): {returnOverCostsPerAcre} </label><br></br>
-          <label className="result">Return Over Variable Costs (Total Acres): {returnOverCostsTotalAcres} </label>
+          <label className="result">
+            Total Variable Costs (Per Acre) : {variableCostPerAcre}{" "}
+          </label>
+          <br></br>
+          <label className="result">
+            Total Variable Costs (Total Acres) : {variableCostTotalAcres}{" "}
+          </label>
+          <br></br>
 
-
+          <label className="result">
+            Return Over Variable Costs (Per Acre): {returnOverCostsPerAcre}{" "}
+          </label>
+          <br></br>
+          <label className="result">
+            Return Over Variable Costs (Total Acres):{" "}
+            {returnOverCostsTotalAcres}{" "}
+          </label>
         </AccordionDetails>
       </Accordion>
 
@@ -926,9 +1055,7 @@ const ProfitLoss = () => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col/>
-
-           
+            <Col />
           </Row>
           <Row>
             <Col>
@@ -976,14 +1103,33 @@ const ProfitLoss = () => {
             <Col />
           </Row>
 
-          <label className="result">Total Fixed Costs (Per Acre): {totalFixedCostPerAcre} </label><br></br>
-          <label className="result">Total Fixed Costs (Total Acres): {totalFixedCostTotalAcres} </label><br></br>
+          <label className="result">
+            Total Fixed Costs (Per Acre): {totalFixedCostPerAcre}{" "}
+          </label>
+          <br></br>
+          <label className="result">
+            Total Fixed Costs (Total Acres): {totalFixedCostTotalAcres}{" "}
+          </label>
+          <br></br>
 
-          <label className="result">Total Variable & Fixed Costs (Per Acre): {totalVariableFixedCostPerAcre} </label><br></br>
-          <label className="result">Total Variable & Fixed Costs (Total Acre): {totalVariableFixedCostTotalAcres} </label><br></br>
-          
-          <label className="result" >Net Farm Income (Per Acre): {netFarmIncomePerAcre} </label><br></br>
-          <label className="result" >Net Farm Income (Total Acre): {netFarmIncomeTotalAcres} </label>
+          <label className="result">
+            Total Variable & Fixed Costs (Per Acre):{" "}
+            {totalVariableFixedCostPerAcre}{" "}
+          </label>
+          <br></br>
+          <label className="result">
+            Total Variable & Fixed Costs (Total Acre):{" "}
+            {totalVariableFixedCostTotalAcres}{" "}
+          </label>
+          <br></br>
+
+          <label className="result">
+            Net Farm Income (Per Acre): {netFarmIncomePerAcre}{" "}
+          </label>
+          <br></br>
+          <label className="result">
+            Net Farm Income (Total Acre): {netFarmIncomeTotalAcres}{" "}
+          </label>
         </AccordionDetails>
       </Accordion>
 
@@ -1042,16 +1188,33 @@ const ProfitLoss = () => {
             <Col />
           </Row>
 
-          <label className="result">Total Financing (Per Acre) : {totalFinancingPerAcre} </label><br></br>
-          <label className="result">Total Financing (Total Acres) : {totalFinancingTotalAcres} </label><br></br>
+          <label className="result">
+            Total Financing (Per Acre) : {totalFinancingPerAcre}{" "}
+          </label>
+          <br></br>
+          <label className="result">
+            Total Financing (Total Acres) : {totalFinancingTotalAcres}{" "}
+          </label>
+          <br></br>
 
-          <label className="result">Total Variable, Fixed, and Financing (Per Acre) : {totalCostSpentPerAcre} </label><br></br>
-          <label className="result">Total Variable, Fixed, and Financing (Total Acre) : {totalCostSpentTotalAcres} </label><br></br>
-          
-          <label className="result">Net Cash Flow (Per Acre): {netCashFlowPerAcre} </label><br></br>
-          <label className="result">Net Cash Flow (Total Acre): {netCashFlowTotalAcres} </label>
-          
+          <label className="result">
+            Total Variable, Fixed, and Financing (Per Acre) :{" "}
+            {totalCostSpentPerAcre}{" "}
+          </label>
+          <br></br>
+          <label className="result">
+            Total Variable, Fixed, and Financing (Total Acre) :{" "}
+            {totalCostSpentTotalAcres}{" "}
+          </label>
+          <br></br>
 
+          <label className="result">
+            Net Cash Flow (Per Acre): {netCashFlowPerAcre}{" "}
+          </label>
+          <br></br>
+          <label className="result">
+            Net Cash Flow (Total Acre): {netCashFlowTotalAcres}{" "}
+          </label>
         </AccordionDetails>
       </Accordion>
 
@@ -1064,7 +1227,12 @@ const ProfitLoss = () => {
           </Col>
 
           <Col className="con-end">
-            <CustomButton onClick={handleSubmitClick} type="filled" width="160px" height="50px">
+            <CustomButton
+              onClick={handleSubmitClick}
+              type="filled"
+              width="160px"
+              height="50px"
+            >
               Submit
             </CustomButton>
           </Col>

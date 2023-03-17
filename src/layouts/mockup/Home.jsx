@@ -18,14 +18,11 @@ import {
 import "../../assets";
 import { CustomButton } from "../../components";
 // import { CustomButton } from "../button";
-import Banner2 from "../../assets/images/other/images2/India_Farming.png";
-
-
 const HomeContainer = styled.div`
   width: 100%;
   height: auto;
   display: flex;
-  margin-top:-14px !important;
+  margin-top: -14px !important;
   .row-style {
     height: auto;
     width: 100%;
@@ -259,7 +256,7 @@ const Home = () => {
         </Col>
         <Col lg={6} md={12} className="image-container">
           {/* <img src={Banner} alt="banner" className="banner" /> */}
-          <img src={Banner2} alt="banner" className="banner" /> 
+          <img src={Banner} alt="banner" className="banner" />
           <div className="shape-area">
             <div className="creative-shape">
               <img src={Shape} alt="shadow" className="banner" />

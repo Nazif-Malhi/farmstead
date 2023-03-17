@@ -138,13 +138,12 @@ const Password = () => {
         <Row className="center-row">
           <p>
             If you havn't Register yet ?{" "}
-            <a href="/farmstead/authentication/login">Login Now</a>
+            <a href="/authentication/login">Login Now</a>
           </p>
         </Row>
         <Row className="center-row">
           <Col style={{ textAlign: "center" }}>
             <img src={Logo} alt="logo" />
-            <h4>Farmstead</h4>
           </Col>
         </Row>
       </PasswordWrapper>
