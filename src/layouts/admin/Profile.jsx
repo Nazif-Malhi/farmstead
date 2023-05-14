@@ -1,6 +1,13 @@
 import React, { useState, useMemo, useEffect } from "react";
 import styled from "styled-components";
-import { Row, Col, Button, Spinner } from "react-bootstrap";
+import {
+  Row,
+  Col,
+  Button,
+  Spinner,
+  Toast,
+  ToastContainer,
+} from "react-bootstrap";
 import {
   InputLabel,
   MenuItem,
@@ -86,6 +93,9 @@ const ProfileContainer = styled.div`
 
 const Profile = () => {
   const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
+  const [showFail, setShowFail] = useState(false);
+
   const [editModalShow, setEditModalShow] = useState(false);
   const [modalShow, setModalShow] = useState(false);
 
@@ -143,10 +153,12 @@ const Profile = () => {
               update_user_error.feild + " : " + update_user_error.error
             );
         setSpinner_trigger(false);
+        setShowFail(true);
       }
     } else if (is_updated_user) {
       setText_error("");
       setSpinner_trigger(false);
+      setShow(true);
     }
   }, [is_updated_user]);
 
@@ -445,6 +457,41 @@ const Profile = () => {
           </Col>
         </Row>
       </ProfileContainer>
+      <ToastContainer position="top-end">
+        <Toast
+          onClose={() => setShow(false)}
+          show={show}
+          delay={4000}
+          autohide
+          bg="success"
+          animation={true}
+        >
+          <Toast.Header closeVariant="black">
+            <strong className="me-auto text-dark">Updated</strong>
+          </Toast.Header>
+          <Toast.Body className="text-white">
+            your profile is updated
+          </Toast.Body>
+        </Toast>
+      </ToastContainer>
+
+      <ToastContainer position="top-end">
+        <Toast
+          onClose={() => setShowFail(false)}
+          show={showFail}
+          delay={4000}
+          autohide
+          bg="danger"
+          animation={true}
+        >
+          <Toast.Header closeVariant="black">
+            <strong className="me-auto text-dark">Not Updated</strong>
+          </Toast.Header>
+          <Toast.Body className="text-white">
+            Something wrong Profile is not updated
+          </Toast.Body>
+        </Toast>
+      </ToastContainer>
     </>
   );
 };

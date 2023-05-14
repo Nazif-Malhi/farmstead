@@ -5,11 +5,10 @@ import {
   TestResults,
   Profile,
   ProfitLoss,
+  AllTest,
 } from "../layouts/admin";
 import { Route, Routes } from "react-router-dom";
-import { 
-Settings, 
-SideNavbar, UpperNavbar } from "../components";
+import { Settings, SideNavbar, UpperNavbar } from "../components";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { get_user, user_data_clearErrors } from "../store";
@@ -60,6 +59,7 @@ const Admin = () => {
               <Route path="reports" element={<Reports />} />
               <Route path="profile" element={<Profile />} />
               <Route path="profit-loss" element={<ProfitLoss />} />
+              <Route path="all-tests" element={<AllTest />} />
             </React.Fragment>
           )}
         </Routes>

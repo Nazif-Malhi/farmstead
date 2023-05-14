@@ -40,7 +40,7 @@ const Container = styled.div`
     width: 100%;
     margin-top: 60px;
     display: flex;
-    justify-content: center;
+    justify-content: end;
     margin-bottom: 60px;
   }
   .row-mg {
@@ -1221,11 +1221,16 @@ const ProfitLoss = () => {
       <div className="button-container">
         <Row>
           <Col className="con-end">
-            <CustomButton type="filled" width="160px" height="50px">
+            <CustomButton type="filled danger" width="160px" height="50px">
               Cancel
             </CustomButton>
           </Col>
 
+          <Col className="con-end">
+            <CustomButton type="linear-dr-blue" width="160px" height="50px">
+              Update
+            </CustomButton>
+          </Col>
           <Col className="con-end">
             <CustomButton
               onClick={handleSubmitClick}
@@ -1237,17 +1242,11 @@ const ProfitLoss = () => {
             </CustomButton>
           </Col>
 
-          <Col className="con-end">
-            <CustomButton type="filled" width="160px" height="50px">
-              Update
-            </CustomButton>
-          </Col>
-
-          <Col className="con-end">
+          {/* <Col className="con-end">
             <CustomButton type="filled" width="160px" height="50px">
               Save
             </CustomButton>
-          </Col>
+          </Col> */}
         </Row>
       </div>
       {/* </Box> */}

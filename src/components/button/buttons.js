@@ -63,7 +63,7 @@ const ButtonStyle = styled.div`
     background-image: linear-gradient(310deg, #17ad37 0%, #98ec2d 100%);
     border-radius: 7px;
   }
-  .update {
+  .primary {
     background: #24a0ed;
     :hover {
       background: #00a1ff;
@@ -73,6 +73,31 @@ const ButtonStyle = styled.div`
     background: #dc3545;
     :hover {
       background: #f7071b;
+    }
+  }
+  .linear-dr-blue {
+    // position: absolute;
+    // bottom: 0;
+    margin-bottom: 50px;
+    width: 200px;
+    margin-bottom: 1rem;
+    letter-spacing: -0.025rem;
+    // text-transform: uppercase;
+    box-shadow: 0 4px 7px -1px #0000001c, 0 2px 4px -1px #00000012;
+    background-size: 150%;
+    background-position-x: 25%;
+    height: 40px;
+    background-image: linear-gradient(310deg, #141727 0%, #3a416f 100%);
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    p {
+      margin: 0;
+      font-weight: 300;
+      font-size: 14px;
     }
   }
 `;

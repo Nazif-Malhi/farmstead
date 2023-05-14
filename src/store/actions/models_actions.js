@@ -39,7 +39,11 @@ export const get_simple_crop = (data_payload) => async (dispatch) => {
       `${process.env.REACT_APP_API_URL}/models/simple-crop-prediction/`,
       data_payload
     );
-    console.log(simple_crop);
+    const obj = {
+      soil_type: data_payload["soil_type"],
+      temprature: data_payload["temp"],
+    };
+
     dispatch({
       type: SIMPLE_CROP_SUCCESS,
       payload: simple_crop.data,

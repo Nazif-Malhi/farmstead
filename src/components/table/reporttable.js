@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Col, Row, ProgressBar } from "react-bootstrap";
 import styled from "styled-components";
 import { AiFillDelete } from "react-icons/ai";
@@ -191,9 +191,46 @@ const CustomProgress = styled(ProgressBar)`
   }
 `;
 let rowIndex='';
-const ReportTable = ({ col, row }) => {
+const ReportTable = ({ col, row, pending }) => {
   const [deleteModalShow, setDeleteModalShow] = useState(false);
   const [printModalShow, setPrintModalShow] = useState(false);
+  const completionPercentageRef = useRef(0);
+
+  const getProgress = (element)=> {
+    
+    let totalKeys = 0;
+    let completedKeys = 0;
+    element.forEach(obj => {
+      if(!obj.hasOwnProperty('crop_budget')){
+        Object.keys(obj).forEach(key => {
+         let _temp = {}
+          const childObj = obj[key];
+          if(Array.isArray(childObj)){
+            _temp = childObj[0]
+          }
+          else{
+              _temp = childObj
+          }
+          for (const key in _temp) {
+            if(key !== "id" && key !== "cropbudget_id"){
+              totalKeys++
+              if(_temp[key] !== null){
+                completedKeys++
+
+              }
+            }
+        }
+        });
+      }
+    });
+
+    // Calculate the percentage completion
+    const completionPercentage = (completedKeys / totalKeys) * 100;
+    completionPercentageRef.current = completionPercentage.toFixed(2);
+    
+    // Return the completion percentage rounded to 2 decimal places
+    return  completionPercentageRef.current;;
+  }
   
   return (
     <TableContainer>
@@ -208,65 +245,99 @@ const ReportTable = ({ col, row }) => {
       </Row>
       <div className="container-table">
         <div className="table-body-content">
-          {row.map((element, id) => {
-            return (
-              <>
-                <Row className="row-body-full" key={id}>
-                  {element.map((_element, _id) => {
-                    return (
-                      <Col
-                        className={`${
-                          _id === 0 ? "col-body-full-start" : "col-body-full"
-                        }`}
-                      >
-                        {_id === 2 ? (
-                          <div className="prog">
-                            <p>{_element}%</p>
-                            <CustomProgress value={_element} now={_element} />
-                          </div>
-                        ) : _id === 0 ? (
-                          <h6>{_element}</h6>
-                        ) : (
-                          <p>{_element}</p>
-                        )}
-                      </Col>
-                    );
-                  })}
-                  <Col className="col-body-full">
-                    <Row className="last-col" key={id}>
-                      <div className="button edit">
-                        <RxUpdate color="white" fontSize={"1.2rem"} />
-                      </div>
-                      <div className="button del" style={{cursor:"pointer"}}  onClick={() =>
-                        { 
-                          rowIndex=id;
-                          console.log(rowIndex)  
-                          setDeleteModalShow(true)}} >
+          {row?.crop_budget_by_farmers.map((element, id) => {
+            
+           return(
+            <Row className="row-body-full" key={id}>
+              <Col className="col-body-full-start">
+              <h6>{element[0]['crop_budget']['cropbudget_name']}</h6>
+              </Col>
+              <Col className="col-body-full">
+              <p>{element[0]['crop_budget']['created_at']}</p>
+              </Col>
+              <Col className="col-body-full">
+              <div className="prog">
+              <p>{getProgress(element)}%</p>
+              <CustomProgress value={completionPercentageRef.current} now={completionPercentageRef.current} />
+              </div>
+              </Col>
+              <Col className="col-body-full">
+                     <Row className="last-col" key={id}>
+                       <div className="button edit">
+                         <RxUpdate color="white" fontSize={"1.2rem"} />
+                       </div>
+                       <div className="button del" style={{cursor:"pointer"}}  
+                       
+                          >
                         <AiFillDelete color="white" fontSize={"1.2rem"}  />
                       </div>
-                      {
-                        row.indexOf(element)==rowIndex? <DeleteModal show={deleteModalShow} onHide={() => setDeleteModalShow(false)} onDelete={()=>{console.log(element);setDeleteModalShow(false)}} key={id}  centered  element={element} />
-                        : ""
-                      }
-                      <div className="button print"  style={{cursor:"pointer"}} onClick={() =>
-                        { 
-                          rowIndex=id;
-                          console.log(rowIndex)  
-                          setPrintModalShow(true)}} >
+                      
+                      <div className="button print"  style={{cursor:"pointer"}}  >
                         <BsFillPrinterFill color="white" fontSize={"1.2rem"} />
                       </div>
-                      {console.log("eeee",rowIndex,row[rowIndex])}
-                      {
-                        
-                        row.indexOf(element)==rowIndex? <PrintModal show={printModalShow} onHide={() => setPrintModalShow(false)}  key={id}  centered  element={row[rowIndex]} />
-                        : ""
-                      }
+                     
                     </Row>
                   </Col>
-                </Row>
-                <div className="br" />
-              </>
-            );
+            </Row>
+           )
+           
+              // <>
+              //   
+              //     {element.map((_element, _id) => {
+              //       return (
+              //         <Col
+              //           className={`${
+              //             _id === 0 ? "col-body-full-start" : "col-body-full"
+              //           }`}
+              //         >
+              //           {_id === 2 ? (
+              //             <div className="prog">
+              //               <p>{_element}%</p>
+              //               <CustomProgress value={_element} now={_element} />
+              //             </div>
+              //           ) : _id === 0 ? (
+              //             <h6>{_element}</h6>
+              //           ) : (
+              //             <p>{_element}</p>
+              //           )}
+              //         </Col>
+              //       );
+              //     })}
+              //     <Col className="col-body-full">
+              //       <Row className="last-col" key={id}>
+              //         <div className="button edit">
+              //           <RxUpdate color="white" fontSize={"1.2rem"} />
+              //         </div>
+              //         <div className="button del" style={{cursor:"pointer"}}  onClick={() =>
+              //           { 
+              //             rowIndex=id;
+              //             console.log(rowIndex)  
+              //             setDeleteModalShow(true)}} >
+              //           <AiFillDelete color="white" fontSize={"1.2rem"}  />
+              //         </div>
+              //         {
+              //           row.indexOf(element)==rowIndex? <DeleteModal show={deleteModalShow} onHide={() => setDeleteModalShow(false)} onDelete={()=>{console.log(element);setDeleteModalShow(false)}} key={id}  centered  element={element} />
+              //           : ""
+              //         }
+              //         <div className="button print"  style={{cursor:"pointer"}} onClick={() =>
+              //           { 
+              //             rowIndex=id;
+              //             console.log(rowIndex)  
+              //             setPrintModalShow(true)}} >
+              //           <BsFillPrinterFill color="white" fontSize={"1.2rem"} />
+              //         </div>
+              //         {console.log("eeee",rowIndex,row[rowIndex])}
+              //         {
+                        
+              //           row.indexOf(element)==rowIndex? <PrintModal show={printModalShow} onHide={() => setPrintModalShow(false)}  key={id}  centered  element={row[rowIndex]} />
+              //           : ""
+              //         }
+              //       </Row>
+              //     </Col>
+              //   </Row>
+              //   <div className="br" />
+              // </>
+            
           })}
         </div>
         <div className="table-footer">

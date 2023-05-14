@@ -31,6 +31,6 @@ export {
 } from "./models_actions";
 
 export {
-  add_crop_budget,
+  get_crop_budget,
   crop_budget_clearErrors,
 } from "./crop_budget_actions";

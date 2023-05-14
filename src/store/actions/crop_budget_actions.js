@@ -7,15 +7,11 @@ import {
 } from "../constants/crop_budget_constants";
 
 // add
-export const add_crop_budget = (crop_budget_payload) => async (dispatch) => {
+export const get_crop_budget = () => async (dispatch) => {
   try {
     dispatch({
       type: CROP_BUDGET_REQUEST,
     });
-    await axios.post(
-      `${process.env.REACT_APP_API_URL}/crop-budget-estimator/add-crops-budget-for-farmers/`,
-      crop_budget_payload
-    );
     const crop_budget = await axios.get(
       `${process.env.REACT_APP_API_URL}/crop-budget-estimator/get-crops-budget-for-farmers/`
     );

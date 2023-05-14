@@ -4,9 +4,7 @@ import { HiOutlineDocumentText } from "react-icons/hi";
 // import { FaCreditCard } from "react-icons/fa";
 import { CiSettings } from "react-icons/ci";
 import { BsPersonBoundingBox } from "react-icons/bs";
-
-
-
+import { BiTestTube } from "react-icons/bi";
 
 const style = {
   color: "#344767",
@@ -25,6 +23,13 @@ export const side_navbar = [
     ico_active: <RxDashboard style={active_style} />,
   },
   {
+    title: "Perform Tests",
+    active: true,
+    path: "all-tests",
+    ico: <BiTestTube style={style} />,
+    ico_active: <BiTestTube style={active_style} />,
+  },
+  {
     title: "Test Results",
     active: true,
     path: "test-results",
@@ -32,14 +37,14 @@ export const side_navbar = [
     ico_active: <GiTestTubes style={active_style} />,
   },
   {
-    title: "Profit/Loss",
+    title: "Crop Budget",
     active: true,
     path: "profit-loss",
     ico: <GiMoneyStack style={style} />,
     ico_active: <GiMoneyStack style={active_style} />,
   },
   {
-    title: "Reports",
+    title: "All Budgets",
     active: true,
     path: "reports",
     ico: <HiOutlineDocumentText style={style} />,

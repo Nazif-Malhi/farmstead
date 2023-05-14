@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { ReportTable } from "../../components";
+import { useDispatch, useSelector } from "react-redux";
+import { crop_budget_clearErrors, get_crop_budget } from "../../store";
+
 
 const TestContainer = styled.div`
   width: 100%;
@@ -19,6 +22,16 @@ const TestContainer = styled.div`
 `;
 
 const Reports = () => {
+  const dispatch = useDispatch()
+  const {crop_budget, loading, crop_budget_error} = useSelector((state) => state.crop_budget)
+
+  useEffect(() =>{
+    if(crop_budget_error){
+      console.log(crop_budget_error)
+      dispatch(crop_budget_clearErrors())
+    }
+    dispatch(get_crop_budget())
+  }, [dispatch])
   const col = [
     { name: "Name" },
     { name: "Created at" },
@@ -37,7 +50,9 @@ const Reports = () => {
   return (
     <TestContainer>
       <div className="container">
-        <ReportTable col={col} row={row} />
+        {loading ? 
+        <p>loading</p>:
+        crop_budget.crop_budget_by_farmers && <ReportTable col={col} row={crop_budget} /> }
       </div>
     </TestContainer>
   );
