@@ -11,7 +11,11 @@ import {
 } from "@mui/material";
 import { CustomButton } from "../button";
 import { useDispatch, useSelector } from "react-redux";
-import { get_advance_crop, advance_crop_clear_errors } from "../../store";
+import {
+  get_advance_crop,
+  advance_crop_clear_errors,
+  add_test,
+} from "../../store";
 
 const AdvanceCrop = () => {
   const { advance_crop, advance_crop_error, loading } = useSelector(
@@ -43,6 +47,20 @@ const AdvanceCrop = () => {
   useEffect(() => {
     if (advance_crop["result"]) {
       setAnsState(true);
+      dispatch(
+        add_test({
+          test_name: "advance-crop-recomendation",
+          nitrogen_val: nitrogen,
+          phosphorus_val: phosphorus,
+          potassium_val: potassium,
+          soil_type: soil_type,
+          temprature: temp,
+          humidity: humi,
+          ph: ph,
+          rain: rain,
+          result: advance_crop["result"],
+        })
+      );
     }
   }, [advance_crop["result"]]);
 

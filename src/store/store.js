@@ -10,6 +10,9 @@ import {
   pest_reducer,
   crop_disease_reducer,
   crop_budget_details_reducer,
+  test_reducer,
+  all_test_reducer,
+  crop_budget_reducer,
 } from "./reducers";
 import {
   user_auth_reducer,
@@ -31,6 +34,10 @@ const reducer = combineReducers({
   crop_disease: crop_disease_reducer,
   // budget
   crop_budget: crop_budget_details_reducer,
+  ac_crop_budget: crop_budget_reducer,
+  //test
+  test: test_reducer,
+  all_test: all_test_reducer,
 });
 let initialState = {};
 

@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Table } from "../../components";
+import { useDispatch, useSelector } from "react-redux";
+import { all_test_clearErrors, get_test, test_clearErrors } from "../../store";
 
 const TestContainer = styled.div`
   width: 100%;
@@ -21,25 +23,32 @@ const TestContainer = styled.div`
 `;
 
 const TestResults = () => {
+  const dispatch = useDispatch();
+  const { all_test, test_loading, all_test_error } = useSelector(
+    (state) => state.all_test
+  );
+  useEffect(() => {
+    if (all_test_error) {
+      console.log(all_test_error);
+      dispatch(all_test_clearErrors());
+    }
+    dispatch(get_test());
+  }, [dispatch]);
   const col = [
     { name: "Name" },
     { name: "Performed at" },
     { name: "Results" },
     { name: "Actions" },
   ];
-  const row = [
-    ["Fertilzer Prediction0", "12/27/2022", "56%"],
-    ["Fert Prediction1", "12/27/2022", "56%"],
-    ["Fert Prediction2", "12/27/2022", "56%"],
-    ["Fert Prediction3", "12/27/2022", "56%"],
-    ["Fert Prediction4", "12/27/2022", "56%"],
-    ["Fert Prediction5", "12/27/2022", "56%"],
-    ["Fert Prediction6", "12/27/2022", "56%"],
-  ];
+
   return (
     <TestContainer>
       <div className="container">
-        <Table col={col} row={row} />
+        {test_loading ? (
+          <p>loading</p>
+        ) : (
+          all_test && <Table col={col} row={all_test} />
+        )}
       </div>
     </TestContainer>
   );

@@ -14,4 +14,8 @@ export {
   crop_disease_reducer,
 } from "./models_reducers.js";
 
-export { crop_budget_details_reducer } from "./crop_budget_reducer";
+export {
+  crop_budget_details_reducer,
+  crop_budget_reducer,
+} from "./crop_budget_reducer";
+export { test_reducer, all_test_reducer } from "./test_reducer";

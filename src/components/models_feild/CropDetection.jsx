@@ -7,7 +7,11 @@ import { CustomButton } from "../button";
 import { StyledContainer, Wrapper } from "./container";
 
 import { useDispatch, useSelector } from "react-redux";
-import { get_crop_disease, crop_disease_clear_errors } from "../../store";
+import {
+  get_crop_disease,
+  crop_disease_clear_errors,
+  add_test,
+} from "../../store";
 
 const Upload = styled.div`
   border-radius: 7px;
@@ -60,6 +64,11 @@ const PestDetection = () => {
   useEffect(() => {
     if (crop_disease["result"]) {
       setAnsState(true);
+      var formData = new FormData();
+      formData.append("crop_desease_image", img);
+      formData.append("test_name", "crop-disease-detection");
+      formData.append("result", crop_disease["result"]);
+      dispatch(add_test(formData));
     }
   }, [crop_disease["result"]]);
 

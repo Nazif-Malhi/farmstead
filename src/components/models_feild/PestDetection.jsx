@@ -7,7 +7,7 @@ import { CustomButton } from "../button";
 import { StyledContainer, Wrapper } from "./container";
 
 import { useDispatch, useSelector } from "react-redux";
-import { get_pest, pest_clear_errors } from "../../store";
+import { add_test, get_pest, pest_clear_errors } from "../../store";
 
 const Upload = styled.div`
   border-radius: 7px;
@@ -58,6 +58,11 @@ const PestDetection = () => {
   useEffect(() => {
     if (pest["result"]) {
       setAnsState(true);
+      var formData = new FormData();
+      formData.append("pest_image", img);
+      formData.append("test_name", "pest-detection");
+      formData.append("result", pest["result"]);
+      dispatch(add_test(formData));
     }
   }, [pest["result"]]);
 

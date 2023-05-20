@@ -4,7 +4,7 @@ import {
   economic_growth,
   infrastructure,
   no_poverty,
-  world,
+  // world,
   zero_hunger,
   crops,
   fertilizers,

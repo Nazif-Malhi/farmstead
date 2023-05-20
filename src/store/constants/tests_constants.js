@@ -1,0 +1,9 @@
+export const TEST_REQUEST = "TEST_REQUEST";
+export const TEST_SUCCESS = "TEST_SUCCESS";
+export const TEST_FAIL = "TEST_FAIL";
+export const TEST_CLEAR_ERROR = "TEST_CLEAR_ERROR";
+
+export const GET_TEST_REQUEST = "GET_TEST_REQUEST";
+export const GET_TEST_SUCCESS = "GET_TEST_SUCCESS";
+export const GET_TEST_FAIL = "GET_TEST_FAIL";
+export const GET_TEST_CLEAR_ERROR = "GET_TEST_CLEAR_ERROR";

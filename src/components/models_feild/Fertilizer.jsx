@@ -16,7 +16,7 @@ import {
 } from "@mui/material";
 import { CustomButton } from "../button";
 import { useDispatch, useSelector } from "react-redux";
-import { get_fertilizer, fertilizer_clear_errors } from "../../store";
+import { get_fertilizer, fertilizer_clear_errors, add_test } from "../../store";
 
 const Fertilizer = () => {
   const { fertilizer, fertilizer_error, loading } = useSelector(
@@ -50,6 +50,20 @@ const Fertilizer = () => {
   useEffect(() => {
     if (fertilizer["result"]) {
       setAnsState(true);
+      dispatch(
+        add_test({
+          test_name: "fertilizer-recomendation",
+          nitrogen_val: nitrogen,
+          phosphorus_val: phosphorus,
+          potassium_val: potassium,
+          soil_type: soil_type,
+          crop_type: crop_type,
+          temprature: temp,
+          humidity: humi,
+          moisture: moisture,
+          result: fertilizer["result"],
+        })
+      );
     }
   }, [fertilizer["result"]]);
 

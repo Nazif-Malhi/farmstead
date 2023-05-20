@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { AiFillEye, AiFillDelete } from "react-icons/ai";
 import { Pagination } from "@mui/material";
 // import  {DeleteModal}  from "../modal";
-import DeleteModal from '../modal/DeleteModal.jsx';
+import DeleteModal from "../modal/DeleteModal.jsx";
 
 const TableContainer = styled.div`
   width: 95%;
@@ -147,7 +147,7 @@ const TableContainer = styled.div`
 
 const Table = ({ col, row }) => {
   const [modalShow, setModalShow] = useState(false);
-  let rowIndex="";
+  let rowIndex = "";
   return (
     <TableContainer>
       <Row className="header">
@@ -164,38 +164,48 @@ const Table = ({ col, row }) => {
           {row.map((element, id) => {
             return (
               <>
-                <Row className="row-body-full"  key={id}>
-                  {element.map((_element, _id) => {
-                    return (
-                      <Col
-                        className={`${
-                          _id === 0 ? "col-body-full-start" : "col-body-full"
-                        }`}
-                      >
-                        {_id === 0 ? <h6>{_element}</h6> : <p>{_element}</p>}
-                      </Col>
-                    );
-                  })}
+                <Row className="row-body-full" key={id}>
+                  <Col className={`${"col-body-full-start"}`}>
+                    <h6>{element.test_name}</h6>
+                  </Col>
+                  <Col className={`${"col-body-full"}`}>
+                    <p>{element.created_at}</p>
+                  </Col>
+                  <Col className={`${"col-body-full"}`}>
+                    <p>{element.result}</p>
+                  </Col>
+
                   <Col className="col-body-full">
                     <Row className="last-col" key={id}>
                       <div className="button edit">
                         <AiFillEye color="white" fontSize={"1.2rem"} />
                       </div>
-                      <div className="button del" style={{cursor:"pointer"}}  onClick={() =>
-                        { 
-                          console.log("deletedsdsd",element,id);
-                          rowIndex=id;
-                          // console.log(rowIndex)  
-                          setModalShow(true)}} >
-
-                        <AiFillDelete color="white" fontSize={"1.2rem"}  />
+                      <div
+                        className="button del"
+                        style={{ cursor: "pointer" }}
+                        onClick={() => {
+                          console.log("deletedsdsd", element, id);
+                          rowIndex = id;
+                          setModalShow(true);
+                        }}
+                      >
+                        <AiFillDelete color="white" fontSize={"1.2rem"} />
                       </div>
-                      {
-                          row.indexOf(element)==rowIndex? (
-                            <DeleteModal show={modalShow} onHide={() => setModalShow(false)} onDelete={()=>{console.log('element :',rowIndex );setModalShow(false)}} key={id}  centered  element={element} />
-                          ) 
-                        : ""
-                      }
+                      {row.indexOf(element) == rowIndex ? (
+                        <DeleteModal
+                          show={modalShow}
+                          onHide={() => setModalShow(false)}
+                          onDelete={() => {
+                            console.log("element :", rowIndex);
+                            setModalShow(false);
+                          }}
+                          key={id}
+                          centered
+                          element={element}
+                        />
+                      ) : (
+                        ""
+                      )}
                     </Row>
                   </Col>
                 </Row>

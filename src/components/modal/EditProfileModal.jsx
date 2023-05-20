@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import { Modal, Spinner } from "react-bootstrap";
-import { Row, Col, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import styled from "styled-components";
 import { TextField } from "@mui/material";
 import Box from "@mui/material/Box";
@@ -63,7 +63,7 @@ const EditProfileModal = (props) => {
       setSpinner_trigger(false);
       props.onHide();
     }
-  }, [is_updated_user]);
+  }, [is_updated_user, props, update_user_error]);
   return (
     <Modal {...props} aria-labelledby="contained-modal-title-vcenter">
       <Modal.Header closeButton style={{ borderBottom: "none" }}>

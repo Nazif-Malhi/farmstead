@@ -11,7 +11,11 @@ import {
 } from "@mui/material";
 import { CustomButton } from "../button";
 import { useDispatch, useSelector } from "react-redux";
-import { get_simple_crop, simple_crop_clear_errors } from "../../store";
+import {
+  add_test,
+  get_simple_crop,
+  simple_crop_clear_errors,
+} from "../../store";
 
 const SimpleCrop = () => {
   const { simple_crop, simple_crop_error, loading } = useSelector(
@@ -42,6 +46,17 @@ const SimpleCrop = () => {
   useEffect(() => {
     if (simple_crop["result"]) {
       setAnsState(true);
+      dispatch(
+        add_test({
+          test_name: "simple-crop-recomendation",
+          soil_type: soil_type,
+          temprature: temp,
+          humidity: humi,
+          ph: ph,
+          rain: rain,
+          result: simple_crop["result"],
+        })
+      );
     }
   }, [simple_crop["result"]]);
 
