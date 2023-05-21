@@ -6,7 +6,6 @@ import { side_navbar_others } from "../../assets/data/navbar";
 import { FiLogOut } from "react-icons/fi";
 import Settings2 from "../navbar/Settings2";
 
-
 const Container = styled.div`
   width: 235px;
   height: 100%;
@@ -136,12 +135,13 @@ const Container = styled.div`
   }
 `;
 
-const SideNavbar = ({ activeSettings }) => {
+const SideNavbar = ({ activeSettings, clearUpdate }) => {
   const navigate = useNavigate();
   const [index, setIndex] = useState(-1);
   const [other_index, setOtherIndex] = useState(-1);
 
   const handleIndex = (index, type, url, val) => {
+    clearUpdate();
     switch (type) {
       case "main":
         setIndex(index);
@@ -156,7 +156,6 @@ const SideNavbar = ({ activeSettings }) => {
 
         if (val.title === "Settings") {
           activeSettings(true);
-  
         } else {
           navigate(url);
         }
@@ -166,7 +165,7 @@ const SideNavbar = ({ activeSettings }) => {
     }
   };
 
-const handle_logout = () => {
+  const handle_logout = () => {
     localStorage.clear();
     navigate("/farmstead/authentication/login");
     window.location.reload();
@@ -208,60 +207,67 @@ const handle_logout = () => {
           <h6>Others</h6>
         </div>
         {side_navbar_others.map((val, id) => {
-          
-          if(val.title=="Settings"){
-            return(
+          if (val.title == "Settings") {
+            return (
               <>
-                <div
-                    key={id}
-                    className={`items-container ${
-                      id === other_index ? "items-container-active" : ""
-                    }`}
-                    onClick={
-                      // () => {
-                      // handleIndex(id, "other", val.path, val);
-                      handleShowSettings
-                    // }
-                  }
-                  >
-                    <div
-                      className={`icons ${id === other_index ? "icon-active" : ""}`}
-                    >
-                      {id === other_index ? val.ico_active : val.ico}
-                    </div>
-                    <div
-                      className={`title ${id === other_index ? "title-active" : ""}`}
-                    >
-                      <h6>{val.title}</h6>
-                    </div>
-                  </div>
-                  <Settings2 show={showSettings}  handleCloseSettings={handleCloseSettings} />
-              </>
-            );
-          }
-          else{
-              return (
                 <div
                   key={id}
                   className={`items-container ${
                     id === other_index ? "items-container-active" : ""
                   }`}
-                  onClick={() => {
-                    handleIndex(id, "other", val.path, val);
-                  }}
+                  onClick={
+                    // () => {
+                    // handleIndex(id, "other", val.path, val);
+                    handleShowSettings
+                    // }
+                  }
                 >
                   <div
-                    className={`icons ${id === other_index ? "icon-active" : ""}`}
+                    className={`icons ${
+                      id === other_index ? "icon-active" : ""
+                    }`}
                   >
                     {id === other_index ? val.ico_active : val.ico}
                   </div>
                   <div
-                    className={`title ${id === other_index ? "title-active" : ""}`}
+                    className={`title ${
+                      id === other_index ? "title-active" : ""
+                    }`}
                   >
                     <h6>{val.title}</h6>
                   </div>
                 </div>
-              );
+                <Settings2
+                  show={showSettings}
+                  handleCloseSettings={handleCloseSettings}
+                />
+              </>
+            );
+          } else {
+            return (
+              <div
+                key={id}
+                className={`items-container ${
+                  id === other_index ? "items-container-active" : ""
+                }`}
+                onClick={() => {
+                  handleIndex(id, "other", val.path, val);
+                }}
+              >
+                <div
+                  className={`icons ${id === other_index ? "icon-active" : ""}`}
+                >
+                  {id === other_index ? val.ico_active : val.ico}
+                </div>
+                <div
+                  className={`title ${
+                    id === other_index ? "title-active" : ""
+                  }`}
+                >
+                  <h6>{val.title}</h6>
+                </div>
+              </div>
+            );
           }
         })}
         <div className="linear-dr-blue" onClick={handle_logout}>

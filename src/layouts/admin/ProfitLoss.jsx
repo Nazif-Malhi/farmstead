@@ -8,8 +8,8 @@ import { MdExpandMore } from "react-icons/md";
 import { TextField } from "@mui/material";
 import { CustomButton } from "../../components";
 import { Col, Row } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { cud_crop_budget } from "../../store";
+import { useDispatch, useSelector } from "react-redux";
+import { add_crop_budget, update_crop_budget } from "../../store";
 
 const Container = styled.div`
   overflow-y: scroll;
@@ -59,8 +59,9 @@ const Container = styled.div`
   }
 `;
 
-const ProfitLoss = () => {
+const ProfitLoss = ({ updateState }) => {
   const dispatch = useDispatch();
+  const { crop_budget } = useSelector((state) => state.crop_budget);
   const [state, setState] = useState({
     cropName: "",
     cashPrice: "",
@@ -126,6 +127,7 @@ const ProfitLoss = () => {
     netCashFlowPerAcre: "",
     netCashFlowTotalAcres: "",
   });
+  const [updateId, setUpdateID] = useState(null);
 
   useEffect(() => {
     setState((prevState) => ({
@@ -292,6 +294,65 @@ const ProfitLoss = () => {
     }
     return obj;
   }
+  const handleUpdateInputs = (name, value) => {
+    setState((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+  useEffect(() => {
+    if (updateState !== null && updateState !== undefined) {
+      const obj = crop_budget?.crop_budget_by_farmers[updateState];
+      const crop = obj[0]?.crop_budget;
+      setUpdateID(crop.id);
+      const income = obj[1]?.income_gross_revenue[0];
+      const expense = obj[2]?.expense_variable_cost[0];
+      const fixed = obj[3]?.fixed_cost[0];
+      const financing = obj[4]?.financing[0];
+      handleUpdateInputs("cropName", crop.cropbudget_name);
+      handleUpdateInputs("cashPrice", income.cash_prize);
+      handleUpdateInputs("expectedYield", income.expected_yeild);
+      handleUpdateInputs("totalAcres", income.acres);
+      handleUpdateInputs("governmentPayment", income.govt_payments);
+      handleUpdateInputs("seed", expense.seed);
+      handleUpdateInputs("nitrogen", expense.nitrogen);
+      handleUpdateInputs("phosphorus", expense.phosphorus);
+      handleUpdateInputs("potash", expense.potassium);
+      handleUpdateInputs("sulfur", expense.sulfur);
+      handleUpdateInputs("limeStone", expense.limestone);
+      handleUpdateInputs("otherFertilizers", expense.other_fertilizer);
+      handleUpdateInputs("herbicides", expense.herbicides);
+      handleUpdateInputs("fungicides", expense.fungicides);
+      handleUpdateInputs("insecticides", expense.Insecticides);
+      handleUpdateInputs("cropInsuranceIndemnity", expense.crop_insurance);
+      handleUpdateInputs("cropMiscell", expense.crop_miscellaneous);
+      handleUpdateInputs("supplies", expense.suplies);
+      handleUpdateInputs("gas", expense.equipment_fuel);
+      handleUpdateInputs("propane", expense.drying_propane);
+      handleUpdateInputs("repairMachinery", expense.repair_machinery);
+      handleUpdateInputs("repairBuildings", expense.repair_buildings);
+      handleUpdateInputs("driverHire", expense.driver_hire);
+      handleUpdateInputs("equipmentHire", expense.equipment_hire);
+      handleUpdateInputs("customApp", expense.custom_application);
+      handleUpdateInputs("frieght", expense.freight_trucking);
+      handleUpdateInputs("storage", expense.storage);
+      handleUpdateInputs("utilities", expense.utilities);
+      handleUpdateInputs("repairs", expense.repair);
+      handleUpdateInputs("fuel", expense.fuel_electricity);
+      handleUpdateInputs("hiredLabour", expense.hired_labour);
+      handleUpdateInputs("interest", expense.intrest_operating);
+      handleUpdateInputs("other", expense.other);
+      handleUpdateInputs("farmInsurance", fixed.farm_insurance);
+      handleUpdateInputs("taxes", fixed.real_state_taxes);
+      handleUpdateInputs("landRent", fixed.land_rent);
+      handleUpdateInputs("termInterest", fixed.interest);
+      handleUpdateInputs("depreciation", fixed.depreciation);
+      handleUpdateInputs("otherCost", fixed.other);
+      handleUpdateInputs("incomeTaxes", financing.income_taxes);
+      handleUpdateInputs("ownerWithdrawl", financing.owner_withdrawal);
+      handleUpdateInputs("principalPayment", financing.principle_payment);
+    }
+  }, [updateState]);
   const handleSubmit = () => {
     const payload = {
       crop_budget: {
@@ -350,7 +411,14 @@ const ProfitLoss = () => {
         other: 0,
       },
     };
-    dispatch(cud_crop_budget(replaceEmptyStringWithNull(payload)));
+    if (updateState === null || updateState === undefined) {
+      dispatch(add_crop_budget(replaceEmptyStringWithNull(payload)));
+    } else {
+      dispatch(
+        update_crop_budget(replaceEmptyStringWithNull(payload), updateId)
+      );
+    }
+    //
   };
   return (
     <Container>
@@ -1211,7 +1279,9 @@ const ProfitLoss = () => {
               height="50px"
               onClick={handleSubmit}
             >
-              Submit
+              {updateState !== null && updateState !== undefined
+                ? "Update"
+                : "Submit"}
             </CustomButton>
           </Col>
 

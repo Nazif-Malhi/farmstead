@@ -20,7 +20,7 @@ const TestContainer = styled.div`
   }
 `;
 
-const Reports = () => {
+const Reports = ({ handleUpdate }) => {
   const dispatch = useDispatch();
   const { crop_budget, loading, crop_budget_error } = useSelector(
     (state) => state.crop_budget
@@ -39,6 +39,7 @@ const Reports = () => {
     { name: "Status" },
     { name: "Actions" },
   ];
+
   return (
     <TestContainer>
       <div className="container">
@@ -46,7 +47,11 @@ const Reports = () => {
           <p>loading</p>
         ) : (
           crop_budget.crop_budget_by_farmers && (
-            <ReportTable col={col} row={crop_budget} />
+            <ReportTable
+              col={col}
+              row={crop_budget}
+              handleUpdate={handleUpdate}
+            />
           )
         )}
       </div>

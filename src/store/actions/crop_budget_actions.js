@@ -37,7 +37,7 @@ export const crop_budget_clearErrors = () => async (dispatch) => {
     type: CROP_BUDGET_CLEAR_ERRORS,
   });
 };
-export const cud_crop_budget = (payload) => async (dispatch) => {
+export const add_crop_budget = (payload) => async (dispatch) => {
   try {
     dispatch({
       type: AC_CROP_BUDGET_REQUEST,
@@ -59,8 +59,53 @@ export const cud_crop_budget = (payload) => async (dispatch) => {
     });
   }
 };
-export const cud_crop_budget_clearErrors = () => async (dispatch) => {
+export const add_crop_budget_clearErrors = () => async (dispatch) => {
   dispatch({
     type: AC_CROP_BUDGET_CLEAR_ERRORS,
   });
+};
+export const update_crop_budget = (payload, id) => async (dispatch) => {
+  try {
+    dispatch({
+      type: AC_CROP_BUDGET_REQUEST,
+    });
+    const crop_budget = await axios.put(
+      `${process.env.REACT_APP_API_URL}/crop-budget-estimator/update-crops-budget-for-farmers/${id}/`,
+      payload
+    );
+    dispatch({
+      type: AC_CROP_BUDGET_SUCCESS,
+      payload: crop_budget,
+    });
+  } catch (error) {
+    console.log(error);
+
+    dispatch({
+      type: AC_CROP_BUDGET_FAIL,
+      payload: error.response.data,
+    });
+  }
+};
+export const delete_crop_budget = (id) => async (dispatch) => {
+  try {
+    dispatch({
+      type: AC_CROP_BUDGET_REQUEST,
+    });
+    const crop_budget = await axios.delete(
+      `${process.env.REACT_APP_API_URL}/crop-budget-estimator/delete-crop-budget-for-farmers/${id}/`
+    );
+    dispatch({
+      type: AC_CROP_BUDGET_SUCCESS,
+      payload: crop_budget,
+    });
+    return true;
+  } catch (error) {
+    console.log(error);
+
+    dispatch({
+      type: AC_CROP_BUDGET_FAIL,
+      payload: error.response.data,
+    });
+    return false;
+  }
 };
