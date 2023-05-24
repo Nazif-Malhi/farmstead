@@ -50,6 +50,7 @@ export const add_crop_budget = (payload) => async (dispatch) => {
       type: AC_CROP_BUDGET_SUCCESS,
       payload: crop_budget,
     });
+    return true;
   } catch (error) {
     console.log(error);
 
@@ -57,6 +58,7 @@ export const add_crop_budget = (payload) => async (dispatch) => {
       type: AC_CROP_BUDGET_FAIL,
       payload: error.response.data,
     });
+    return false;
   }
 };
 export const add_crop_budget_clearErrors = () => async (dispatch) => {
@@ -77,6 +79,7 @@ export const update_crop_budget = (payload, id) => async (dispatch) => {
       type: AC_CROP_BUDGET_SUCCESS,
       payload: crop_budget,
     });
+    return true;
   } catch (error) {
     console.log(error);
 
@@ -84,6 +87,7 @@ export const update_crop_budget = (payload, id) => async (dispatch) => {
       type: AC_CROP_BUDGET_FAIL,
       payload: error.response.data,
     });
+    return false;
   }
 };
 export const delete_crop_budget = (id) => async (dispatch) => {

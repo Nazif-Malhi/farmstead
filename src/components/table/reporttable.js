@@ -278,7 +278,7 @@ const ReportTable = ({ col, row, pending, handleUpdate }) => {
                 </Col>
                 <Col className="col-body-full">
                   <Row className="last-col" key={id}>
-                    <div className="button edit">
+                    <div className="button edit" style={{ cursor: "pointer" }}>
                       <RxUpdate
                         color="white"
                         fontSize={"1.2rem"}

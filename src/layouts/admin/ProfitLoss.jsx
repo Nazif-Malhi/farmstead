@@ -6,7 +6,7 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import styled from "styled-components";
 import { MdExpandMore } from "react-icons/md";
 import { TextField } from "@mui/material";
-import { CustomButton } from "../../components";
+import { CustomButton, DoneModal } from "../../components";
 import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { add_crop_budget, update_crop_budget } from "../../store";
@@ -61,6 +61,8 @@ const Container = styled.div`
 
 const ProfitLoss = ({ updateState }) => {
   const dispatch = useDispatch();
+  const [done, setDone] = useState(false);
+  const [type, setType] = useState(false);
   const { crop_budget } = useSelector((state) => state.crop_budget);
   const [state, setState] = useState({
     cropName: "",
@@ -272,6 +274,7 @@ const ProfitLoss = ({ updateState }) => {
     state.totalCostSpentTotalAcres,
     state.netCashFlowPerAcre,
     state.netCashFlowTotalAcres,
+    state.grossTotalAcres,
   ]);
 
   const getNumber = (value) => {
@@ -412,13 +415,96 @@ const ProfitLoss = ({ updateState }) => {
       },
     };
     if (updateState === null || updateState === undefined) {
-      dispatch(add_crop_budget(replaceEmptyStringWithNull(payload)));
+      dispatch(add_crop_budget(replaceEmptyStringWithNull(payload))).then(
+        (data) => {
+          if (data) {
+            clearStates();
+            console.log(data);
+            setDone(true);
+            setType("add");
+          }
+        }
+      );
     } else {
       dispatch(
         update_crop_budget(replaceEmptyStringWithNull(payload), updateId)
-      );
+      ).then((data) => {
+        if (data) {
+          clearStates();
+          console.log(data);
+          setDone(true);
+          setType("update");
+        }
+      });
     }
     //
+  };
+  const clearStates = () => {
+    setState({
+      cropName: "",
+      cashPrice: "",
+      expectedYield: "",
+      totalAcres: "",
+      governmentPayment: "",
+      cropInsuranceIndemnity: "",
+      grossPerAcre: "",
+      grossTotalAcres: "",
+      seed: "",
+      nitrogen: "",
+      phosphorus: "",
+      potash: "",
+      sulfur: "",
+      limeStone: "",
+      otherFertilizers: "",
+      herbicides: "",
+      fungicides: "",
+      insecticides: "",
+      fuel: "",
+      propane: "",
+      repairMachinery: "",
+      repairBuildings: "",
+      driverHire: "",
+      equipmentHire: "",
+      customApp: "",
+      repairs: "",
+      gas: "",
+      cropInsurance: "",
+      cropMiscell: "",
+      supplies: "",
+      frieght: "",
+      storage: "",
+      utilities: "",
+      hiredLabour: "",
+      interest: "",
+      other: "",
+      variableCostPerAcre: "",
+      variableCostTotalAcres: "",
+      returnOverCostsPerAcre: "",
+      returnOverCostsTotalAcres: "",
+      //3rd
+      farmInsurance: "",
+      taxes: "",
+      landRent: "",
+      termInterest: "",
+      depreciation: "",
+      otherCost: "",
+      totalFixedCostPerAcre: "",
+      totalFixedCostTotalAcres: "",
+      totalVariableFixedCostPerAcre: "",
+      totalVariableFixedCostTotalAcres: "",
+      netFarmIncomePerAcre: "",
+      netFarmIncomeTotalAcres: "",
+      //4th
+      incomeTaxes: "",
+      ownerWithdrawl: "",
+      principalPayment: "",
+      totalFinancingPerAcre: "",
+      totalFinancingTotalAcres: "",
+      totalCostSpentPerAcre: "",
+      totalCostSpentTotalAcres: "",
+      netCashFlowPerAcre: "",
+      netCashFlowTotalAcres: "",
+    });
   };
   return (
     <Container>
@@ -1266,11 +1352,11 @@ const ProfitLoss = ({ updateState }) => {
             </CustomButton>
           </Col>
 
-          <Col className="con-end">
+          {/* <Col className="con-end">
             <CustomButton type="linear-dr-blue" width="160px" height="50px">
               Update
             </CustomButton>
-          </Col>
+          </Col> */}
           <Col className="con-end">
             <CustomButton
               // onClick={handleSubmitClick}
@@ -1292,6 +1378,7 @@ const ProfitLoss = ({ updateState }) => {
           </Col> */}
         </Row>
       </div>
+      <DoneModal show={done} onHide={() => setDone(false)} type={type} />
       {/* </Box> */}
     </Container>
   );

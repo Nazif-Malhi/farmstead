@@ -5,6 +5,7 @@ import { AiFillEye, AiFillDelete } from "react-icons/ai";
 import { Pagination } from "@mui/material";
 // import  {DeleteModal}  from "../modal";
 import DeleteModal from "../modal/DeleteModal.jsx";
+import TestReportModal from "../reports/TestReportModal.jsx";
 
 const TableContainer = styled.div`
   width: 95%;
@@ -147,6 +148,8 @@ const TableContainer = styled.div`
 
 const Table = ({ col, row }) => {
   const [modalShow, setModalShow] = useState(false);
+  const [viewShow, setViewShow] = useState(false);
+  const [element, setElement] = useState(null);
   let rowIndex = "";
   return (
     <TableContainer>
@@ -177,7 +180,14 @@ const Table = ({ col, row }) => {
 
                   <Col className="col-body-full">
                     <Row className="last-col" key={id}>
-                      <div className="button edit">
+                      <div
+                        className="button edit"
+                        style={{ cursor: "pointer" }}
+                        onClick={() => {
+                          setElement(element);
+                          setViewShow(true);
+                        }}
+                      >
                         <AiFillEye color="white" fontSize={"1.2rem"} />
                       </div>
                       <div
@@ -226,6 +236,13 @@ const Table = ({ col, row }) => {
           />
         </div>
       </div>
+      {element && (
+        <TestReportModal
+          show={viewShow}
+          onHide={() => setViewShow(false)}
+          element={element}
+        />
+      )}
     </TableContainer>
   );
 };
