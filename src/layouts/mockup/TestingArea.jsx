@@ -12,6 +12,15 @@ const TestingContainer = styled.div`
   background: url(${sunnylandscape});
   background-size: cover;
   background-repeat: no-repeat;
+  @media only screen and (max-width: 600px) {
+   display: flex;
+   flex-direction: column;
+   flex-wrap: wrap-reverse;
+   margin: 0px 0px;
+    width: 390px;
+    height: 219vh;
+    
+ }
 `;
 
 const TestingArea = () => {

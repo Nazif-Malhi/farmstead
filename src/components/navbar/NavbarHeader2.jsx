@@ -43,7 +43,7 @@ function NavScrollExample(props) {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-          <Nav className="me-auto nav-container" style={{ maxHeight: "100px" }}>
+          <Nav className="me-auto nav-container" /*style={{ maxHeight: "100px" }} */> 
             <Nav.Link href="#action1" className="nav-links">
               Home
             </Nav.Link>
@@ -77,42 +77,48 @@ function NavScrollExample(props) {
               Link
             </Nav.Link> */}
           </Nav>
-          <Form
-            className="d-flex"
-            style={{ width: "355px", justifyContent: "space-around" }}
-          >
-            {/* <Button  variant="outline-success" className='signin'>Sign In</Button>
-            <Button variant="success" className='createAccount'>Create New Account</Button> */}
-            <CustomButton
-              type="outline border-fill"
-              width={"100px"}
-              height="45px"
-              style={{
-                // color: '#209e2e ',
-                fontWeight: "600",
-                letterSpacing: ".7px",
-              }}
-              onClick={() => {
-                route_to("authentication/login");
-              }}
+          <div className="form_login">
+            <Form
+              className="d-flex"
+              style={{ width: "355px", justifyContent: "space-around" }}
             >
-              Sign In
-            </CustomButton>
-            <CustomButton
-              type="filled"
-              width={"200px"}
-              height="45px"
-              style={{
-                fontWeight: "600",
-                letterSpacing: ".7px",
-              }}
-              onClick={() => {
-                route_to("authentication/signup");
-              }}
-            >
-              Create New Account
-            </CustomButton>
-          </Form>
+              {/* <Button  variant="outline-success" className='signin'>Sign In</Button>
+              <Button variant="success" className='createAccount'>Create New Account</Button> */}
+              <CustomButton
+                type="outline border-fill"
+                width={"100px"}
+                height="45px"
+                style={{
+                  // color: '#209e2e ',
+                  fontWeight: "600",
+                  letterSpacing: ".7px",
+                  marginTop:"15px",
+                  width:"100%"
+                }}
+                onClick={() => {
+                  route_to("authentication/login");
+                }}
+              >
+                Sign In
+              </CustomButton>
+              <CustomButton
+                type="filled"
+                width={"200px"}
+                height="45px"
+                style={{
+                  fontWeight: "600",
+                  letterSpacing: ".7px",
+                  marginTop:"15px",
+                  width:"100%"
+                }}
+                onClick={() => {
+                  route_to("authentication/signup");
+                }}
+              >
+                Create New Account
+              </CustomButton>
+            </Form>
+          </div>
         </Navbar.Collapse>
       </Container>
     </Navbar>

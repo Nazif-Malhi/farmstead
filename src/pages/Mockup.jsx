@@ -26,10 +26,10 @@ const Mockup = () => {
       <TractorAnimation  />
       <TestingArea  id="tests_section" />
       <Focusing  id="focusing_section" />
-      <Work id="work_section"  />
-      <Blog  />
-      <Aboutus id="aboutsection" />
-      <Footer/>
+      {/* <Work id="work_section"  /> */}
+      {/* <Blog  /> */}
+      {/* <Aboutus id="aboutsection" /> */}
+      {/* <Footer/> */}
     </React.Fragment>
   );
 };

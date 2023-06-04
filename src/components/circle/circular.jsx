@@ -58,6 +58,7 @@ const CircularContainer = styled.div`
       }
     }
   }
+
 `;
 
 const Circular = ({ num, img, clr, head }) => {

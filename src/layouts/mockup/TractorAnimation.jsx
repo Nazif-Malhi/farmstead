@@ -20,6 +20,17 @@ const AnimContainer = styled.div`
           font-weight: 700;
           font-size: 46px;
   }
+
+  @media only screen and (max-width: 600px) {
+    
+    margin-top:50px !important;
+    
+    h1.tractor-h1 {
+      font-size: 30px !important;
+      margin-top:50px;
+    }
+
+  }
   .banner{
     background: #eefbf2;
     position:absolute;
@@ -56,6 +67,7 @@ const AnimContainer = styled.div`
       transform:translate(1200px);
     }
   }
+
 
 `;
 
@@ -95,8 +107,8 @@ const TractorAnimation = () => {
         setTimer(0);
       }}
     >
-      <AnimContainer trigger={trigger} timer={timer}>
-        <h1>Lets, help you in farm cultivation!</h1>
+      <AnimContainer trigger={trigger} timer={timer} className="tractor-con">
+        <h1 className="tractor-h1">Lets, help you in farm cultivation!</h1>
         {/* <div className="banner" />
         <div className="anime">{trigger && <img src={gif} alt="anime" />}</div> */}
       </AnimContainer>

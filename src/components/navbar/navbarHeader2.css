@@ -15,3 +15,32 @@
     border-radius: 5px;
     color: #209e2e;
 }
+
+@media only screen and (max-width: 600px) {
+    nav.navbar.navbar-expand-lg.navbar-light.fixed-top {
+        left: 0px !important;
+        top: 0px !important;
+        width: 100% !important;
+        border-radius: 0px !important;
+    }
+    .me-auto.nav-container.navbar-nav {
+        text-align: center;
+    }
+
+    div#navbarScroll {
+        background-color:#ffffff;
+        margin-top: 12px;
+        height: 350px;
+    }
+
+    div#navbarScroll form.d-flex {
+        /* background-color: #903f3f; */
+        display: flex;
+        flex-direction: column;
+    }
+    .form_login {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+}
