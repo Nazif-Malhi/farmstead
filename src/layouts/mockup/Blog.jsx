@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Row, Col } from "react-bootstrap";
 import { blog_shape, lab } from "../../assets";
 // import { SlickSlider } from "../carousel";
 import Counter from "./Counter";
 import { SlickSlider } from "../../components";
+import { mockUp } from "../../assets/translator/translate";
 
 const BlogContainer = styled.div`
   width: 100%;
@@ -111,30 +112,29 @@ const BlogContainer = styled.div`
 `;
 
 const Blog = () => {
-  return (
+  const [localization, setLocalization] = useState(null);
+  useEffect(() => {
+    const lang = localStorage.getItem("lang");
+    if (lang !== undefined && lang != null) {
+      setLocalization(lang);
+    }
+  }, [localization]);
+  return localization === "en" || localization === "ur" ? (
     <BlogContainer>
       <Row className="row-full">
         <Col className="text-heading">
-          <h5>ENHANCE YOUR SELF</h5>
-          <h1>Farming is all about the knowledge of plant</h1>
+          <h5>{mockUp.enhance[localization]}</h5>
+          <h1>{mockUp.enhanceTitle[localization]}</h1>
         </Col>
         <Col className="detailed-section">
-          <p>
-            Lets have a glance over some great blogs that includes a number of
-            helpful posts for those that want to learn about agriculture,
-            organic farming, trending agro-products, interesting facts about
-            farming, new agro-related techniques and many more things.
-          </p>
+          <p>{mockUp.enhanceDes[localization]}</p>
         </Col>
       </Row>
       <Row className="row-blog">
         <Col className="main-section">{/* <img src={lab} alt="lab" /> */}</Col>
         <Col className="blog-section">
           <SlickSlider />
-          <h4>
-            Research improves services and treatments not just for you but also
-            for future generations.{" "}
-          </h4>
+          <h4>{mockUp.blogSec[localization]}</h4>
         </Col>
       </Row>
       <Row className="row-counter">
@@ -144,7 +144,7 @@ const Blog = () => {
         <img src={blog_shape} alt="shape" />
       </div>
     </BlogContainer>
-  );
+  ) : null;
 };
 
 export default Blog;

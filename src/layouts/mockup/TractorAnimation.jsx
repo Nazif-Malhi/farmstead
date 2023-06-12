@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import ScrollTrigger from "react-scroll-trigger";
 import styled from "styled-components";
 import { tractoranime } from "../../assets";
+import { mockUp } from "../../assets/translator/translate";
+
 // import { tractor, tractoranime } from "../../assets/images";
 
 const AnimContainer = styled.div`
@@ -84,7 +86,17 @@ const TractorAnimation = () => {
     }, 1000);
     return () => clearInterval(interval);
   }, [timer]);
-  return (
+  const [localization, setLocalization] = useState(null);
+  useEffect(() => {
+    const lang = localStorage.getItem("lang");
+    if (lang !== undefined && lang != null) {
+      setLocalization(lang);
+    }
+
+    console.log(localization);
+    console.log();
+  }, [localization]);
+  return localization === "en" || localization === "ur" ? (
     <ScrollTrigger
       onEnter={() => {
         setTrigger(true);
@@ -96,12 +108,12 @@ const TractorAnimation = () => {
       }}
     >
       <AnimContainer trigger={trigger} timer={timer}>
-        <h1>Lets, help you in farm cultivation!</h1>
+        <h1>{mockUp.prediction[localization]}</h1>
         {/* <div className="banner" />
         <div className="anime">{trigger && <img src={gif} alt="anime" />}</div> */}
       </AnimContainer>
     </ScrollTrigger>
-  );
+  ) : null;
 };
 
 export default TractorAnimation;

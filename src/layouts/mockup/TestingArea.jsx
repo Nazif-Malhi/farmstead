@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { sunnylandscape, _testdata } from "../../assets";
 import { TestingCards } from "../../components";
@@ -15,13 +15,29 @@ const TestingContainer = styled.div`
 `;
 
 const TestingArea = () => {
-  return (
+  const [localization, setLocalization] = useState(null);
+  useEffect(() => {
+    const lang = localStorage.getItem("lang");
+    if (lang !== undefined && lang != null) {
+      setLocalization(lang);
+    }
+
+    console.log(localization);
+    console.log();
+  }, [localization]);
+  return localization === "en" || localization === "ur" ? (
     <TestingContainer>
       {_testdata.map((items, index) => {
-        return <TestingCards key={index} type={items.type} url={items.url} />;
+        return (
+          <TestingCards
+            key={index}
+            type={items.type?.[localization]}
+            url={items.url}
+          />
+        );
       })}
     </TestingContainer>
-  );
+  ) : null;
 };
 
 export default TestingArea;

@@ -53,6 +53,7 @@ export default class Responsive extends Component {
         },
       ],
     };
+
     return (
       <>
         <SliderContanier>
@@ -61,27 +62,30 @@ export default class Responsive extends Component {
               <BlogCard
                 img={corn}
                 title={"Corn"}
-                para={
-                  "Nitrogen (N) is often the most limiting nutrient for corn production and is frequently applied in excess and far in advance of corn requirements"
-                }
+                para={{
+                  en: "Nitrogen (N) is often the most limiting nutrient for corn production and is frequently applied in excess and far in advance of corn requirements",
+                  ur: "نائٹروجن (N) اکثر مکئی کی پیداوار کے لیے سب سے زیادہ محدود غذائیت ہے اور اسے اکثر مکئی کی ضروریات سے بہت پہلے استعمال کیا جاتا ہے۔",
+                }}
               />
             </div>
             <div>
               <BlogCard
                 img={seed}
                 title={"Seed's"}
-                para={
-                  "Seeds are not only the carriers of the DNA of a newly formed plant generation; they also form complex associations with micro-organisms. "
-                }
+                para={{
+                  en: "Seeds are not only the carriers of the DNA of a newly formed plant generation; they also form complex associations with micro-organisms. ",
+                  ur: "بیج نہ صرف نئے بننے والے پودوں کی نسل کے ڈی این اے کے کیریئر ہیں؛ وہ مائکرو حیاتیات کے ساتھ پیچیدہ ایسوسی ایشن بھی تشکیل دیتے ہیں۔",
+                }}
               />
             </div>
             <div>
               <BlogCard
                 img={feildwrap}
                 title={"Watering"}
-                para={
-                  "Water content plays a crucial role in seed development, particularly at the seed sowing stage, and it ensures good seed germination seed drill consisted of a wheat "
-                }
+                para={{
+                  en: "Water content plays a crucial role in seed development, particularly at the seed sowing stage, and it ensures good seed germination seed drill consisted of a wheat ",
+                  ur: "پانی کی مقدار بیج کی نشوونما میں ایک اہم کردار ادا کرتی ہے، خاص طور پر بیج بوائی کے مرحلے میں، اور یہ گندم پر مشتمل بیج کے اچھے انکرن کو یقینی بناتا ہے۔",
+                }}
               />
             </div>
           </Slider>

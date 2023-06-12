@@ -51,8 +51,14 @@ const CounterWrraper = styled(ScrollTrigger)`
 
 const Counter = () => {
   const [counter, setCounter] = useState(false);
-
-  return (
+  const [localization, setLocalization] = useState(null);
+  useEffect(() => {
+    const lang = localStorage.getItem("lang");
+    if (lang !== undefined && lang != null) {
+      setLocalization(lang);
+    }
+  }, [localization]);
+  return localization === "en" || localization === "ur" ? (
     <CounterWrraper
       onEnter={() => {
         setCounter(true);
@@ -68,7 +74,7 @@ const Counter = () => {
               <CountUp start={0} end={200} duration={1} delay={0} />+
             </h1>
           )}
-          <h6>Users</h6>
+          <h6>{localization === "en" ? "Users" : "صارفین"}</h6>
         </Col>
         <Col className="col-counthead br">
           {counter && (
@@ -76,7 +82,9 @@ const Counter = () => {
               <CountUp start={0} end={400} duration={1} delay={0} />+
             </h1>
           )}
-          <h6>Attended Events</h6>
+          <h6>
+            {localization === "ur" ? "تقریبات میں شرکت کی۔" : "Attended Events"}
+          </h6>
         </Col>
         <Col className="col-counthead br">
           {counter && (
@@ -85,7 +93,7 @@ const Counter = () => {
               <CountUp start={0} end={7} duration={1} delay={0} />
             </h1>
           )}
-          <h6>Our Service</h6>
+          <h6>{localization === "ur" ? "ہماری سروس" : "Our Service"}</h6>
         </Col>
         <Col className="col-counthead">
           {counter && (
@@ -93,11 +101,11 @@ const Counter = () => {
               <CountUp start={0} end={93} duration={1} delay={0} />+
             </h1>
           )}
-          <h6>Collabration</h6>
+          <h6>{localization === "ur" ? "اشتراک" : "Collaboration"}</h6>
         </Col>
       </Row>
     </CounterWrraper>
-  );
+  ) : null;
 };
 
 export default Counter;

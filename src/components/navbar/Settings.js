@@ -4,14 +4,12 @@ import { Row, Col } from "react-bootstrap";
 import { MdCancel } from "react-icons/md";
 import Switch from "@mui/material/Switch";
 
-
 const Container = styled.div`
-
   .show {
     width: 350px;
     font-family: "Rubik", sans-serif;
     font-style: normal;
-    
+
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -132,8 +130,8 @@ const Container = styled.div`
     // padding: 20px;
     backdrop-filter: saturate(200%) blur(30px);
     background-color: #fffc !important;
-    
-    position:absolute;
+
+    position: absolute;
     right: 0;
     top: 0;
     // animation: hideAnimation  1.5s;
@@ -173,7 +171,7 @@ const Container = styled.div`
       .horizontal-dark {
         display: flex;
         width: 100%;
-        
+
         background-color: transparent;
         height: 2px;
         margin: 1rem 0;
@@ -219,11 +217,9 @@ const Container = styled.div`
       color: #141727;
       background-image: white;
       background-image: linear-gradient(310deg, #ffff 0%, #ffff 100%);
-
-  }
+    }
   }
 `;
-
 
 const Settings = ({ handleState }) => {
   const [active, setActive] = useState(handleState);
@@ -234,24 +230,22 @@ const Settings = ({ handleState }) => {
   return (
     <Container>
       {/* ,width:(active ? "350px" : "")  */}
-      <div className={`${active ? "show" : "hide"}`} style={{zIndex:"99" }}>
+      <div className={`${active ? "show" : "hide"}`} style={{ zIndex: "99" }}>
         <Row className={`"head" `}>
           <Col>
-          <div style={{display: "flex",justifyContent: "space-between"}}>
-            <h4>Settings</h4> 
-            <MdCancel
-              fontSize={"1.5rem"}
-              color="#344767"
-              onClick={() => {
-                setActive(!active);
-              }}
-              className="cross"
-            />
-
-          </div>
-            <h6 style={{width:"180px"}}>Configure Settings</h6>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <h4>Settings</h4>
+              <MdCancel
+                fontSize={"1.5rem"}
+                color="#344767"
+                onClick={() => {
+                  setActive(!active);
+                }}
+                className="cross"
+              />
+            </div>
+            <h6 style={{ width: "180px" }}>Configure Settings</h6>
           </Col>
-          
         </Row>
         <Row className="body">
           <Col className="language">
@@ -273,8 +267,7 @@ const Settings = ({ handleState }) => {
         </Row>
       </div>
     </Container>
-
-      
-  )};
+  );
+};
 
 export default Settings;

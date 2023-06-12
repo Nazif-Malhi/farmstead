@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { world, _focusdata } from "../../assets";
 import { Circular } from "../../components";
+import { mockUp } from "../../assets/translator/translate";
 
 const FocusContainer = styled.div`
   width: 100%;
@@ -55,9 +56,16 @@ const FocusContainer = styled.div`
 `;
 
 const Focusing = () => {
-  return (
+  const [localization, setLocalization] = useState(null);
+  useEffect(() => {
+    const lang = localStorage.getItem("lang");
+    if (lang !== undefined && lang != null) {
+      setLocalization(lang);
+    }
+  }, [localization]);
+  return localization === "en" || localization === "ur" ? (
     <FocusContainer>
-      <h1>Our Vision</h1>
+      <h1>{mockUp.vision[localization]}</h1>
       {_focusdata.map((items, index) => {
         return (
           <Circular
@@ -65,7 +73,7 @@ const Focusing = () => {
             num={items.num}
             img={Object.values(items.img)[0]}
             clr={items.clr}
-            head={items.head}
+            head={items.head[localization]}
           />
         );
       })}
@@ -73,7 +81,7 @@ const Focusing = () => {
         <img src={world} alt="world" />
       </div>
     </FocusContainer>
-  );
+  ) : null;
 };
 
 export default Focusing;

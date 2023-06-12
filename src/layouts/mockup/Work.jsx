@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { background, _worddata } from "../../assets";
+import { mockUp } from "../../assets/translator/translate";
+
 import { CircularCard } from "../../components";
 
 const WorkContainer = styled.div`
@@ -51,9 +53,16 @@ const WorkContainer = styled.div`
 `;
 
 const Work = () => {
-  return (
+  const [localization, setLocalization] = useState(null);
+  useEffect(() => {
+    const lang = localStorage.getItem("lang");
+    if (lang !== undefined && lang != null) {
+      setLocalization(lang);
+    }
+  }, [localization]);
+  return localization === "en" || localization === "ur" ? (
     <WorkContainer>
-      <h1>Our Test Areas</h1>
+      <h1>{mockUp.testArea[localization]}</h1>
 
       <div className="wrapper-container">
         {_worddata.map((items, index) => {
@@ -61,14 +70,14 @@ const Work = () => {
             <CircularCard
               key={index}
               img={Object.values(items.img)[0]}
-              head={items.head}
-              subhead={items.subhead}
+              head={items.head[localization]}
+              subhead={items.subhead[localization]}
             />
           );
         })}
       </div>
     </WorkContainer>
-  );
+  ) : null;
 };
 
 export default Work;

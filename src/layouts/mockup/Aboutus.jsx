@@ -63,18 +63,15 @@
 
 // export default Aboutus;
 
-
-
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { about_bk } from "../../assets/images";
 
 import { Row, Col, Container } from "react-bootstrap";
+import { mockUp } from "../../assets/translator/translate";
 
 const AboutusContainer = styled.div`
-
   margin-top: 50px;
-
 
   .about-text {
     width: 400px;
@@ -97,54 +94,54 @@ const AboutusContainer = styled.div`
     }
     p {
       color: #70727f;
-    font-family: "Rubik",sans-serif;
-    font-style: regular;
-    font-weight: 500;
-    font-size: 14px;
-    /* padding: 0px 320px; */
-    text-align: justify;
+      font-family: "Rubik", sans-serif;
+      font-style: regular;
+      font-weight: 500;
+      font-size: 14px;
+      /* padding: 0px 320px; */
+      text-align: justify;
     }
   }
   .about-bg {
     position: absolute;
     // margin-top: 110px;
     // opacity:.5;
-    
   }
-  .image{
-    width:600px;
+  .image {
+    width: 600px;
   }
-  .fLIjwV{
+  .fLIjwV {
     margin-top: 100px !important;
   }
 `;
 const Aboutus = () => {
-  return (
+  const [localization, setLocalization] = useState(null);
+  useEffect(() => {
+    const lang = localStorage.getItem("lang");
+    if (lang !== undefined && lang != null) {
+      setLocalization(lang);
+    }
+  }, [localization]);
+  return localization === "en" || localization === "ur" ? (
     <AboutusContainer>
       <Container>
-        <Row >
+        <Row>
           <Col>
-          <div className="about-text">
-            <h5>ABOUT US</h5>
-            <h1>A breif who we are</h1>
-            <p>
-              We conjointly promote property farming practices that square measure
-              economically viable, environmentally friendly, strengthen our
-              communities and shield the health of gift and future generations.
-            </p>
-          </div>
-        
+            <div className="about-text">
+              <h5>{mockUp.about[localization]}</h5>
+              <h1>{mockUp.aboutTitle[localization]}</h1>
+              <p>{mockUp.aboutDes[localization]}</p>
+            </div>
           </Col>
           <Col>
             <div className="about-bg">
-                <img className="image" src={about_bk} alt="bk" />
+              <img className="image" src={about_bk} alt="bk" />
             </div>
           </Col>
         </Row>
       </Container>
-    
     </AboutusContainer>
-  );
+  ) : null;
 };
 
 export default Aboutus;

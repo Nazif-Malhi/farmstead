@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Row, Col, Badge } from "react-bootstrap";
 import styled from "styled-components";
 import {
@@ -17,6 +17,7 @@ import {
 } from "../../assets";
 import "../../assets";
 import { CustomButton } from "../../components";
+import { mockUp } from "../../assets/translator/translate";
 // import { CustomButton } from "../button";
 const HomeContainer = styled.div`
   width: 100%;
@@ -162,7 +163,17 @@ const HomeContainer = styled.div`
 `;
 
 const Home = () => {
-  return (
+  const [localization, setLocalization] = useState(null);
+  useEffect(() => {
+    const lang = localStorage.getItem("lang");
+    if (lang !== undefined && lang != null) {
+      setLocalization(lang);
+    }
+
+    console.log(localization);
+    console.log();
+  }, [localization]);
+  return localization === "en" || localization === "ur" ? (
     <HomeContainer>
       {/* <NavbarHeader /> */}
       <Row className="row-style">
@@ -235,21 +246,18 @@ const Home = () => {
             </Col>
           </Row>
           <Row className="row-container mg-lf">
-            <h1>Sustainable Agriculture does not deplete soils or people.</h1>
-            <p>
-              Farming isn’t something that can be taught. Each plant tells its
-              own story that has to be read repeatedly.
-            </p>
+            <h1>{mockUp.homeMain[localization]}</h1>
+            <p>{mockUp.home[localization]}</p>
           </Row>
           <Row className="row-container">
             <Col className="con-end">
               <CustomButton type="filled" width="160px" height="50px">
-                Test Now
+                {mockUp.btnTest[localization]}
               </CustomButton>
             </Col>
             <Col className="con-start">
               <CustomButton type="outline" width="160px" height="50px">
-                Read More
+                {mockUp.btnRead[localization]}
               </CustomButton>
             </Col>
           </Row>
@@ -287,7 +295,7 @@ const Home = () => {
         <img src={Arrow} alt="arrow" />
       </div>
     </HomeContainer>
-  );
+  ) : null;
 };
 
 export default Home;

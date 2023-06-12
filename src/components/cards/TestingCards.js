@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import {
   cardshape,
@@ -12,6 +12,7 @@ import {
 } from "../../assets";
 import { CustomButton } from "../button";
 import { useNavigate } from "react-router";
+import { mockUp } from "../../assets/translator/translate";
 
 const TestCardContainer = styled.div`
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
@@ -22,15 +23,15 @@ const TestCardContainer = styled.div`
   background: white;
   position: relative;
   background: url(${(props) =>
-    props.type === "Crops Prediction"
+    props.url === "simple-crop-recomendation"
       ? cultivate
-      : props.type === "Watering Cycle's"
+      : props.url === "water-cycles"
       ? watering
-      : props.type === "Fertilizer Prediction"
+      : props.url === "fertilizer-recomendation"
       ? fertilizer
-      : props.type === "Pest's Detection"
+      : props.url === "pest-detection"
       ? pest1
-      : props.type === "Crops Diseases Detection"
+      : props.url === "crop-disease-detection"
       ? cropDisease
       : null});
   background-size: cover;
@@ -76,8 +77,18 @@ const TestingCards = ({ type, url }) => {
   const route_to = (url) => {
     navigate("models/" + url);
   };
-  return (
-    <TestCardContainer type={type}>
+  const [localization, setLocalization] = useState(null);
+  useEffect(() => {
+    const lang = localStorage.getItem("lang");
+    if (lang !== undefined && lang != null) {
+      setLocalization(lang);
+    }
+
+    console.log(localization);
+    console.log();
+  }, [localization]);
+  return localization === "en" || localization === "ur" ? (
+    <TestCardContainer url={url}>
       <div className="card-shape">
         <div className="text-container">
           <h2>{type}</h2>
@@ -91,12 +102,12 @@ const TestingCards = ({ type, url }) => {
               route_to(url);
             }}
           >
-            Predict
+            {mockUp.predBtn[localization]}
           </CustomButton>
         </div>
       </div>
     </TestCardContainer>
-  );
+  ) : null;
 };
 
 export default TestingCards;
