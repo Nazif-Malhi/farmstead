@@ -17,8 +17,8 @@ const TestingContainer = styled.div`
    flex-direction: column;
    flex-wrap: wrap-reverse;
    margin: 0px 0px;
-    width: 390px;
-    height: 219vh;
+    width: auto;
+    height: 290vh;
     
  }
 `;

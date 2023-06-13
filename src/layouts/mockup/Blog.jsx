@@ -10,8 +10,8 @@ const BlogContainer = styled.div`
   width: 100%;
   height: 150vh;
   // justify-content: center;
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
   background: rgb(255, 255, 255);
 
   background: linear-gradient(
@@ -19,6 +19,12 @@ const BlogContainer = styled.div`
     rgba(255, 255, 255, 1) 74%,
     rgba(238, 251, 242, 1) 100%
   );
+  .row-full .text-heading {
+    width: 44rem !important;
+  }
+  .row-full .detailed-section {
+    width: 37vw;
+  }
   .row-full {
     width: 100%;
     height: 220px;
@@ -86,6 +92,7 @@ const BlogContainer = styled.div`
     }
   }
   .row-counter {
+    padding: 70px 0px;
     width: 100%;
     height: 100%;
     display: flex;
@@ -108,17 +115,62 @@ const BlogContainer = styled.div`
       height: auto;
     }
   }
+
+  @media only screen and (max-width: 600px) {
+    
+  height: 215vh;
+
+    .row-full {
+    padding: 45px 25px;
+    }
+
+    .row-full .text-heading {
+      border:none;
+    }
+    .row-full .text-heading h1 {
+      font-size: 26px;
+    }
+    .row-full .detailed-section {
+      padding :0px;
+    }
+    .row-full .detailed-section p{
+      width: 292px;
+      text-align: justify;
+    }
+    .blog-section{
+      margin-top: 165px;
+
+    }
+    .row-blog {
+      padding: 30px;
+    }
+    .row-blog .blog-section {
+      overflow: hidden;
+    }
+
+    .row-blog .blog-section h4 {
+      margin-top: 40px;
+      padding: 0px;
+      font-size: 20px;
+      text-align: revert;
+    }
+    .main-section{
+      // margin-top:24vh;
+      display:none;
+    }
+  }
 `;
 
 const Blog = () => {
   return (
     <BlogContainer>
+      
       <Row className="row-full">
-        <Col className="text-heading">
+        <Col  className="text-heading">
           <h5>ENHANCE YOUR SELF</h5>
           <h1>Farming is all about the knowledge of plant</h1>
         </Col>
-        <Col className="detailed-section">
+        <Col className="detailed-section"  >
           <p>
             Lets have a glance over some great blogs that includes a number of
             helpful posts for those that want to learn about agriculture,
@@ -128,8 +180,8 @@ const Blog = () => {
         </Col>
       </Row>
       <Row className="row-blog">
-        <Col className="main-section">{/* <img src={lab} alt="lab" /> */}</Col>
-        <Col className="blog-section">
+        {/* <Col className="main-section"><img src={lab} alt="lab" /></Col>  */}
+        <Col sm ={12} md={12} lg={6} className="blog-section">
           <SlickSlider />
           <h4>
             Research improves services and treatments not just for you but also
@@ -138,8 +190,12 @@ const Blog = () => {
         </Col>
       </Row>
       <Row className="row-counter">
-        <Counter />
+        <Col sm ={12} md={12} lg={12}>
+          <Counter />
+        </Col>
       </Row>
+
+      
       <div className="shadow">
         <img src={blog_shape} alt="shape" />
       </div>

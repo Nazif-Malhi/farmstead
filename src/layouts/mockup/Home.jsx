@@ -216,7 +216,20 @@ const HomeContainer = styled.div`
     left: 9%;
   }
   .shape-img1-img{
-    width:112px;
+    width:66px;
+  }
+
+  .icons-container.col {
+    margin-top: 25px;
+}
+  button.filled{
+    width: 100px !important;
+    height: 50px  !important;
+  }
+
+  button.outline{
+    width: 100px !important;
+    height: 50px  !important;
   }
 }
 `;
@@ -225,7 +238,7 @@ const Home = () => {
   return (
     <HomeContainer>
       {/* <NavbarHeader /> */}
-      <Row className="row-style">
+      <Row className="row-style series_icon">
         <Col lg={6} md={12} className="text-container">
           <Row className="row-container pd">
             <Col className="icons-container br">

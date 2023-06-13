@@ -72,8 +72,7 @@ import { about_bk } from "../../assets/images";
 import { Row, Col, Container } from "react-bootstrap";
 
 const AboutusContainer = styled.div`
-
-  margin-top: 50px;
+  margin-top: 176px;
 
 
   .about-text {
@@ -117,13 +116,29 @@ const AboutusContainer = styled.div`
   .fLIjwV{
     margin-top: 100px !important;
   }
+
+  @media only screen and (max-width: 600px) {
+
+    // margin-top:90vh;
+    .about-text{
+      // width: 45vh;
+      width:98%;
+      padding:0;
+      margin:0;
+      // margin-top:0;
+    }
+    .image{
+      width: 330px;
+      margin-top: -88px;
+    }
+  }
 `;
 const Aboutus = () => {
   return (
     <AboutusContainer>
       <Container>
         <Row >
-          <Col>
+          <Col xs={12} sm={12} md={12} lg={6} xxl={6}>
           <div className="about-text">
             <h5>ABOUT US</h5>
             <h1>A breif who we are</h1>
@@ -135,7 +150,7 @@ const Aboutus = () => {
           </div>
         
           </Col>
-          <Col>
+          <Col xs={12} sm={12} md={12} lg={6} xxl={6}>
             <div className="about-bg">
                 <img className="image" src={about_bk} alt="bk" />
             </div>

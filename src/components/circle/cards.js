@@ -64,6 +64,9 @@ const CardsContainer = styled.div`
       transform: rotate(360deg);
     }
   }
+  @media only screen and (max-width: 600px) {
+    margin:auto;
+  }
 `;
 
 const Cards = ({ img, head, subhead }) => {

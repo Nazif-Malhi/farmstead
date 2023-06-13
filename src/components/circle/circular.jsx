@@ -59,12 +59,13 @@ const CircularContainer = styled.div`
     }
   }
 
+
 `;
 
 const Circular = ({ num, img, clr, head }) => {
   return (
     <React.Fragment>
-      <CircularContainer num={num} clr={clr}>
+      <CircularContainer num={num} clr={clr} className="sdgs">
         <div className="head">
           <h5>{head}</h5>
         </div>
