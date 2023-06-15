@@ -20,13 +20,13 @@ const BlogContainer = styled.div`
     rgba(238, 251, 242, 1) 100%
   );
   .row-full .text-heading {
-    width: 44rem !important;
+    width: 100% !important;
   }
   .row-full .detailed-section {
     width: 37vw;
   }
   .row-full {
-    width: 100%;
+    width: 54%;
     height: 220px;
     padding: 60px;
     .text-heading {
@@ -117,7 +117,9 @@ const BlogContainer = styled.div`
   }
 
   @media only screen and (max-width: 600px) {
-    
+    .shadow{
+      display:none;
+    }
   height: 215vh;
 
     .row-full {
@@ -132,6 +134,8 @@ const BlogContainer = styled.div`
     }
     .row-full .detailed-section {
       padding :0px;
+      width: 85%;
+      margin: auto;
     }
     .row-full .detailed-section p{
       width: 292px;
@@ -158,6 +162,12 @@ const BlogContainer = styled.div`
       // margin-top:24vh;
       display:none;
     }
+    .row-blog {
+      height: auto;
+    }
+    .row-counter {
+      height: auto;
+    }
   }
 `;
 
@@ -166,11 +176,11 @@ const Blog = () => {
     <BlogContainer>
       
       <Row className="row-full">
-        <Col  className="text-heading">
+        <Col  className="text-heading" xs={12} sm ={12} md={6} lg={6}>
           <h5>ENHANCE YOUR SELF</h5>
           <h1>Farming is all about the knowledge of plant</h1>
         </Col>
-        <Col className="detailed-section"  >
+        <Col className="detailed-section" xs={12} sm ={12} md={6} lg={6} >
           <p>
             Lets have a glance over some great blogs that includes a number of
             helpful posts for those that want to learn about agriculture,
@@ -180,8 +190,8 @@ const Blog = () => {
         </Col>
       </Row>
       <Row className="row-blog">
-        {/* <Col className="main-section"><img src={lab} alt="lab" /></Col>  */}
-        <Col sm ={12} md={12} lg={6} className="blog-section">
+        {/* <Col className="main-section"><img src={lab} alt="lab" /></Col>   */}
+        <Col sm ={12} md={6} lg={6} className="blog-section">
           <SlickSlider />
           <h4>
             Research improves services and treatments not just for you but also

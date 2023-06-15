@@ -68,7 +68,7 @@ const CounterWrraper = styled(ScrollTrigger)`
   //   -ms-flex-pack: center;
     
   @media only screen and (max-width: 600px) {
-    
+    margin: auto;
     height: 75vh;
     .br
     {
@@ -78,7 +78,12 @@ const CounterWrraper = styled(ScrollTrigger)`
     .col-counthead {
       height:auto;
       width: 100%;
+      display: block;
     }
+.row-counthead{
+  padding: 13px 85px;
+}
+    
   }
 `;
 

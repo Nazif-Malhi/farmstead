@@ -63,7 +63,7 @@ const FocusContainer = styled.div`
   }
 
   @media only screen and (max-width: 600px) {
-    height: 63vh;
+    height: auto;
     img.world{
       width: 340px !important;
       height: 310px !important;
@@ -74,9 +74,9 @@ const FocusContainer = styled.div`
     .sdg_cont-hide{
       display:none !important;
     }
-    // .style-wrapper {
-    //   height:100vh;
-    // }
+    .style-wrapper {
+      margin:0px !important;
+    }
   }
 `;
 

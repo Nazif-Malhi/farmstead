@@ -24,8 +24,8 @@ export default function Footer() {
               <p>
               Farming isn’t something that can be taught. Each plant tells its own story that has to be read repeatedly.
               </p>
-              <section >
-                <div>
+              <section  >
+                <div className='socials'>
                     <div style={{ width:"180px",marginLeft:'5px'}}>
                       <hr/>
                       <a href='#!' className='me-4 text-reset'>

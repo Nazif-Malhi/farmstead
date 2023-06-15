@@ -131,6 +131,10 @@ const AboutusContainer = styled.div`
       width: 330px;
       margin-top: -88px;
     }
+
+    .about-text p {
+      width: 85%;
+      margin: auto;
   }
 `;
 const Aboutus = () => {
