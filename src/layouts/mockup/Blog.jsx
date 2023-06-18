@@ -94,7 +94,8 @@ const BlogContainer = styled.div`
   .row-counter {
     padding: 70px 0px;
     width: 100%;
-    height: 100%;
+    // height: 100%;
+    height:45vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -114,6 +115,13 @@ const BlogContainer = styled.div`
       max-width: 100%;
       height: auto;
     }
+  }
+  .shadow img {
+    height: 60vh;
+  }
+  .row-counter-col{
+    display:flex;
+    justify-content:center;
   }
 
   @media only screen and (max-width: 600px) {
@@ -168,14 +176,23 @@ const BlogContainer = styled.div`
     .row-counter {
       height: auto;
     }
+    .blog-main{
+      margin:0px !important;
+    }
   }
+
+  @media only screen and (max-width: 376px){
+    height: 245vh;
+  }
+
+
 `;
 
 const Blog = () => {
   return (
     <BlogContainer>
-      
-      <Row className="row-full">
+      <Row className="blog-main">
+      <Col className="row-full">
         <Col  className="text-heading" xs={12} sm ={12} md={6} lg={6}>
           <h5>ENHANCE YOUR SELF</h5>
           <h1>Farming is all about the knowledge of plant</h1>
@@ -188,8 +205,8 @@ const Blog = () => {
             farming, new agro-related techniques and many more things.
           </p>
         </Col>
-      </Row>
-      <Row className="row-blog">
+      </Col>
+      <Col className="row-blog">
         {/* <Col className="main-section"><img src={lab} alt="lab" /></Col>   */}
         <Col sm ={12} md={6} lg={6} className="blog-section">
           <SlickSlider />
@@ -198,9 +215,10 @@ const Blog = () => {
             for future generations.{" "}
           </h4>
         </Col>
+      </Col>
       </Row>
       <Row className="row-counter">
-        <Col sm ={12} md={12} lg={12}>
+        <Col className="row-counter-col" sm ={12} md={12} lg={12}>
           <Counter />
         </Col>
       </Row>
