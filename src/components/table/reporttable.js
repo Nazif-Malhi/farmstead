@@ -298,10 +298,23 @@ const ReportTable = ({ col, row, pending, handleUpdate }) => {
                     </div>
 
                     <div className="button print" style={{ cursor: "pointer" }}>
-                      <BsFillPrinterFill color="white" fontSize={"1.2rem"} />
+                      <BsFillPrinterFill
+                        color="white"
+                        fontSize={"1.2rem"}
+                        onClick={(e) => {
+                          setPrintModalShow(true);
+                        }}
+                      />
                     </div>
                   </Row>
                 </Col>
+                <PrintModal
+                  show={printModalShow}
+                  onHide={() => setPrintModalShow(false)}
+                  key={id}
+                  centered
+                  element={element}
+                />
               </Row>
             );
 
@@ -353,7 +366,7 @@ const ReportTable = ({ col, row, pending, handleUpdate }) => {
             //         {console.log("eeee",rowIndex,row[rowIndex])}
             //         {
 
-            //           row.indexOf(element)==rowIndex? <PrintModal show={printModalShow} onHide={() => setPrintModalShow(false)}  key={id}  centered  element={row[rowIndex]} />
+            //           row.indexOf(element)==rowIndex?
             //           : ""
             //         }
             //       </Row>

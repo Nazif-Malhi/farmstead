@@ -37,11 +37,11 @@ Header -> COMMENTS:
 2. Log In, Register button was not there
 3. Scroll not working on click navbar
 
-Footer -> COMMENTS:  ✓ DONE
+Footer -> COMMENTS: ✓ DONE
 
 1. Footer is not that what you done before back color fill with green color please check
 
-Settings -> COMMENTS:  ✓ DONE
+Settings -> COMMENTS: ✓ DONE
 
 1. Animation is not perfect
 
@@ -49,7 +49,7 @@ Modals -> COMMENTS: ✓ DONE
 
 1. Buttons standard are not maintained
 
-Crumbs -> COMMENTS:  ✓ DONE
+Crumbs -> COMMENTS: ✓ DONE
 
 1. Links are not working
 
@@ -62,12 +62,114 @@ NOOR:
 
 1. Add Labels for Result feilds - ✓
 
-
-
 08-April -2023
 
-ADNAN: 
+ADNAN:
 Reports Api connected
 rework to call delete modal
 on update re route to profit loss section and predefine the values
 
+ <Container>
+        <Row style={{ marginBottom: "20px" }}>
+          <Col>
+            <label className="lbh">
+              Crop Name:{" "}
+              {props.element[0]?.["crop_budget"]?.["cropbudget_name"]}
+            </label>
+          </Col>
+          <Col>
+            <label className="lbh right">
+              Created At:{" "}
+              {getDate(props.element[0]?.["crop_budget"]?.["updated_at"])}
+            </label>
+          </Col>
+        </Row>
+        <Row>
+          <label className="lbt1">Income</label>
+          <label className="lbt">1. Gross Revenue</label>
+        </Row>
+        <Table striped bordered hover variant="light">
+          <thead>
+            <tr>
+              <th>Acres</th>
+              <th>Cash Prize</th>
+              <th>Expected Yeild</th>
+              <th>Govt Payments</th>
+              <th>Other Income</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                {props.element[1]?.["income_gross_revenue"][0]?.["acres"]}
+              </td>
+              <td>
+                {props.element[1]?.["income_gross_revenue"][0]?.["cash_prize"]}
+              </td>
+              <td>
+                {
+                  props.element[1]?.["income_gross_revenue"][0]?.[
+                    "expected_yeild"
+                  ]
+                }
+              </td>
+              <td>
+                {
+                  props.element[1]?.["income_gross_revenue"][0]?.[
+                    "govt_payments"
+                  ]
+                }
+              </td>
+              <td>
+                {
+                  props.element[1]?.["income_gross_revenue"][0]?.[
+                    "other_income"
+                  ]
+                }
+              </td>
+            </tr>
+          </tbody>
+        </Table>
+        <Row>
+          <label className="lbt1">Expense</label>
+          <label className="lbt">1. Variable Cost</label>
+        </Row>
+        {/* <Table striped bordered hover variant="light">
+          <thead>
+            <tr>
+              <th>Cash Prize</th>
+              <th>Crop Miscellaneous</th>
+            <th>Custom Application</th>
+            <th>Driver Hire</th>
+            <th>Drying Propane</th>
+            <th>Equipment Fuel</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+             <td>{props.element[0]?.["income_gross_revenue"]?.["acres"]}</td>
+             <td>{props.element[0]?.["income_gross_revenue"]?.["cash_prize"]}</td>
+             <td>{props.element[0]?.["income_gross_revenue"]?.["expected_yeild"]}</td>
+             <td>{props.element[0]?.["income_gross_revenue"]?.["govt_payments"]}</td>
+             <td>{props.element[0]?.["income_gross_revenue"]?.["other_income"]}</td>
+            </tr>
+          </tbody>
+        </Table> */}
+      </Container>
+      {/* <label>Crop Name: </label>
+      <label>{props.element[0]}</label>
+      <br />
+      <label>Created at </label>
+      <label>{props.element[1]}</label>
+      <br />
+      <label>Status: </label>
+      <label>{props.element[2]}</label>
+      <br /> */}

@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import {
@@ -20,6 +20,12 @@ import Admin from "./pages/Admin";
 import ProtectedRoute from "./ProtectedGaurd/ProtectedRoute";
 
 function App() {
+  useEffect(() => {
+    const lang = localStorage.getItem("lang");
+    if (lang === null || lang === undefined || lang === "") {
+      localStorage.setItem("lang", "en");
+    }
+  }, []);
   return (
     <Suspense fallback={<Loading />}>
       <Routes>

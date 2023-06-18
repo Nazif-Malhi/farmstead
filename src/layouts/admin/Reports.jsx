@@ -39,7 +39,7 @@ const Reports = ({ handleUpdate }) => {
     { name: "Status" },
     { name: "Actions" },
   ];
-
+  console.log(crop_budget);
   return (
     <TestContainer>
       <div className="container">
