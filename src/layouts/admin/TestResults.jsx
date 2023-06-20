@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { Table } from "../../components";
 
+import { Row, Col } from "react-bootstrap";
+
 const TestContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -17,6 +19,22 @@ const TestContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  .mobileTitle{
+    display:none;
+  }
+  
+  @media only screen and (max-width: 650px) {
+    width: 67vh;
+    .container {
+      padding: 10px !important;
+      width: 67vh;
+      margin-top: 60px;
+    }
+    .mobileTitle{
+      display:block;
+    }
+    
   }
 `;
 
@@ -38,7 +56,9 @@ const TestResults = () => {
   ];
   return (
     <TestContainer>
+      
       <div className="container">
+      
         <Table col={col} row={row} />
       </div>
     </TestContainer>

@@ -134,6 +134,9 @@ const Container = styled.div`
       }
     }
   }
+  @media only screen and (max-width: 650px) {
+    display:none!important;
+  }
 `;
 
 const SideNavbar = ({ activeSettings }) => {

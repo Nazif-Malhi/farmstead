@@ -48,12 +48,10 @@ function App() {
         <Route
           path="farmstead/admin/*"
           element={
-            // <ProtectedRoute>
-            //   <Admin />
-            // </ProtectedRoute>
-            
-              <Admin />
-            
+            // <ProtectedRou>
+              // <Admin />
+            // </ProtectedRou
+            <Admin/>
           }
         />
       </Routes>

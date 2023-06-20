@@ -28,6 +28,7 @@ const Container = styled.div`
   .right {
     width: 60%;
     display: flex;
+    justify-content: end;
     .row-search {
       width: 100%;
       margin-top: 10px;
@@ -55,8 +56,8 @@ const Container = styled.div`
       margin-left: 10px;
       margin-right: 40px;
       .circle {
-        width: 40px;
-        height: 40px;
+        width: 25px;
+        height: 1.5rem;
         background: #344767;
         border-radius: 50%;
         justify-content: center;
@@ -71,6 +72,10 @@ const Container = styled.div`
       }
     }
   }
+  
+  @media only screen and (max-width: 650px) {
+    display:none!important;
+}
 `;
 
 
@@ -120,7 +125,7 @@ const UpperNavbar = () => {
         <h5 >{(currentPath[isActiveIndex]).replace('-', ' ')}</h5>
       </div>
       <div className="right">
-        <Row className="row-search">
+        {/* <Row className="row-search">
           <Col className="filtersearch">
             <BiSearch className="search-has" fontSize={"1.2rem"} />
             <InputSearch
@@ -129,7 +134,7 @@ const UpperNavbar = () => {
               // onChange={(e) => setSearch(e.target.value)}
             />
           </Col>
-        </Row>
+        </Row> */}
         <div className="profile">
           <div className="circle">
             <BsPersonFill fontSize={"1.2rem"} color="white" />
