@@ -4,6 +4,8 @@ import { Table } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { all_test_clearErrors, get_test, test_clearErrors } from "../../store";
 
+import { Row, Col } from "react-bootstrap";
+
 const TestContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -19,6 +21,21 @@ const TestContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  .mobileTitle {
+    display: none;
+  }
+
+  @media only screen and (max-width: 650px) {
+    width: 67vh;
+    .container {
+      padding: 10px !important;
+      width: 67vh;
+      margin-top: 60px;
+    }
+    .mobileTitle {
+      display: block;
+    }
   }
 `;
 

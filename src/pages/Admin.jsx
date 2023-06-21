@@ -8,11 +8,17 @@ import {
   AllTest,
 } from "../layouts/admin";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { Settings, SideNavbar, UpperNavbar } from "../components";
+import {
+  Settings,
+  SideNavbar,
+  UpperNavbar,
+  SideNavbarMobile,
+} from "../components";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { get_user, user_data_clearErrors } from "../store";
 import { isHandled_AuthToken, set_authtoken_toHeader } from "../utils";
+// import {SideNavbarMobile} from "../src/components/navbar/SideNavbarMobile.jsx";
 
 const Container = styled.div`
   display: flex;
@@ -25,6 +31,11 @@ const Container = styled.div`
     flex-direction: column;
     height: 100vh;
     width: calc(100% - 235px);
+  }
+  @media only screen and (max-width: 650px) {
+    .main {
+      width: 100% !important;
+    }
   }
 `;
 const Admin = () => {
@@ -59,7 +70,12 @@ const Admin = () => {
   };
   return (
     <Container className="admin">
-      <SideNavbar activeSettings={handleActive} clearUpdate={clearUpdate} />
+      <SideNavbar
+        activeSettings={handleActive}
+        clearUpdate={clearUpdate}
+        className="sideMenuDesktop"
+      />
+      <SideNavbarMobile className="sideMenuMobile" />
       <div className="main">
         <UpperNavbar />
         <Settings handleState={active} />

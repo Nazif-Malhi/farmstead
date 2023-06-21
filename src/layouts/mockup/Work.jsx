@@ -4,7 +4,7 @@ import { background, _worddata } from "../../assets";
 import { mockUp } from "../../assets/translator/translate";
 
 import { CircularCard } from "../../components";
-
+import { Row, Col, Container } from "react-bootstrap";
 const WorkContainer = styled.div`
   height: 80vh;
   width: 100%;
@@ -50,6 +50,21 @@ const WorkContainer = styled.div`
     align-items: center;
     justify-content: space-around;
   }
+  .work_row {
+    text-align: center;
+    justify-content: space-around;
+  }
+  @media only screen and (max-width: 600px) {
+    height: 150vh;
+
+    .wrapper-container {
+      display: grid;
+    }
+
+    .work_row {
+      margin: 0px;
+    }
+  }
 `;
 
 const Work = () => {
@@ -65,16 +80,23 @@ const Work = () => {
       <h1>{mockUp.testArea[localization]}</h1>
 
       <div className="wrapper-container">
-        {_worddata.map((items, index) => {
-          return (
-            <CircularCard
-              key={index}
-              img={Object.values(items.img)[0]}
-              head={items.head[localization]}
-              subhead={items.subhead[localization]}
-            />
-          );
-        })}
+        <Container>
+          <Row className="work_row">
+            {_worddata.map((items, index) => {
+              return (
+                <Col xs={12} md={6} lg={2} style={{ paddingTop: "20px" }}>
+                  <CircularCard
+                    className="card"
+                    key={index}
+                    img={Object.values(items.img)[0]}
+                    head={items.head[localization]}
+                    subhead={items.subhead[localization]}
+                  />
+                </Col>
+              );
+            })}
+          </Row>
+        </Container>
       </div>
     </WorkContainer>
   ) : null;

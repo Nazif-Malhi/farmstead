@@ -79,7 +79,6 @@ const AboutusContainer = styled.div`
     padding: 5px;
     text-align: center;
     display: block;
-    padding-top: 95px;
     margin-left: 77px;
 
     h5 {
@@ -113,6 +112,26 @@ const AboutusContainer = styled.div`
   .fLIjwV {
     margin-top: 100px !important;
   }
+
+  @media only screen and (max-width: 600px) {
+
+    // margin-top:90vh;
+    .about-text{
+      // width: 45vh;
+      width:98%;
+      padding:0;
+      margin:0;
+      // margin-top:0;
+    }
+    .image{
+      width: 330px;
+      margin-top: -88px;
+    }
+
+    .about-text p {
+      width: 85%;
+      margin: auto;
+  }
 `;
 const Aboutus = () => {
   const [localization, setLocalization] = useState(null);
@@ -126,14 +145,14 @@ const Aboutus = () => {
     <AboutusContainer>
       <Container>
         <Row>
-          <Col>
+          <Col xs={12} sm={12} md={12} lg={6} xxl={6}>
             <div className="about-text">
               <h5>{mockUp.about[localization]}</h5>
               <h1>{mockUp.aboutTitle[localization]}</h1>
               <p>{mockUp.aboutDes[localization]}</p>
             </div>
           </Col>
-          <Col>
+          <Col xs={12} sm={12} md={12} lg={6} xxl={6}>
             <div className="about-bg">
               <img className="image" src={about_bk} alt="bk" />
             </div>

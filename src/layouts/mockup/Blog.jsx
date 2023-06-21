@@ -11,8 +11,8 @@ const BlogContainer = styled.div`
   width: 100%;
   height: 150vh;
   // justify-content: center;
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
   background: rgb(255, 255, 255);
 
   background: linear-gradient(
@@ -20,8 +20,14 @@ const BlogContainer = styled.div`
     rgba(255, 255, 255, 1) 74%,
     rgba(238, 251, 242, 1) 100%
   );
+  .row-full .text-heading {
+    width: 100% !important;
+  }
+  .row-full .detailed-section {
+    width: 37vw;
+  }
   .row-full {
-    width: 100%;
+    width: 54%;
     height: 220px;
     padding: 60px;
     .text-heading {
@@ -87,8 +93,10 @@ const BlogContainer = styled.div`
     }
   }
   .row-counter {
+    padding: 70px 0px;
     width: 100%;
-    height: 100%;
+    // height: 100%;
+    height: 45vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -109,6 +117,73 @@ const BlogContainer = styled.div`
       height: auto;
     }
   }
+  .shadow img {
+    height: 60vh;
+  }
+  .row-counter-col {
+    display: flex;
+    justify-content: center;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .shadow {
+      display: none;
+    }
+    height: 215vh;
+
+    .row-full {
+      padding: 45px 25px;
+    }
+
+    .row-full .text-heading {
+      border: none;
+    }
+    .row-full .text-heading h1 {
+      font-size: 26px;
+    }
+    .row-full .detailed-section {
+      padding: 0px;
+      width: 85%;
+      margin: auto;
+    }
+    .row-full .detailed-section p {
+      width: 292px;
+      text-align: justify;
+    }
+    .blog-section {
+      margin-top: 165px;
+    }
+    .row-blog {
+      padding: 30px;
+    }
+    .row-blog .blog-section {
+      overflow: hidden;
+    }
+
+    .row-blog .blog-section h4 {
+      margin-top: 40px;
+      padding: 0px;
+      font-size: 20px;
+      text-align: revert;
+    }
+    .main-section {
+      // margin-top:24vh;
+      display: none;
+    }
+    .row-blog {
+      height: auto;
+    }
+    .row-counter {
+      height: auto;
+    }
+    .blog-main {
+      margin: 0px !important;
+    }
+  }
+
+  @media only screen and (max-width: 376px) {
+    height: 245vh;
+  }
 `;
 
 const Blog = () => {
@@ -121,25 +196,30 @@ const Blog = () => {
   }, [localization]);
   return localization === "en" || localization === "ur" ? (
     <BlogContainer>
-      <Row className="row-full">
-        <Col className="text-heading">
-          <h5>{mockUp.enhance[localization]}</h5>
-          <h1>{mockUp.enhanceTitle[localization]}</h1>
+      <Row className="blog-main">
+        <Col className="row-full">
+          <Col className="text-heading" xs={12} sm={12} md={6} lg={6}>
+            <h5>{mockUp.enhance[localization]}</h5>
+            <h1>{mockUp.enhanceTitle[localization]}</h1>
+          </Col>
+          <Col className="detailed-section" xs={12} sm={12} md={6} lg={6}>
+            <p>{mockUp.enhanceDes[localization]}</p>
+          </Col>
         </Col>
-        <Col className="detailed-section">
-          <p>{mockUp.enhanceDes[localization]}</p>
-        </Col>
-      </Row>
-      <Row className="row-blog">
-        <Col className="main-section">{/* <img src={lab} alt="lab" /> */}</Col>
-        <Col className="blog-section">
-          <SlickSlider />
-          <h4>{mockUp.blogSec[localization]}</h4>
+        <Col className="row-blog">
+          {/* <Col className="main-section"><img src={lab} alt="lab" /></Col>   */}
+          <Col sm={12} md={6} lg={6} className="blog-section">
+            <SlickSlider />
+            <h4>{mockUp.blogSec[localization]}</h4>
+          </Col>
         </Col>
       </Row>
       <Row className="row-counter">
-        <Counter />
+        <Col className="row-counter-col" sm={12} md={12} lg={12}>
+          <Counter />
+        </Col>
       </Row>
+
       <div className="shadow">
         <img src={blog_shape} alt="shape" />
       </div>

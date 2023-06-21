@@ -7,11 +7,13 @@ import { FiInstagram} from 'react-icons/fi';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import "./Footer.css";
 
 export default function Footer() {
+
   return (
     <>
-      <section style={{ backgroundColor: 'rgb(32 158 46)',color: 'white',opacity: 0.83 }}>
+      <section style={{ backgroundColor: 'rgb(32 158 46)',color: 'white',opacity: 0.83 }} className='footer'>
         <hr/>
         <Container >
           <Row >
@@ -22,8 +24,8 @@ export default function Footer() {
               <p>
               Farming isn’t something that can be taught. Each plant tells its own story that has to be read repeatedly.
               </p>
-              <section >
-                <div>
+              <section  >
+                <div className='socials'>
                     <div style={{ width:"180px",marginLeft:'5px'}}>
                       <hr/>
                       <a href='#!' className='me-4 text-reset'>

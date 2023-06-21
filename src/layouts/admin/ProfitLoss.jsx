@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -56,6 +56,25 @@ const Container = styled.div`
     color: #333333;
     margin-top: 20px;
     font-weight: 500;
+  }
+  .con-end {
+    margin-top: 12px;
+  }
+  .titleMobile {
+    display: none;
+  }
+  .txt_field {
+    margin-bottom: 11px;
+  }
+  @media only screen and (max-width: 650px) {
+    margin-top: 66px;
+    .titleMobile {
+      display: block;
+    }
+    .btns.row {
+      margin: 0px;
+      display: block;
+    }
   }
 `;
 
@@ -508,6 +527,11 @@ const ProfitLoss = ({ updateState }) => {
   };
   return (
     <Container>
+      <Row className="titleMobile">
+        <Col>
+          <h4>Profit Loss</h4>
+        </Col>
+      </Row>
       <h4>Details</h4>
       <Accordion>
         <AccordionSummary
@@ -521,6 +545,7 @@ const ProfitLoss = ({ updateState }) => {
           <Row>
             <Col>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -534,9 +559,6 @@ const ProfitLoss = ({ updateState }) => {
                 }}
               />
             </Col>
-            <Col />
-            <Col />
-            <Col />
           </Row>
         </AccordionDetails>
       </Accordion>
@@ -553,8 +575,9 @@ const ProfitLoss = ({ updateState }) => {
         </AccordionSummary>
         <AccordionDetails>
           <Row className="row-mg">
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -565,12 +588,14 @@ const ProfitLoss = ({ updateState }) => {
                   handleInputs("cashPrice", e);
                 }}
                 placeholder="Rs. 00"
+                name={"cashPrice"}
                 variant="outlined"
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -585,8 +610,9 @@ const ProfitLoss = ({ updateState }) => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -604,8 +630,9 @@ const ProfitLoss = ({ updateState }) => {
             <Col />
           </Row>
           <Row>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -620,8 +647,9 @@ const ProfitLoss = ({ updateState }) => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -664,6 +692,7 @@ const ProfitLoss = ({ updateState }) => {
           <Row className="row-mg">
             <Col>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -676,29 +705,28 @@ const ProfitLoss = ({ updateState }) => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col />
-            <Col />
-            <Col />
           </Row>
 
           <h6>Fertilizers</h6>
           <Row className="row-mg">
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
                 label="Nitrogen"
                 type="number"
-                value={state.nitrogen}
-                onChange={(e) => handleInputs("nitrogen", e)}
+                value={nitrogen}
+                onChange={handleNitrogeneChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -711,8 +739,9 @@ const ProfitLoss = ({ updateState }) => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -728,8 +757,9 @@ const ProfitLoss = ({ updateState }) => {
             <Col />
           </Row>
           <Row>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -742,8 +772,9 @@ const ProfitLoss = ({ updateState }) => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -756,8 +787,9 @@ const ProfitLoss = ({ updateState }) => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -775,8 +807,9 @@ const ProfitLoss = ({ updateState }) => {
 
           <h6>Crop Chemicals</h6>
           <Row className="row-mg">
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -789,8 +822,9 @@ const ProfitLoss = ({ updateState }) => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -803,8 +837,9 @@ const ProfitLoss = ({ updateState }) => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -822,8 +857,9 @@ const ProfitLoss = ({ updateState }) => {
 
           <h6>Gas/Fuel</h6>
           <Row className="row-mg">
-            <Col>
+            <Col xm={12} sm={6} md={6} lg={6}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -836,15 +872,16 @@ const ProfitLoss = ({ updateState }) => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={6} lg={6}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
                 label="Drying Propane"
                 type="number"
-                value={state.propane}
-                onChange={(e) => handleInputs("propane", e)}
+                value={propane}
+                onChange={handlePropaneChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -856,8 +893,9 @@ const ProfitLoss = ({ updateState }) => {
 
           <h6>Repairs & Maintenance</h6>
           <Row className="row-mg">
-            <Col>
+            <Col xm={12} sm={6} md={6} lg={6}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -870,15 +908,16 @@ const ProfitLoss = ({ updateState }) => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={6} lg={6}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
                 label="Repair, Buildings"
                 type="number"
-                value={state.repairBuildings}
-                onChange={(e) => handleInputs("repairBuildings", e)}
+                value={repairBuildings}
+                onChange={handleRepairBuildingsChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -890,8 +929,9 @@ const ProfitLoss = ({ updateState }) => {
 
           <h6>Custom Hire</h6>
           <Row className="row-mg">
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 id="outlined-required"
                 size="small"
@@ -904,22 +944,24 @@ const ProfitLoss = ({ updateState }) => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
                 label="Equipment Hire"
                 type="number"
-                value={state.equipmentHire}
-                onChange={(e) => handleInputs("equipmentHire", e)}
+                value={equipmentHire}
+                onChange={handleEquipmentHireChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -937,8 +979,9 @@ const ProfitLoss = ({ updateState }) => {
 
           <h6>Irrigation</h6>
           <Row className="row-mg">
-            <Col>
+            <Col xm={12} sm={6} md={6} lg={6}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -951,15 +994,16 @@ const ProfitLoss = ({ updateState }) => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={6} lg={6}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
                 label="Fuel/Electricity"
                 type="number"
-                value={state.fuel}
-                onChange={(e) => handleInputs("fuel", e)}
+                value={fuel}
+                onChange={handleFuelChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -971,8 +1015,9 @@ const ProfitLoss = ({ updateState }) => {
 
           <h6>Others</h6>
           <Row className="row-mg">
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -985,8 +1030,9 @@ const ProfitLoss = ({ updateState }) => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -999,8 +1045,9 @@ const ProfitLoss = ({ updateState }) => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -1017,8 +1064,9 @@ const ProfitLoss = ({ updateState }) => {
           </Row>
 
           <Row className="row-mg">
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -1031,22 +1079,24 @@ const ProfitLoss = ({ updateState }) => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
                 label="Storage"
                 type="number"
-                value={state.storage}
-                onChange={(e) => handleInputs("storage", e)}
+                value={storage}
+                onChange={handleStorageChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -1063,8 +1113,9 @@ const ProfitLoss = ({ updateState }) => {
           </Row>
 
           <Row className="row-mg">
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -1077,8 +1128,9 @@ const ProfitLoss = ({ updateState }) => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -1091,8 +1143,9 @@ const ProfitLoss = ({ updateState }) => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -1139,8 +1192,9 @@ const ProfitLoss = ({ updateState }) => {
         </AccordionSummary>
         <AccordionDetails>
           <Row className="row-mg">
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -1153,22 +1207,24 @@ const ProfitLoss = ({ updateState }) => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
                 label="Real Estate Taxes"
                 type="number"
-                value={state.taxes}
-                onChange={(e) => handleInputs("taxes", e)}
+                value={taxes}
+                onChange={handleTaxesChange}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -1184,8 +1240,9 @@ const ProfitLoss = ({ updateState }) => {
             <Col />
           </Row>
           <Row>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -1198,8 +1255,9 @@ const ProfitLoss = ({ updateState }) => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -1212,8 +1270,9 @@ const ProfitLoss = ({ updateState }) => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -1269,8 +1328,9 @@ const ProfitLoss = ({ updateState }) => {
         </AccordionSummary>
         <AccordionDetails>
           <Row>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -1283,8 +1343,9 @@ const ProfitLoss = ({ updateState }) => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -1297,8 +1358,9 @@ const ProfitLoss = ({ updateState }) => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -1345,21 +1407,22 @@ const ProfitLoss = ({ updateState }) => {
       </Accordion>
 
       <div className="button-container">
-        <Row>
-          <Col className="con-end">
-            <CustomButton type="filled danger" width="160px" height="50px">
+        <Row className="btns">
+          <Col className="con-end" xm={6} sm={6} md={4} lg={3}>
+            <CustomButton type="danger" width="160px" height="50px">
               Cancel
             </CustomButton>
           </Col>
 
-          {/* <Col className="con-end">
+          {/* <Col className="con-end" xm={6} sm={6} md={4} lg={3}>
+           <Col className="con-end">
             <CustomButton type="linear-dr-blue" width="160px" height="50px">
               Update
             </CustomButton>
           </Col> */}
-          <Col className="con-end">
+          <Col className="con-end" xm={6} sm={6} md={4} lg={3}>
             <CustomButton
-              // onClick={handleSubmitClick}
+              // // onClick={handleSubmitClick}
               type="filled"
               width="160px"
               height="50px"

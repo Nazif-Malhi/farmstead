@@ -5,18 +5,19 @@ import { BarChart, DashboardCard, LineChart } from "../../components";
 import { FaArrowUp } from "react-icons/fa";
 
 const Container = styled.div`
-  width: 100%;
-  height: 100%;
+  // width: 100%;
+  // height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 35px 0px;
 
   .admin-card {
     display: flex;
     width: 100%;
     justify-content: space-around;
-    margin-top: 20px;
+    // margin-top: 290px;
     margin-bottom: 20px;
 
     padding: 0px 20px;
@@ -111,15 +112,50 @@ const Container = styled.div`
       }
     }
   }
+  .cdD{
+    margin: 10px 0px;
+  }
+  .line-chart{
+      margin-bottom: 40px;
+    }
+    .mobileTitle{
+      display:none;
+    }
+  @media only screen and (max-width: 650px) {
+    .admin-card{
+      display:flex;
+      flex-direction:column;
+      margin-top:50px;
+    }
+    .mobileTitle{
+      display:block;
+    }
+    
+  }
 `;
 const Dashboard = () => {
   return (
     <Container>
+    
       <div className="admin-card">
-        <DashboardCard />
-        <DashboardCard />
-        <DashboardCard />
-        <DashboardCard />
+      <Row className="mobileTitle">
+        <h5>Dashboard</h5>    
+      </Row>
+        <Row>
+          <Col className="cdD" xl={3} lg={6} md ={6} sm={6} xs={12}>
+            <DashboardCard />
+          </Col>
+          <Col className="cdD" xl={3} lg={6} md ={6} sm={6} xs={12}>
+            <DashboardCard />
+          </Col>
+          <Col className="cdD" xl={3} lg={6} md ={6} sm={6} xs={12}>
+            <DashboardCard />
+          </Col>
+          <Col className="cdD" xl={3} lg={6} md ={6} sm={6} xs={12}>
+            <DashboardCard />
+          </Col>
+        </Row>
+        
       </div>
       <Row className="sect">
         <Col className="line-chart">

@@ -89,6 +89,20 @@ const ProfileContainer = styled.div`
   .full_row {
     width: 100%;
   }
+  button.btn.btn-danger {
+    width: 160px;
+  }
+  @media only screen and (max-width: 650px) {
+    margin-top: 4rem;
+    .p_detail{
+      justify-content: center;
+    }
+    .container_profile {
+      margin: auto;
+      margin-top: 20px;
+  }
+  }
+
 `;
 
 const Profile = () => {
@@ -213,8 +227,11 @@ const Profile = () => {
     <>
       <ProfileContainer>
         <Row style={{ width: "100%", padding: "20px" }}>
+          <Col lg={12} md={12} sm ={12}>
+            <h5>Profile</h5>
+          </Col>
           <Col xs={12} md={4}>
-            <Row>
+            <Row className="p_detail">
               <div
                 className="container_profile"
                 style={{ padding: "20px 0px" }}
@@ -227,14 +244,30 @@ const Profile = () => {
                   <p>Contact Number: {contact}</p>
                 </div>
                 <div className="button-wrapper">
-                  <Button
-                    variant="outline-primary"
-                    onClick={() => {
-                      setEditModalShow(true);
-                    }}
-                  >
-                    Edit
-                  </Button>
+                  <Row>
+                    <Col>
+                      <Button
+                        variant="outline-primary"
+                        onClick={() => {
+                          setEditModalShow(true);
+                        }}
+                        style={{marginBottom: '12px'}}
+                      >
+                        Edit
+                      </Button>
+                    
+                    </Col>
+                    <Col>
+                      <Button
+                      variant="danger"
+                      onClick={() => {
+                        setModalShow(true);
+                      }}
+                    >
+                      Change Password
+                    </Button>
+                    </Col>
+                  </Row>
                   <EditProfileModal
                     show={editModalShow}
                     onHide={() => {
@@ -247,14 +280,7 @@ const Profile = () => {
                     centered
                   />
 
-                  <Button
-                    variant="danger"
-                    onClick={() => {
-                      setModalShow(true);
-                    }}
-                  >
-                    Change Password
-                  </Button>
+                  
                   <ChangePasswordModal
                     show={modalShow}
                     onHide={() => setModalShow(false)}
@@ -263,7 +289,7 @@ const Profile = () => {
                 </div>
               </div>
             </Row>
-            <Row>
+            <Row className="p_detail">
               <div className="container_profile card-slots">
                 <div className="slots">
                   <h6>Account Details</h6>

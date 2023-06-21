@@ -23,13 +23,14 @@ const Mockup = () => {
       <br/>
       <NavbarHeader2  />
       <Home  id="home_section" />
-      <TractorAnimation  />
+      <TractorAnimation  /> 
       <TestingArea  id="tests_section" />
+    
       <Focusing  id="focusing_section" />
       <Work id="work_section"  />
       <Blog  />
       <Aboutus id="aboutsection" />
-      <Footer/>
+      <Footer/> 
     </React.Fragment>
   );
 };

@@ -144,6 +144,39 @@ const TableContainer = styled.div`
       border-bottom-right-radius: 20px;
     }
   }
+  @media only screen and (max-width: 650px) {
+    width: 100vh;
+  
+  .container-table {
+    width: 100%;
+    height: 80%;
+    margin-top: 20px;
+
+  }
+  .container-table .table-body-content .col-body-full .last-col .edit {
+    // background: #43c234;
+    width: 35px;
+    margin-left: 0px;
+  }
+  .container-table .table-body-content .col-body-full .last-col .del {
+    // background: #ff0000;
+    width: 35px;
+  }
+  .col-body-full-start h6 {
+    font-size: .8rem;
+  }
+  .col-body-full p {
+    font-size: .8rem;
+  }
+  .col-full h6 {
+    font-size:.8rem;
+  }
+  .col-start h6 {
+    font-size:.8rem;
+  }
+}
+
+
 `;
 
 const Table = ({ col, row }) => {

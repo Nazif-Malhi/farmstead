@@ -4,6 +4,7 @@ import { GiReceiveMoney } from "react-icons/gi";
 
 const Container = styled.div`
   display: flex;
+  margin: auto;
   justify-content: space-around;
   align-items: center;
   width: 230px;

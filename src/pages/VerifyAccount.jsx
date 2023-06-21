@@ -20,6 +20,10 @@ const VerifyContainer = styled.div`
   h6 {
     margin-top: 20px;
   }
+  @media only screen and (max-width: 600px) {
+    padding: 0px 50px;
+    text-align: center;
+  }
 `;
 
 const VerifyAccount = () => {

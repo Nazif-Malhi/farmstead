@@ -12,6 +12,17 @@ const SliderContanier = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+
+  @media only screen and (max-width: 600px) {
+    width: auto;
+  .slick-dots {
+    margin: auto;
+    padding: 0px;
+    width: 300px;
+    padding-top:20px;
+    text-align: center;
+  }
+}
 `;
 export default class Responsive extends Component {
   render() {

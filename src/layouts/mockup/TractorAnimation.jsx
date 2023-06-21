@@ -22,6 +22,17 @@ const AnimContainer = styled.div`
           font-weight: 700;
           font-size: 46px;
   }
+
+  @media only screen and (max-width: 600px) {
+    
+    margin-top:50px !important;
+    
+    h1.tractor-h1 {
+      font-size: 30px !important;
+      margin-top:50px;
+    }
+
+  }
   .banner{
     background: #eefbf2;
     position:absolute;
@@ -58,6 +69,7 @@ const AnimContainer = styled.div`
       transform:translate(1200px);
     }
   }
+
 
 `;
 
