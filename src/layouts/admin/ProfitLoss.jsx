@@ -337,7 +337,7 @@ const ProfitLoss = ({ updateState }) => {
       handleUpdateInputs("totalAcres", income.acres);
       handleUpdateInputs("governmentPayment", income.govt_payments);
       handleUpdateInputs("seed", expense.seed);
-      handleUpdateInputs("nitrogen", expense.nitrogen);
+      handleUpdateInputs("c", expense.nitrogen);
       handleUpdateInputs("phosphorus", expense.phosphorus);
       handleUpdateInputs("potash", expense.potassium);
       handleUpdateInputs("sulfur", expense.sulfur);
@@ -717,8 +717,8 @@ const ProfitLoss = ({ updateState }) => {
                 id="outlined-required"
                 label="Nitrogen"
                 type="number"
-                value={nitrogen}
-                onChange={handleNitrogeneChange}
+                value={state.nitrogen}
+                onChange={(e) => handleInputs("nitrogen", e)}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -880,8 +880,10 @@ const ProfitLoss = ({ updateState }) => {
                 id="outlined-required"
                 label="Drying Propane"
                 type="number"
-                value={propane}
-                onChange={handlePropaneChange}
+                value={state.propane}
+                onChange={(e) => {
+                  handleInputs("propane", e);
+                }}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -916,8 +918,10 @@ const ProfitLoss = ({ updateState }) => {
                 id="outlined-required"
                 label="Repair, Buildings"
                 type="number"
-                value={repairBuildings}
-                onChange={handleRepairBuildingsChange}
+                value={state.repairBuildings}
+                onChange={(e) => {
+                  handleInputs("repairBuildings", e);
+                }}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -952,8 +956,8 @@ const ProfitLoss = ({ updateState }) => {
                 id="outlined-required"
                 label="Equipment Hire"
                 type="number"
-                value={equipmentHire}
-                onChange={handleEquipmentHireChange}
+                value={state.equipmentHire}
+                onChange={(e) => handleInputs("equipmentHire", e)}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -1002,8 +1006,8 @@ const ProfitLoss = ({ updateState }) => {
                 id="outlined-required"
                 label="Fuel/Electricity"
                 type="number"
-                value={fuel}
-                onChange={handleFuelChange}
+                value={state.fuel}
+                onChange={(e) => handleInputs("fuel", e)}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -1087,8 +1091,8 @@ const ProfitLoss = ({ updateState }) => {
                 id="outlined-required"
                 label="Storage"
                 type="number"
-                value={storage}
-                onChange={handleStorageChange}
+                value={state.storage}
+                onChange={(e) => handleInputs("storage", e)}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}
@@ -1215,8 +1219,8 @@ const ProfitLoss = ({ updateState }) => {
                 id="outlined-required"
                 label="Real Estate Taxes"
                 type="number"
-                value={taxes}
-                onChange={handleTaxesChange}
+                value={state.taxes}
+                onChange={(e) => handleInputs("taxes", e)}
                 placeholder="Rs. 00"
                 variant="outlined"
                 style={{ width: "100%" }}

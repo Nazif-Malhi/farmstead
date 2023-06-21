@@ -118,47 +118,48 @@ function NavScrollExample(props) {
               {/* <Nav.Link href="#" disabled className="nav-links">
               Link
             </Nav.Link> */}
-          </Nav>
-          <div className="form_login">
-          <Form
-            className="d-flex"
-            style={{ width: "355px", justifyContent: "space-around" }}
-          >
-            {/* <Button  variant="outline-success" className='signin'>Sign In</Button>
+            </Nav>
+            <div className="form_login">
+              <Form
+                className="d-flex"
+                style={{ width: "355px", justifyContent: "space-around" }}
+              >
+                {/* <Button  variant="outline-success" className='signin'>Sign In</Button>
             <Button variant="success" className='createAccount'>Create New Account</Button> */}
-            <CustomButton
-              type="outline border-fill"
-              width={"100px"}
-              height="45px"
-              style={{
-                // color: '#209e2e ',
-                fontWeight: "600",
-                letterSpacing: ".7px",
-              }}
-              onClick={() => {
-                route_to("authentication/login");
-              }}
-            >
-              Sign In
-            </CustomButton>
-            <CustomButton
-              type="filled"
-              width={"200px"}
-              height="45px"
-              style={{
-                fontWeight: "600",
-                letterSpacing: ".7px",
-              }}
-              onClick={() => {
-                route_to("authentication/signup");
-              }}
-            >
-              Create New Account
-            </CustomButton>
-          </Form>
-          </div>
-        </Navbar.Collapse>
-      </Container>
+                <CustomButton
+                  type="outline border-fill"
+                  width={"100px"}
+                  height="45px"
+                  style={{
+                    // color: '#209e2e ',
+                    fontWeight: "600",
+                    letterSpacing: ".7px",
+                  }}
+                  onClick={() => {
+                    route_to("authentication/login");
+                  }}
+                >
+                  Sign In
+                </CustomButton>
+                <CustomButton
+                  type="filled"
+                  width={"200px"}
+                  height="45px"
+                  style={{
+                    fontWeight: "600",
+                    letterSpacing: ".7px",
+                  }}
+                  onClick={() => {
+                    route_to("authentication/signup");
+                  }}
+                >
+                  Create New Account
+                </CustomButton>
+              </Form>
+            </div>
+          </Navbar.Collapse>
+        </Container>
+      ) : null}
     </Navbar>
   );
 }
