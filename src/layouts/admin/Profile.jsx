@@ -226,7 +226,7 @@ const Profile = () => {
   return (
     <>
       <ProfileContainer>
-        <Row style={{ width: "100%", padding: "20px" }}>
+        <Row style={{  padding: "20px" }}>
           <Col lg={12} md={12} sm ={12}>
             <h5>Profile</h5>
           </Col>

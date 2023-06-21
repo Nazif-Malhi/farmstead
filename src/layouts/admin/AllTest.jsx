@@ -29,6 +29,18 @@ const Wrapper = styled.div`
       color: white;
     }
   }
+  .titleMobile {
+    display: none;
+  }
+  @media only screen and (max-width: 650px) {
+    margin-top: 86px;
+    .titleMobile {
+      display: block;
+    }
+    .card {
+      margin: 15px auto;
+    }
+  }
 `;
 
 const AllTest = () => {
@@ -56,6 +68,11 @@ const AllTest = () => {
   };
   return (
     <Wrapper>
+       <Row className="titleMobile">
+        <Col>
+          <h4>All Tests</h4>
+        </Col>
+      </Row>
       <Row style={{ width: "100%", marginTop: "40px" }}>
         <Col>
           <div className="card" onClick={() => onClickRoute(1)}>
@@ -79,7 +96,7 @@ const AllTest = () => {
             Crop Recomendation (Simple)
           </div>
         </Col>
-        <Col></Col>
+        {/* <Col></Col> */}
         <Col>
           <div className="card" onClick={() => onClickRoute(5)}>
             Crop Recomendation (Advance)

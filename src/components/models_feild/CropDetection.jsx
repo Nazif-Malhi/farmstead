@@ -40,6 +40,11 @@ const Upload = styled.div`
   .buttonadd {
     width: 40%;
   }
+  @media only screen and (max-width: 500px) {
+    .upload > div{
+      margin-top: 10px!important;
+  }
+   }
 `;
 const PestDetection = () => {
   const { crop_disease, crop_disease_error, loading } = useSelector(
@@ -153,16 +158,19 @@ const PestDetection = () => {
                   onClick={() => {
                     setImg();
                   }}
+                  style={{marginTop:"5px"}}
                 >
                   Cancel
                 </CustomButton>
               </Col>
-              <Col>
+              <Col className="upload">
                 <CustomButton
                   type="filled"
                   width="130px"
                   height="40px"
                   onClick={onButtonClick}
+                  
+                  style={{marginTop:"5px"}}
                 >
                   Click to upload
                 </CustomButton>

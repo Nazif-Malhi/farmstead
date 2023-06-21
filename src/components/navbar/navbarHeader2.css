@@ -22,12 +22,13 @@
     }
     .me-auto.nav-container.navbar-nav {
         text-align: center;
+        max-height: 250px  !important;
     }
 
     div#navbarScroll {
         background-color:#ffffff;
         margin-top: 12px;
-        height: 350px;
+        height: 360px;
     }
 
     div#navbarScroll form.d-flex {
@@ -39,7 +40,15 @@
         align-items: center;
         display: flex;
         justify-content: center;
-        width: 210px;
+        /* width: 210px; */
         margin: auto;
+    }
+    .nav-links {
+        margin: 3px 40px !important;
+    }
+
+ .sign_in{   width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
     }
 }

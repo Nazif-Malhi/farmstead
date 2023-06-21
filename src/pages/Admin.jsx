@@ -35,6 +35,7 @@ const Container = styled.div`
   @media only screen and (max-width: 650px) {
     .main {
       width: 100% !important;
+      height: auto !important;
     }
   }
 `;

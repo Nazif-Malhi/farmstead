@@ -57,14 +57,17 @@ function SideNavbarMobile(props) {
             <Nav.Link href="dashboard" className="nav-links">
               Dashboard
             </Nav.Link>
+            <Nav.Link href="all-tests" className="nav-links">
+              Perform Tests
+            </Nav.Link>
             <Nav.Link href="test-results" className="nav-links">
               Test Results
             </Nav.Link>
             <Nav.Link href="profit-loss" className="nav-links">
-              Profit & Loss
+              Crop Budget
             </Nav.Link>
             <Nav.Link href="reports" className="nav-links">
-              Reports
+              All Budgets
             </Nav.Link>
             <hr/>
             <Nav.Link href="reports" className="nav-links">

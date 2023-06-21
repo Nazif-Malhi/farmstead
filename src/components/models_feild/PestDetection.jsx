@@ -148,6 +148,7 @@ const PestDetection = () => {
                     onClick={() => {
                       setImg();
                     }}
+                  style={{marginTop:"5px"}}
                   >
                     Cancel
                   </CustomButton>
@@ -158,6 +159,7 @@ const PestDetection = () => {
                     width="130px"
                     height="40px"
                     onClick={onButtonClick}
+                  style={{marginTop:"5px"}}
                   >
                     Click to upload
                   </CustomButton>

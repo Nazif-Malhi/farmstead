@@ -76,6 +76,9 @@ const Container = styled.div`
       display: block;
     }
   }
+  .btns.row {
+    width: 575px;
+}
 `;
 
 const ProfitLoss = ({ updateState }) => {
@@ -1413,7 +1416,9 @@ const ProfitLoss = ({ updateState }) => {
       <div className="button-container">
         <Row className="btns">
           <Col className="con-end" xm={6} sm={6} md={4} lg={3}>
-            <CustomButton type="danger" width="160px" height="50px">
+            <CustomButton type="danger" width="160px" height="50px" style={{
+              borderRadius: '10px'
+            }}>
               Cancel
             </CustomButton>
           </Col>

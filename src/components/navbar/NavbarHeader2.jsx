@@ -128,12 +128,14 @@ function NavScrollExample(props) {
             <Button variant="success" className='createAccount'>Create New Account</Button> */}
                 <CustomButton
                   type="outline border-fill"
-                  width={"100px"}
+                  width={"100%"}
                   height="45px"
                   style={{
                     // color: '#209e2e ',
                     fontWeight: "600",
                     letterSpacing: ".7px",
+                    marginTop:"5px",
+                    marginBottom:"5px"                    ,
                   }}
                   onClick={() => {
                     route_to("authentication/login");
@@ -143,7 +145,7 @@ function NavScrollExample(props) {
                 </CustomButton>
                 <CustomButton
                   type="filled"
-                  width={"200px"}
+                  width={"100%"}
                   height="45px"
                   style={{
                     fontWeight: "600",
