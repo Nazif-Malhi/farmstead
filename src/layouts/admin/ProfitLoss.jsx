@@ -55,6 +55,25 @@ const Container = styled.div`
     margin-top: 20px;
     font-weight: 500;
   }
+  .con-end{
+    margin-top: 12px;
+  }
+  .titleMobile{
+    display:none;
+  }
+  .txt_field {
+    margin-bottom: 11px;
+  }
+  @media only screen and (max-width: 650px) {
+    margin-top:66px;
+    .titleMobile{
+      display:block;
+    } 
+    .btns.row {
+      margin: 0px;
+      display: block;
+    }
+  }
 `;
 
 const ProfitLoss = () => {
@@ -467,6 +486,11 @@ const ProfitLoss = () => {
 
   return (
     <Container>
+      <Row className="titleMobile">
+        <Col>
+          <h4>Profit Loss</h4>
+        </Col>
+      </Row>
       <h4>Details</h4>
       <Accordion>
         <AccordionSummary
@@ -478,8 +502,9 @@ const ProfitLoss = () => {
         </AccordionSummary>
         <AccordionDetails>
           <Row>
-            <Col>
+            <Col >
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -489,9 +514,6 @@ const ProfitLoss = () => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col />
-            <Col />
-            <Col />
           </Row>
         </AccordionDetails>
       </Accordion>
@@ -508,8 +530,9 @@ const ProfitLoss = () => {
         </AccordionSummary>
         <AccordionDetails>
           <Row className="row-mg">
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -527,8 +550,9 @@ const ProfitLoss = () => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col  xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -546,8 +570,9 @@ const ProfitLoss = () => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col  xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -568,8 +593,9 @@ const ProfitLoss = () => {
             <Col />
           </Row>
           <Row>
-            <Col>
+            <Col  xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -587,8 +613,9 @@ const ProfitLoss = () => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col  xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -634,6 +661,7 @@ const ProfitLoss = () => {
           <Row className="row-mg">
             <Col>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -646,15 +674,13 @@ const ProfitLoss = () => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col />
-            <Col />
-            <Col />
           </Row>
 
           <h6>Fertilizers</h6>
           <Row className="row-mg">
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -667,8 +693,9 @@ const ProfitLoss = () => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -681,8 +708,9 @@ const ProfitLoss = () => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -698,8 +726,9 @@ const ProfitLoss = () => {
             <Col />
           </Row>
           <Row>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -712,8 +741,9 @@ const ProfitLoss = () => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -726,8 +756,9 @@ const ProfitLoss = () => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -745,8 +776,9 @@ const ProfitLoss = () => {
 
           <h6>Crop Chemicals</h6>
           <Row className="row-mg">
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -759,8 +791,9 @@ const ProfitLoss = () => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -773,8 +806,9 @@ const ProfitLoss = () => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -792,8 +826,9 @@ const ProfitLoss = () => {
 
           <h6>Gas/Fuel</h6>
           <Row className="row-mg">
-            <Col>
+            <Col xm={12} sm={6} md={6} lg={6}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -806,8 +841,9 @@ const ProfitLoss = () => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={6} lg={6}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -826,8 +862,9 @@ const ProfitLoss = () => {
 
           <h6>Repairs & Maintenance</h6>
           <Row className="row-mg">
-            <Col>
+            <Col xm={12} sm={6} md={6} lg={6}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -840,8 +877,9 @@ const ProfitLoss = () => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={6} lg={6}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -860,8 +898,9 @@ const ProfitLoss = () => {
 
           <h6>Custom Hire</h6>
           <Row className="row-mg">
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 id="outlined-required"
                 size="small"
@@ -874,8 +913,9 @@ const ProfitLoss = () => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -888,8 +928,9 @@ const ProfitLoss = () => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -907,8 +948,9 @@ const ProfitLoss = () => {
 
           <h6>Irrigation</h6>
           <Row className="row-mg">
-            <Col>
+            <Col xm={12} sm={6} md={6} lg={6}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -921,8 +963,9 @@ const ProfitLoss = () => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={6} lg={6}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -941,8 +984,9 @@ const ProfitLoss = () => {
 
           <h6>Others</h6>
           <Row className="row-mg">
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -955,8 +999,9 @@ const ProfitLoss = () => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -969,8 +1014,9 @@ const ProfitLoss = () => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -987,8 +1033,9 @@ const ProfitLoss = () => {
           </Row>
 
           <Row className="row-mg">
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -1001,8 +1048,9 @@ const ProfitLoss = () => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -1014,9 +1062,10 @@ const ProfitLoss = () => {
                 variant="outlined"
                 style={{ width: "100%" }}
               />
-            </Col>
-            <Col>
+            </Col >
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -1033,8 +1082,9 @@ const ProfitLoss = () => {
           </Row>
 
           <Row className="row-mg">
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -1047,8 +1097,9 @@ const ProfitLoss = () => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -1061,8 +1112,9 @@ const ProfitLoss = () => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -1108,8 +1160,9 @@ const ProfitLoss = () => {
         </AccordionSummary>
         <AccordionDetails>
           <Row className="row-mg">
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -1122,8 +1175,9 @@ const ProfitLoss = () => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -1136,8 +1190,9 @@ const ProfitLoss = () => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -1153,8 +1208,9 @@ const ProfitLoss = () => {
             <Col />
           </Row>
           <Row>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -1167,8 +1223,9 @@ const ProfitLoss = () => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -1181,8 +1238,9 @@ const ProfitLoss = () => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -1238,8 +1296,9 @@ const ProfitLoss = () => {
         </AccordionSummary>
         <AccordionDetails>
           <Row>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -1252,8 +1311,9 @@ const ProfitLoss = () => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -1266,8 +1326,9 @@ const ProfitLoss = () => {
                 style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col xm={12} sm={6} md={4} lg={4}>
               <TextField
+                className="txt_field"
                 required
                 size="small"
                 id="outlined-required"
@@ -1314,14 +1375,14 @@ const ProfitLoss = () => {
       </Accordion>
 
       <div className="button-container">
-        <Row>
-          <Col className="con-end">
+        <Row className="btns">
+          <Col className="con-end" xm={6} sm={6} md={4} lg={3}>
             <CustomButton type="filled" width="160px" height="50px">
               Cancel
             </CustomButton>
           </Col>
 
-          <Col className="con-end">
+          <Col className="con-end" xm={6} sm={6} md={4} lg={3}>
             <CustomButton
               // onClick={handleSubmitClick}
               type="filled"
@@ -1332,13 +1393,13 @@ const ProfitLoss = () => {
             </CustomButton>
           </Col>
 
-          <Col className="con-end">
+          <Col className="con-end" xm={6} sm={6} md={4} lg={3}>
             <CustomButton type="filled" width="160px" height="50px">
               Update
             </CustomButton>
           </Col>
 
-          <Col className="con-end">
+          <Col className="con-end" xm={6} sm={6} md={4} lg={3}>
             <CustomButton type="filled" width="160px" height="50px">
               Save
             </CustomButton>
