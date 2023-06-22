@@ -108,8 +108,8 @@ const AllTest = () => {
           </div>
         </Col>
       </Row>
-      <Row style={{ width: "100%", marginTop: "40px" }}>
-        <Col className="cropcard">
+      <Row style={{ width: "100%", marginTop: "40px" }} >
+        <Col >
           <div className="card" onClick={() => onClickRoute(4)}>
             Crop Recomendation (Simple)
           </div>
@@ -124,7 +124,7 @@ const AllTest = () => {
             Calendar
           </a>
         </Col>
-        <Col className="cropcard">
+        <Col >
           <div className="card" onClick={() => onClickRoute(5)}>
             Crop Recomendation (Advance)
           </div>

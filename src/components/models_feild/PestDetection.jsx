@@ -8,6 +8,7 @@ import { StyledContainer, Wrapper } from "./container";
 
 import { useDispatch, useSelector } from "react-redux";
 import { add_test, get_pest, pest_clear_errors } from "../../store";
+import { useNavigate } from 'react-router-dom';
 
 const Upload = styled.div`
   border-radius: 7px;
@@ -36,8 +37,13 @@ const Upload = styled.div`
   .buttonadd {
     width: 40%;
   }
+  .result-pesti {
+    text-align: initial !important;
+  }
 `;
+
 const PestDetection = () => {
+  const navigate = useNavigate();
   const { pest, pest_error, loading } = useSelector((state) => state.pest);
   const dispatch = useDispatch();
 
@@ -89,6 +95,126 @@ const PestDetection = () => {
     }
   };
 
+  // const pestName = "Stem Borer";
+const pestData = {
+  "aphids": {
+    "results": [
+      "Neem oil",
+      "Insecticidal soap",
+      "Pyrethroids"
+    ],
+    "remedies": [
+      "Spray a mixture of water and dish soap on affected plants",
+      "Introduce beneficial insects like ladybugs or 1lacewings",
+      "Use reflective mulch to deter aphids"
+    ]
+  },
+  "armyworm": {
+    "results": [
+      "Bacillus thuringiensis (Bt)",
+      "Pyrethroids"
+    ],
+    "remedies": [
+      "Handpick and destroy armyworms",
+      "Promote natural predators like birds",
+      "Plant trap crops to divert armyworms away"
+    ]
+  },
+  "beetle": {
+    "results": [
+      "Carbaryl",
+      "Pyrethroids",
+      "Neem oil"
+    ],
+    "remedies": [
+      "Handpick and remove beetles",
+      "Create physical barriers like nets or row covers",
+      "Introduce beneficial nematodes to control larvae"
+    ]
+  },
+  "bollworm": {
+    "results": [
+      "Bacillus thuringiensis (Bt)",
+      "Spinosad"
+    ],
+    "remedies": [
+      "Remove and destroy infested plant parts",
+      "Encourage natural enemies like parasitic wasps",
+      "Apply sticky traps to catch adult bollworms"
+    ]
+  },
+  "grasshopper": {
+    "results": [
+      "Carbaryl",
+      "Pyrethroids",
+      "Neem oil"
+    ],
+    "remedies": [
+      "Handpick and remove grasshoppers",
+      "Create physical barriers like fences or netting",
+      "Apply diatomaceous earth around affected plants"
+    ]
+  },
+  "mites ": {
+    "results": [
+      "Insecticidal soap",
+      "Neem oil",
+      "Horticultural oil"
+    ],
+    "remedies": [
+      "Spray plants with a strong stream of water to dislodge mites",
+      "Maintain proper plant hygiene",
+      "Encourage predatory mites and insects"
+    ]
+  },
+  "mosquito ": {
+    "results": [
+      "Pyrethroids",
+      "Mosquitorepellents"
+    ],
+    "remedies": [
+      "Remove standing water where mosquitoes breed",
+      "Use mosquito netting or screens",
+      "Plant mosquito-repellent plants like citronella"
+    ]
+  },
+  "sawfly": {
+    "results": [
+      "Pyrethroids, Spinosad",
+      "Horticultural oil"
+    ],
+    "remedies": [
+      "Handpick and destroy sawfly larvae",
+      "Encourage beneficial insects like parasitic wasps",
+      "Remove and destroy infested plant parts"
+    ]
+  },
+  "stem_borer": {
+    "results": [
+      "Bacillus thuringiensis (Bt)",
+      "Carbaryl, Pyrethroids"
+    ],
+    "remedies": [
+      "Remove and destroy infested plant parts",
+      "Practice crop rotation to break the borer lifecycle",
+      "Apply pheromone traps to monitor and control populations"
+    ]
+  }
+};
+
+const findPesticides=pest =>{
+  if (pestData.hasOwnProperty(pest)) {
+    const { results, remedies } = pestData[pest];
+    return {"result":results,"remedies":  remedies};
+  } else {
+    return`Pest "${pest}" not found.`;
+  }
+
+}
+
+const handleRouteClick = () => {
+  navigate('/farmstead/admin/dashboard');
+};
   return (
     <StyledContainer>
       <Wrapper>
@@ -98,7 +224,32 @@ const PestDetection = () => {
         {
         ansState ? (
           <>
+            {/* <h6>{pest["result"]}</h6> */}
+            
             <h6>{pest["result"]}</h6>
+            {
+              findPesticides(pest["result"])['result'] ==undefined ? 
+                <p>
+                   { findPesticides(pest["result"])}     
+                </p>
+                :
+                <div className="result-pesti" style={{textAlign:"left"}}>
+                <h6 className="title">Pesticides :</h6>
+                {findPesticides(pest["result"])['result'].map(val=>{
+                  return (
+                    <p>- {val}</p>
+                  )
+                })
+                }
+
+                <h6 className="title">Home Remedies :</h6>
+                {findPesticides(pest["result"])['remedies'].map(val=>{
+                  return (
+                    <p>- {val}</p>
+                  );
+                })}
+                </div>
+            }
             <Row className="center-row btn">
               <CustomButton
                 type="outline border-fill"
@@ -147,11 +298,10 @@ const PestDetection = () => {
                     type="outline border-fill"
                     width="130px"
                     height="40px"
-                    onClick={() => {
-                      setImg();
-                    }}
+                    onClick={handleRouteClick}
                   style={{marginTop:"5px"}}
                   >
+                    
                     Cancel
                   </CustomButton>
                 </Col>

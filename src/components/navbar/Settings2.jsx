@@ -278,7 +278,7 @@ function Settings2(props) {
                     <h5>Other</h5>
                     <div className="linear-gr green">Contact Us</div>
                     <div className="linear-gr blue">About Us</div>
-                    <div className="linear-gr outlined">View Documentation</div>
+                    {/* <div className="linear-gr outlined">View Documentation</div> */}
                 </Row>
                 </Row>
             </div>
