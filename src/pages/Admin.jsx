@@ -84,11 +84,11 @@ const Admin = () => {
       <SideNavbarMobile className="sideMenuMobile" />
       <div className="main">
         <UpperNavbar />
-        <Settings handleState={active} />
+      <Settings handleState={active} />
         <Routes>
           {user_data.user_name && (
             <React.Fragment>
-              <Route path="dashboard" element={<Dashboard />} />
+              {/* <Route path="dashboard" element={<Dashboard />} /> */}
               <Route path="test-results" element={<TestResults />} />
               <Route
                 path="reports"
