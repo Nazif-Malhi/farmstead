@@ -1,1 +1,1 @@
-release: yarn install --force
+release: npm install --force
