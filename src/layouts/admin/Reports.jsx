@@ -23,19 +23,30 @@ const TestContainer = styled.div`
   
   white-space: nowrap;
   }
+  .title{
+    display:none !important;
+  }
   @media only screen and (max-width: 650px){
     // width: 131%;
+    
+    height: 90vh;
     width:100%;
     margin-top: 82px !important;
     margin-left: 20px !important;
    .container {
       // padding: 10px !important;
-      width: 67vh;
+      // width: 67vh;
       // width: 131%;
       overflow-x: auto;
       overflow-y: hidden;
       margin-top: -95px;
+      height: 105vh;
   }
+  
+  .title{
+    display:inherit !important;
+  }
+}
 `;
 
 const Reports = ({ handleUpdate }) => {
@@ -60,7 +71,7 @@ const Reports = ({ handleUpdate }) => {
   console.log(crop_budget);
   return (
     <TestContainer>
-      <h4>Budgets</h4>
+      <h4 className="title">Reports</h4>
       <div className="container">
         {loading ? (
           <p>loading</p>
