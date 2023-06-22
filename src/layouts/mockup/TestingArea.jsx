@@ -13,14 +13,13 @@ const TestingContainer = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   @media only screen and (max-width: 600px) {
-   display: flex;
-   flex-direction: column;
-   flex-wrap: wrap-reverse;
-   margin: 0px 0px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap-reverse;
+    margin: 0px 0px;
     width: auto;
     height: 290vh;
-    
- }
+  }
 `;
 
 const TestingArea = () => {
@@ -35,7 +34,7 @@ const TestingArea = () => {
     console.log();
   }, [localization]);
   return localization === "en" || localization === "ur" ? (
-    <TestingContainer>
+    <TestingContainer id="service">
       {_testdata.map((items, index) => {
         return (
           <TestingCards

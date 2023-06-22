@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 // import Button from 'react-bootstrap/Button';
-import Offcanvas from 'react-bootstrap/Offcanvas';
+import Offcanvas from "react-bootstrap/Offcanvas";
 
 //////////
 // import styled from "styled-components";
@@ -8,6 +8,7 @@ import { Row, Col } from "react-bootstrap";
 // import { MdCancel } from "react-icons/md";
 import Switch from "@mui/material/Switch";
 import "./settings.css";
+import { useNavigate } from "react-router-dom";
 
 // const Container = styled.div`
 
@@ -15,7 +16,7 @@ import "./settings.css";
 //     width: 350px;
 //     font-family: "Rubik", sans-serif;
 //     font-style: normal;
-    
+
 //     height: 100%;
 //     display: flex;
 //     flex-direction: column;
@@ -136,7 +137,7 @@ import "./settings.css";
 //     // padding: 20px;
 //     backdrop-filter: saturate(200%) blur(30px);
 //     background-color: #fffc !important;
-    
+
 //     position:absolute;
 //     right: 0;
 //     top: 0;
@@ -177,7 +178,7 @@ import "./settings.css";
 //       .horizontal-dark {
 //         display: flex;
 //         width: 100%;
-        
+
 //         background-color: transparent;
 //         height: 2px;
 //         margin: 1rem 0;
@@ -228,28 +229,33 @@ import "./settings.css";
 //   }
 // `;
 
-
 ////////
 
-
 function Settings2(props) {
-
-
+  const router = useNavigate();
   return (
     <>
-      <Offcanvas show={props.show } placement='end' onHide={props.handleCloseSettings}  >
+      <Offcanvas
+        show={props.show}
+        placement="end"
+        onHide={props.handleCloseSettings}
+      >
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title><h4>Settings</h4></Offcanvas.Title>
+          <Offcanvas.Title>
+            <h4>Settings</h4>
+          </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-        {/* <Container> */}
-            {/* <div className={`${active ? "show" : "hide"}`} style={{zIndex:"99" }}> */}
-            <div style={{zIndex:"99" }}>
-                <Row className={`"head" `}>
-                <Col>
-                <div style={{display: "flex",justifyContent: "space-between"}}>
-                    {/* <h4>Settings</h4>  */}
-                    {/* <MdCancel
+          {/* <Container> */}
+          {/* <div className={`${active ? "show" : "hide"}`} style={{zIndex:"99" }}> */}
+          <div style={{ zIndex: "99" }}>
+            <Row className={`"head" `}>
+              <Col>
+                <div
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
+                  {/* <h4>Settings</h4>  */}
+                  {/* <MdCancel
                     fontSize={"1.5rem"}
                     color="#344767"
                     onClick={() => {
@@ -257,32 +263,30 @@ function Settings2(props) {
                     }}
                     className="cross"
                     /> */}
-
                 </div>
-                    <h6 style={{width:"180px"}}>Configure Settings</h6>
-                </Col>
-                
+                <h6 style={{ width: "180px" }}>Configure Settings</h6>
+              </Col>
+            </Row>
+            <Row className="body">
+              <Col className="language">
+                <h5>Select Language</h5>
+                <Row className="setting">
+                  <Switch defaultChecked color="secondary" />
+                  <p>
+                    <b>Urdu</b>
+                  </p>
                 </Row>
-                <Row className="body">
-                <Col className="language">
-                    <h5>Select Language</h5>
-                    <Row className="setting">
-                    <Switch defaultChecked color="secondary" />
-                    <p>
-                        <b>Urdu</b>
-                    </p>
-                    </Row>
-                </Col>
-                <hr className="horizontal-dark" />
-                <Row className="about">
-                    <h5>Other</h5>
-                    <div className="linear-gr green">Contact Us</div>
-                    <div className="linear-gr blue">About Us</div>
-                    {/* <div className="linear-gr outlined">View Documentation</div> */}
-                </Row>
-                </Row>
-            </div>
-            {/* </Container> */}
+              </Col>
+              <hr className="horizontal-dark" />
+              <Row className="about">
+                <h5>Other</h5>
+                <div className="linear-gr green">Contact Us</div>
+                <div className="linear-gr blue">About Us</div>
+                <div className="linear-gr outlined">View Documentation</div>
+              </Row>
+            </Row>
+          </div>
+          {/* </Container> */}
         </Offcanvas.Body>
       </Offcanvas>
     </>

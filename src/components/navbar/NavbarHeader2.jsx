@@ -53,7 +53,13 @@ function NavScrollExample(props) {
   //     setCheckState(false);
   //   }
   // };
-
+  const handleLang = () => {
+    if (localization === "en") {
+      localStorage.setItem("lang", "ur");
+    } else if (localization === "ur") {
+      localStorage.setItem("lang", "en");
+    }
+  };
   return (
     <Navbar
       fixed="top"
@@ -84,27 +90,31 @@ function NavScrollExample(props) {
               className="me-auto nav-container"
               style={{ maxHeight: "100px" }}
             >
-              <Nav.Link href="#action1" className="nav-links">
+              <Nav.Link href="#home" className="nav-links">
                 {mockupNavbar.home[localization]}
               </Nav.Link>
-              <Nav.Link className="nav-links">
+              <Nav.Link href="#service" className="nav-links">
                 {mockupNavbar.services[localization]}
               </Nav.Link>
-              <Nav.Link href="#action3" className="nav-links">
+              {/* <Nav.Link href="#action3" className="nav-links">
                 {mockupNavbar.pricing[localization]}
-                {/* {mockupNavbar.pricing[localization.current]} */}
-              </Nav.Link>
-              <Nav.Link
+                {mockupNavbar.pricing[localization.current]}
+              </Nav.Link> */}
+              {/* <Nav.Link
                 //  href="#action4"
                 className="nav-links"
-              >
-                <Link to="aboutsection" spy={true} smooth={true}>
-                  {mockupNavbar.about[localization]}
-                </Link>
-              </Nav.Link>
-              <Nav.Link href="#action5" className="nav-links">
+              > */}
+              <Nav.Link href="#blog" className="nav-links">
                 {mockupNavbar.blog[localization]}
               </Nav.Link>
+              {/* <Link href="#about" spy={true} smooth={true}>
+                  {mockupNavbar.about[localization]}
+                </Link> */}
+              {/* </Nav.Link> */}
+              <Nav.Link href="#about" className="nav-links">
+                {mockupNavbar.about[localization]}
+              </Nav.Link>
+
               {/* <NavDropdown title="Link" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action4">
@@ -126,6 +136,7 @@ function NavScrollExample(props) {
               >
                 {/* <Button  variant="outline-success" className='signin'>Sign In</Button>
             <Button variant="success" className='createAccount'>Create New Account</Button> */}
+
                 <CustomButton
                   type="outline border-fill"
                   width={"100%"}
@@ -134,8 +145,29 @@ function NavScrollExample(props) {
                     // color: '#209e2e ',
                     fontWeight: "600",
                     letterSpacing: ".7px",
-                    marginTop:"5px",
-                    marginBottom:"5px"                    ,
+                    marginTop: "5px",
+                    marginBottom: "5px",
+                  }}
+                  onClick={() => {
+                    handleLang();
+                  }}
+                >
+                  {localization === "en"
+                    ? "Urdu"
+                    : localization === "ur"
+                    ? "English"
+                    : null}
+                </CustomButton>
+                <CustomButton
+                  type="outline border-fill"
+                  width={"100%"}
+                  height="45px"
+                  style={{
+                    // color: '#209e2e ',
+                    fontWeight: "600",
+                    letterSpacing: ".7px",
+                    marginTop: "5px",
+                    marginBottom: "5px",
                   }}
                   onClick={() => {
                     route_to("authentication/login");

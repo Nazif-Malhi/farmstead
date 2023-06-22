@@ -5,7 +5,8 @@ import {
   TestResults,
   Profile,
   ProfitLoss,
-  AllTest
+  AllTest,
+  ContactUs,
 } from "../layouts/admin";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import {
@@ -19,6 +20,9 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { get_user, user_data_clearErrors } from "../store";
 import { isHandled_AuthToken, set_authtoken_toHeader } from "../utils";
+import Aboutus from "../layouts/mockup/Aboutus";
+import Footer from "../layouts/mockup/Footer";
+
 // import {SideNavbarMobile} from "../src/components/navbar/SideNavbarMobile.jsx";
 
 const Container = styled.div`
@@ -96,6 +100,8 @@ const Admin = () => {
                 element={<ProfitLoss updateState={updateState} />}
               />
               <Route path="all-tests" element={<AllTest />} />
+              <Route path="about-us-in" element={<Aboutus />} />
+              <Route path="contact-us-in" element={<ContactUs />} />
             </React.Fragment>
           )}
         </Routes>

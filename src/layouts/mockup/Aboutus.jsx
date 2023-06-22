@@ -142,7 +142,7 @@ const Aboutus = () => {
     }
   }, [localization]);
   return localization === "en" || localization === "ur" ? (
-    <AboutusContainer>
+    <AboutusContainer id="about">
       <Container>
         <Row>
           <Col xs={12} sm={12} md={12} lg={6} xxl={6}>

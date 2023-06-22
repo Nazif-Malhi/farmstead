@@ -1,9 +1,9 @@
 export const mockupNavbar = {
   home: { en: "Home", ur: "گھر" },
   services: { en: "Services", ur: "خدمات" },
-  pricing: { en: "Pricing", ur: "قیمت" },
-  about: { en: "About", ur: "بارے میں" },
+  // pricing: { en: "Pricing", ur: "قیمت" },
   blog: { en: "Blog", ur: "بلاگ" },
+  about: { en: "About", ur: "بارے میں" },
   signin: { en: "Sign In", ur: "سائن ان" },
   newAcc: { en: "Create New Account", ur: "نیا اکاؤنٹ بنانے" },
 };

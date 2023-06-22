@@ -16,8 +16,9 @@ import {
   wheat,
 } from "../../assets";
 import "../../assets";
-import { CustomButton } from "../../components";
+import { CustomButton, LinkButton } from "../../components";
 import { mockUp } from "../../assets/translator/translate";
+import { useNavigate } from "react-router-dom";
 // import { CustomButton } from "../button";
 const HomeContainer = styled.div`
   width: 100%;
@@ -160,83 +161,93 @@ const HomeContainer = styled.div`
     -webkit-animation: animationFramesOne 10s infinite linear;
     animation: animationFramesOne 10s infinite linear;
   }
-  
-@media only screen and (max-width: 600px) {
-  
-  margin-top: 116px !important;
 
-  .shape-img2-img{
-    width: 85px;
+  a {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
   }
+  @media only screen and (max-width: 600px) {
+    margin-top: 116px !important;
 
-  .pd {
-    padding: 0px !important;
-  }
-  img.circle-badge {
-    width: 47px !important;
-  }
-  .shape-img4 {
-    top: 22%;
-  }
+    .shape-img2-img {
+      width: 85px;
+    }
 
-  img.shape-img4-img {
-    width: 50vw;
-  }
-  .row-container.pd.row {
-    paddinh:0px;
-  }
+    .pd {
+      padding: 0px !important;
+    }
+    img.circle-badge {
+      width: 47px !important;
+    }
+    .shape-img4 {
+      top: 22%;
+    }
 
-  .row-style .text-container .row-container h1 {
-    margin-top: 20px;
-    font-size: 30px;
-  }
-  
-  .row-style .text-container .row-container p {
-    padding-left: 0px;
-    text-align: center;
-    margin: 0px;
-  }
-  .row-container .con-end {
-    text-align: left; 
-    width: 30px;
-  }
-  .test-now-btn{
-    margin-top:60px;
-  }
-  img.banner {
-    display: none;
-  }
-  .shape-img3{
-    bottom: 30%;
-  }
-  .shape-img1{
-    bottom: 34%;
-    left: 58%;
-  }
-  .shape-img4 {
-    left: 9%;
-  }
-  .shape-img1-img{
-    width:66px;
-  }
+    img.shape-img4-img {
+      width: 50vw;
+    }
+    .row-container.pd.row {
+      paddinh: 0px;
+    }
 
-  .icons-container.col {
-    margin-top: 25px;
-}
-  button.filled{
-    width: 100px !important;
-    height: 50px  !important;
-  }
+    .row-style .text-container .row-container h1 {
+      margin-top: 20px;
+      font-size: 30px;
+    }
 
-  button.outline{
-    width: 100px !important;
-    height: 50px  !important;
+    .row-style .text-container .row-container p {
+      padding-left: 0px;
+      text-align: center;
+      margin: 0px;
+    }
+    .row-container .con-end {
+      text-align: left;
+      width: 30px;
+    }
+    .test-now-btn {
+      margin-top: 60px;
+    }
+    img.banner {
+      display: none;
+    }
+    .shape-img3 {
+      bottom: 30%;
+    }
+    .shape-img1 {
+      bottom: 34%;
+      left: 58%;
+    }
+    .shape-img4 {
+      left: 9%;
+    }
+    .shape-img1-img {
+      width: 66px;
+    }
+
+    .icons-container.col {
+      margin-top: 25px;
+    }
+    a {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+    }
+    a.filled {
+      width: 100px !important;
+      height: 50px !important;
+    }
+
+    a.outline {
+      width: 100px !important;
+      height: 50px !important;
+    }
   }
-}
 `;
 
 const Home = () => {
   const [localization, setLocalization] = useState(null);
+  const router = useNavigate();
   useEffect(() => {
     const lang = localStorage.getItem("lang");
     if (lang !== undefined && lang != null) {
@@ -247,7 +258,7 @@ const Home = () => {
     console.log();
   }, [localization]);
   return localization === "en" || localization === "ur" ? (
-    <HomeContainer>
+    <HomeContainer id="home">
       {/* <NavbarHeader /> */}
       <Row className="row-style series_icon">
         <Col lg={6} md={12} className="text-container">
@@ -324,14 +335,24 @@ const Home = () => {
           </Row>
           <Row className="row-container test-now-btn">
             <Col className="con-end">
-              <CustomButton type="filled" width="160px" height="50px">
+              <LinkButton
+                type="filled"
+                width="160px"
+                height="50px"
+                href="#service"
+              >
                 {mockUp.btnTest[localization]}
-              </CustomButton>
+              </LinkButton>
             </Col>
             <Col className="con-start">
-              <CustomButton type="outline" width="160px" height="50px">
+              <LinkButton
+                type="outline"
+                width="160px"
+                height="50px"
+                href="#blog"
+              >
                 {mockUp.btnRead[localization]}
-              </CustomButton>
+              </LinkButton>
             </Col>
           </Row>
         </Col>
@@ -349,11 +370,11 @@ const Home = () => {
         </Col>
       </Row>
       <div className="shape-img1">
-        <img src={Leaf1} alt="leaf1"  className="shape-img1-img"/>
+        <img src={Leaf1} alt="leaf1" className="shape-img1-img" />
       </div>
 
       <div className="shape-img2">
-        <img src={Leaf2} alt="leaf2" className="shape-img2-img"/>
+        <img src={Leaf2} alt="leaf2" className="shape-img2-img" />
       </div>
 
       <div className="shape-img3">

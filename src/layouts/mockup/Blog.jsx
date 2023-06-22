@@ -195,7 +195,7 @@ const Blog = () => {
     }
   }, [localization]);
   return localization === "en" || localization === "ur" ? (
-    <BlogContainer>
+    <BlogContainer id="blog">
       <Row className="blog-main">
         <Col className="row-full">
           <Col className="text-heading" xs={12} sm={12} md={6} lg={6}>
