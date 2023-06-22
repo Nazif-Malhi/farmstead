@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { background, _worddata } from "../../assets";
 import { CircularCard } from "../../components";
-import { Row, Col,Container } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
+import { mockUp } from "../../assets/translator/translate";
+
 const WorkContainer = styled.div`
   height: 80vh;
   width: 100%;
@@ -48,52 +50,56 @@ const WorkContainer = styled.div`
     align-items: center;
     justify-content: space-around;
   }
-  .work_row{
+  .work_row {
     text-align: center;
     justify-content: space-around;
   }
   @media only screen and (max-width: 600px) {
     height: 150vh;
-  
+
     .wrapper-container {
       display: grid;
     }
-    
-    .work_row{
-      margin:0px;
+
+    .work_row {
+      margin: 0px;
     }
-    
   }
 `;
 
 const Work = () => {
-  return (
+  const [localization, setLocalization] = useState(null);
+  useEffect(() => {
+    const lang = localStorage.getItem("lang");
+    if (lang !== undefined && lang != null) {
+      setLocalization(lang);
+    }
+  }, [localization]);
+  return localization === "en" || localization === "ur" ? (
     <WorkContainer>
-      <h1>Our Test Areas</h1>
+      <h1>{mockUp.testArea[localization]}</h1>
 
       <div className="wrapper-container">
-      <Container>
-            <Row className="work_row" >
+        <Container>
+          <Row className="work_row">
             {_worddata.map((items, index) => {
               return (
-                
-                  <Col xs={12} md={6} lg={2} style={{paddingTop:"20px"}} >
-                    <CircularCard
-                      className="card"
-                      key={index}
-                      img={Object.values(items.img)[0]}
-                      head={items.head}
-                      subhead={items.subhead}
-                    />
-                  </Col>
-                
+                <Col xs={12} md={6} lg={2} style={{ paddingTop: "20px" }}>
+                  <CircularCard
+                    className="card"
+                    key={index}
+                    img={Object.values(items.img)[0]}
+                    head={items.head[localization]}
+                    subhead={items.subhead[localization]}
+                  />
+                </Col>
               );
             })}
-            </Row>
-          </Container>
+          </Row>
+        </Container>
       </div>
     </WorkContainer>
-  );
+  ) : null;
 };
 
 export default Work;
