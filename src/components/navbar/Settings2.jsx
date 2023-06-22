@@ -280,8 +280,22 @@ function Settings2(props) {
               <hr className="horizontal-dark" />
               <Row className="about">
                 <h5>Other</h5>
-                <div className="linear-gr green">Contact Us</div>
-                <div className="linear-gr blue">About Us</div>
+                <div
+                  className="linear-gr green"
+                  onClick={() => {
+                    router("contact-us-in");
+                  }}
+                >
+                  Contact Us
+                </div>
+                <div
+                  className="linear-gr blue"
+                  onClick={() => {
+                    router("about-us-in");
+                  }}
+                >
+                  About Us
+                </div>
                 <div className="linear-gr outlined">View Documentation</div>
               </Row>
             </Row>
