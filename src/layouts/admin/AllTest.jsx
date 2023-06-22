@@ -32,6 +32,11 @@ const Wrapper = styled.div`
   .titleMobile {
     display: none;
   }
+  .cropcard{
+    display: flex;
+    justify-content: center;
+}
+  }
   @media only screen and (max-width: 650px) {
     margin-top: 86px;
     .titleMobile {
@@ -91,13 +96,13 @@ const AllTest = () => {
         </Col>
       </Row>
       <Row style={{ width: "100%", marginTop: "40px" }}>
-        <Col>
+        <Col className="cropcard">
           <div className="card" onClick={() => onClickRoute(4)}>
             Crop Recomendation (Simple)
           </div>
         </Col>
         {/* <Col></Col> */}
-        <Col>
+        <Col className="cropcard">
           <div className="card" onClick={() => onClickRoute(5)}>
             Crop Recomendation (Advance)
           </div>

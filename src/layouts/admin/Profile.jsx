@@ -92,6 +92,13 @@ const ProfileContainer = styled.div`
   button.btn.btn-danger {
     width: 160px;
   }
+  
+  .titleMobile{
+    display:none !important;
+  }
+  .p_detail{
+    width:100%;
+  }
   @media only screen and (max-width: 650px) {
     margin-top: 4rem;
     .p_detail{
@@ -100,6 +107,9 @@ const ProfileContainer = styled.div`
     .container_profile {
       margin: auto;
       margin-top: 20px;
+  }
+  .titleMobile{
+    display:block !important;
   }
   }
 
@@ -226,11 +236,11 @@ const Profile = () => {
   return (
     <>
       <ProfileContainer>
-        <Row style={{  padding: "20px" }}>
-          <Col lg={12} md={12} sm ={12}>
+        <Row style={{  padding: "20px", width:"100%",justifyContent: "center", marginLeft:"0px" }}>
+          <Col lg={12} md={12} sm ={12} className="titleMobile">
             <h5>Profile</h5>
           </Col>
-          <Col xs={12} md={4}>
+          <Col xs={12} md={6}>
             <Row className="p_detail">
               <div
                 className="container_profile"
@@ -325,7 +335,7 @@ const Profile = () => {
               </div>
             </Row>
           </Col>
-          <Col xs={12} md={8}>
+          <Col xs={12} md={6}>
             <div className="container_profile ">
               <Row className="personal_details">
                 <h5>Personal Details</h5>

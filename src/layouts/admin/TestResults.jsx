@@ -18,24 +18,39 @@ const TestContainer = styled.div`
     border-radius: 20px;
     // box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
     // background: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    overflow-x: auto;
+    overflow-y: hidden;
   }
   .mobileTitle {
     display: none;
   }
 
+  .titleMobile{
+    display:none !important;
+  }
   @media only screen and (max-width: 650px) {
-    width: 67vh;
+    width: 62vh;
+    display: flex;
+    flex-direction: column;
+    margin-top: -35px;
     .container {
       padding: 10px !important;
       width: 67vh;
-      margin-top: 60px;
+      // margin-top: 60px;
+      overflow-x: auto;
+      overflow-y: hidden;
     }
     .mobileTitle {
       display: block;
     }
+    
+  .titleMobile{
+    display:block !important;
+    margin-top: 60px !important;
+  }
   }
 `;
 
@@ -59,7 +74,14 @@ const TestResults = () => {
   ];
 
   return (
+    <>
+    <Row style={{  padding: "20px", width:"100%",justifyContent: "center", marginLeft:"0px" }} className="titleMobile">
+          <Col lg={12} md={12} sm ={12} >
+            <h5 style={{marginTop:"50px"}}>Test Results</h5>
+          </Col>
+      </Row>
     <TestContainer>
+       
       <div className="container">
         {test_loading ? (
           <p>loading</p>
@@ -68,6 +90,7 @@ const TestResults = () => {
         )}
       </div>
     </TestContainer>
+    </>
   );
 };
 

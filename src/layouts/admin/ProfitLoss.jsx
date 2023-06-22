@@ -66,6 +66,10 @@ const Container = styled.div`
   .txt_field {
     margin-bottom: 11px;
   }
+  
+  .btns.row {
+    justify-content: space-around;
+  }
   @media only screen and (max-width: 650px) {
     margin-top: 66px;
     .titleMobile {
