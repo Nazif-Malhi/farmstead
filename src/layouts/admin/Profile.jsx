@@ -267,7 +267,7 @@ const Profile = () => {
                       </Button>
                     
                     </Col>
-                    <Col>
+                    {/* <Col>
                       <Button
                       variant="danger"
                       onClick={() => {
@@ -276,7 +276,7 @@ const Profile = () => {
                     >
                       Change Password
                     </Button>
-                    </Col>
+                    </Col> */}
                   </Row>
                   <EditProfileModal
                     show={editModalShow}
@@ -299,7 +299,7 @@ const Profile = () => {
                 </div>
               </div>
             </Row>
-            <Row className="p_detail">
+            {/* <Row className="p_detail">
               <div className="container_profile card-slots">
                 <div className="slots">
                   <h6>Account Details</h6>
@@ -333,7 +333,7 @@ const Profile = () => {
                   Edit
                 </Button>
               </div>
-            </Row>
+            </Row> */}
           </Col>
           <Col xs={12} md={6}>
             <div className="container_profile ">

@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { allTests } from "../../assets/translator/translate";
+import { useEffect, useState} from "react";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -58,6 +60,17 @@ const Wrapper = styled.div`
 `;
 
 const AllTest = () => {
+  const [localization, setLocalization] = useState(null);
+  
+  useEffect(() => {
+    const lang = localStorage.getItem("lang");
+    if (lang !== undefined && lang != null) {
+      setLocalization(lang);
+    }
+    console.log(localization);
+    console.log();
+  }, [localization]);
+
   const navigate = useNavigate();
   const onClickRoute = (type) => {
     switch (type) {
@@ -88,30 +101,30 @@ const AllTest = () => {
     <Wrapper>
       <Row className="titleMobile">
         <Col>
-          <h4>All Tests</h4>
+          <h4> {allTests.allTest[localization]}</h4>
         </Col>
       </Row>
       <Row style={{ width: "100%", marginTop: "40px" }}>
         <Col>
           <div className="card" onClick={() => onClickRoute(1)}>
-            Pest Detection
+          {allTests.pestDet[localization]}
           </div>
         </Col>
         <Col>
           <div className="card" onClick={() => onClickRoute(2)}>
-            Crop Disease Detection
+          {allTests.cropDiseaseDet[localization]}
           </div>
         </Col>
         <Col>
           <div className="card" onClick={() => onClickRoute(3)}>
-            Fertilizer Recomendation
+          {allTests.fertilizer[localization]}
           </div>
         </Col>
       </Row>
       <Row style={{ width: "100%", marginTop: "40px" }} >
         <Col >
           <div className="card" onClick={() => onClickRoute(4)}>
-            Crop Recomendation (Simple)
+            {allTests.cropRecomSim[localization]}
           </div>
         </Col>
         <Col>
@@ -121,12 +134,13 @@ const AllTest = () => {
             href={process.env.PUBLIC_URL + "/CropsLifeCalendar.pdf"}
             download={"Crops Life Calendar.pdf"}
           >
-            Calendar
+            {allTests.calcender[localization]}
+           
           </a>
         </Col>
         <Col >
           <div className="card" onClick={() => onClickRoute(5)}>
-            Crop Recomendation (Advance)
+          {allTests.cropRecomAdv[localization]}
           </div>
         </Col>
       </Row>

@@ -89,7 +89,7 @@ const TestResults = () => {
       <div className="container">
         <h4>Test Results</h4>
         {test_loading ? (
-          <p>loading</p>
+          <p style={{marginTop: "300px",marginLeft: "500px", }}>loading</p>
         ) : (
           all_test && <Table col={col} row={all_test} />
         )}

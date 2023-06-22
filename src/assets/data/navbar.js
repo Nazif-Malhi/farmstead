@@ -15,13 +15,13 @@ const active_style = {
   fontSize: "1.1rem",
 };
 export const side_navbar = [
-  {
-    title: "Dashboard",
-    active: true,
-    path: "dashboard",
-    ico: <RxDashboard style={style} />,
-    ico_active: <RxDashboard style={active_style} />,
-  },
+  // {
+  //   title: "Dashboard",
+  //   active: true,
+  //   path: "dashboard",
+  //   ico: <RxDashboard style={style} />,
+  //   ico_active: <RxDashboard style={active_style} />,
+  // },
   {
     title: "Perform Tests",
     active: true,

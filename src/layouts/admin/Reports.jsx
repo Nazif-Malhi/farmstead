@@ -74,7 +74,7 @@ const Reports = ({ handleUpdate }) => {
       <h4 className="title">Reports</h4>
       <div className="container">
         {loading ? (
-          <p>loading</p>
+          <p style={{marginTop: "300px",marginLeft: "500px", }}>loading</p>
         ) : (
           crop_budget.crop_budget_by_farmers && (
             <ReportTable

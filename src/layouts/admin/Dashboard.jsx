@@ -4,6 +4,8 @@ import { Row, Col } from "react-bootstrap";
 import { BarChart, DashboardCard, LineChart } from "../../components";
 import { FaArrowUp } from "react-icons/fa";
 
+import { useEffect, useState} from "react";
+import { dashboard } from "../../assets/translator/translate";
 const Container = styled.div`
   // width: 100%;
   // height: 100%;
@@ -134,12 +136,23 @@ const Container = styled.div`
   }
 `;
 const Dashboard = () => {
-  return (
+  const [localization, setLocalization] = useState(null);
+  
+  useEffect(() => {
+    const lang = localStorage.getItem("lang");
+    if (lang !== undefined && lang != null) {
+      setLocalization(lang);
+    }
+    console.log(localization);
+    console.log();
+  }, [localization]);
+
+  return (localization === "en" || localization === "ur") ?  (
     <Container>
     
       <div className="admin-card">
       <Row className="mobileTitle">
-        <h5>Dashboard</h5>    
+        <h5>{dashboard.dashboard[localization]}</h5>    
       </Row>
         <Row>
           <Col className="cdD" xl={3} lg={6} md ={6} sm={6} xs={12}>
@@ -161,12 +174,12 @@ const Dashboard = () => {
         <Col className="line-chart">
           <div className="head">
             <div className="title">
-              <h5>Profit overview</h5>
+              <h5>{dashboard.profitOverview[localization]}</h5>
             </div>
             <div className="icon">
               <FaArrowUp fontSize={"1.2rem"} color={"#3DC034"} />{" "}
               <p>
-                <b>4% in </b>Profit
+                <b>4% </b>{dashboard.inProfit[localization]}
               </p>
             </div>
           </div>
@@ -180,13 +193,14 @@ const Dashboard = () => {
           </div>
           <div className="text">
             <p>
-              <b>Engro Fertilizer</b> Mostly consumed
+              <b>{dashboard.engro[localization]}</b> {dashboard.consume[localization]}
             </p>
           </div>
         </Col>
       </Row>
     </Container>
-  );
+    ) :null
+
 };
 
 export default Dashboard;

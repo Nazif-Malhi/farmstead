@@ -1,6 +1,9 @@
 import React from "react";
+import { useEffect, useState} from "react";
 import styled from "styled-components";
 import { GiReceiveMoney } from "react-icons/gi";
+
+import { dashboardCard } from "../../assets/translator/translate";
 
 const Container = styled.div`
   display: flex;
@@ -54,20 +57,35 @@ const Container = styled.div`
 `;
 
 const DashboardCard = () => {
-  return (
-    <Container>
-      <div className="text">
-        <h6>Money</h6>
-        <div className="value">
-          <h4>$433,344</h4>
-          <p>+55%</p>
-        </div>
-      </div>
-      <div className="icon">
-        <GiReceiveMoney fontSize={"1.5rem"} color="white" />
-      </div>
-    </Container>
-  );
+  const [localization, setLocalization] = useState(null);
+  
+  useEffect(() => {
+    const lang = localStorage.getItem("lang");
+    if (lang !== undefined && lang != null) {
+      setLocalization(lang);
+    }
+    console.log(localization);
+    console.log();
+  }, [localization]);
+
+  return  (localization === "en" || localization === "ur") ? (
+          <>
+            <Container>
+              <div className="text">
+                <h6>{dashboardCard.money[localization]}</h6>
+                <div className="value">
+                  <h4>$433,344</h4>
+                  <p>+55%</p>
+                </div>
+              </div>
+              <div className="icon">
+                <GiReceiveMoney fontSize={"1.5rem"} color="white" />
+              </div>
+            </Container>
+          </>
+    ) :null
+  
+  
 };
 
 export default DashboardCard;

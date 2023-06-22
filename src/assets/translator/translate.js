@@ -86,3 +86,120 @@ export const mockUp = {
     ur: "ہم مشترکہ طور پر پراپرٹی فارمنگ کے طریقوں کو فروغ دیتے ہیں جو معاشی طور پر قابل عمل، ماحول دوست، ہماری کمیونٹیز کو مضبوط بنانے اور تحفے اور آنے والی نسلوں کی صحت کو تحفظ فراہم کرتے ہیں۔",
   },
 };
+
+export const dashboardCard = {
+money:{
+  en:"Money",
+  ur:"پیسہ"
+}
+};
+
+export const dashboard = {
+  profitOverview:{
+    en:"Profit Overview",
+    ur:"منافع کا جائزہ"
+  },
+  inProfit:{
+    en:"in Profit",
+    ur:"منافع میں"
+  },
+  engro:{
+    en:"Engro Fertilizer",
+    ur:"اینگرو فرٹیلائزر"
+  },
+  consume:{
+    en:"Mostly consumed",
+    ur:"زیادہ تر کھایا جاتا ہے۔"
+  },
+  dashboard:{
+    en:"Dashboard",
+    ur:"ڈیش بورڈ"
+  },
+  
+  };
+  
+  
+export const sideMenu = {
+  dashboard:{
+    en:"Dashboard",
+    ur:"ڈیش بورڈ"
+  },
+  performTests:{
+    en:"Perform Tests",
+    ur:"ٹیسٹ کروائیں"
+  },
+  testResult:{
+    en:"Test Result",
+    ur:"ٹیسٹ کا نتیجہ"
+  },
+  cropBudget:{
+    en:"Crop Budget",
+    ur:"فصل کا بجٹ"
+  },
+   allBudgets:{
+    en:"All Budgets",
+    ur:"تمام بجٹ"
+  },
+   profile:{
+    en:"Profile",
+    ur:"پروفائل"
+  },
+   settings:{
+    en:"Settings",
+    ur:"ترتیبات"
+  },
+  sectLang:{
+      en:" Select Lanaguage",
+      ur:"زبان منتخب کریں"
+  },
+  contact:{
+    en:" Contact Us",
+    ur:"ہم سے رابطہ کریں"
+  },
+  about:{
+    en:" About Us",
+    ur:"ہمارے بارے میں"
+  },
+  logout:{
+    en:"Logout",
+    ur: "لاگ آوٹ"
+  }
+
+};
+
+  
+export const allTests = {
+  allTest:{
+    en:"All Tests",
+    ur:"تمام ٹیسٹ"
+  },
+  pestDet:{
+    en:"Pest Detection",
+    ur:"کیڑوں کا پتہ لگانا"
+  },
+  cropDiseaseDet:{
+    en:"Crop Disease Detection",
+    ur:"فصل کی بیماری کا پتہ لگانا"
+  },
+
+  fertilizer:{
+    en:"Fertilizer Recommendation",
+    ur:"کھاد کی سفارش"
+
+  },
+  
+  cropRecomSim:{
+    en:"Crop Recommendation (Simple)",
+    ur:"فصل کی سفارش (سادہ)"
+  },
+  
+  cropRecomAdv:{
+    en:"Crop Recommendation (Advance)",
+    ur:"فصل کی سفارش (ایڈوانس)"
+  },
+  
+  calcender:{
+    en:"Calendar",
+    ur:"کیلنڈر"
+  },
+  };

@@ -16,8 +16,21 @@ import Switch from "@mui/material/Switch";
 import { BsPersonFill } from "react-icons/bs";
 import {useSelector } from "react-redux";
 import React ,{ useEffect, useState } from "react";
+import { sideMenu } from "../../assets/translator/translate";
 
 function SideNavbarMobile(props) {
+  
+  const [localization, setLocalization] = useState(null);
+  useEffect(() => {
+    const lang = localStorage.getItem("lang");
+    if (lang !== undefined && lang != null) {
+      setLocalization(lang);
+    }
+    console.log(localization);
+    console.log();
+  }, [localization]);
+
+
   const navigate = useNavigate();
 
   const route_to = (url) => {
@@ -37,7 +50,8 @@ function SideNavbarMobile(props) {
   const [user_name, setUserName] = useState(
     user_data.user_name ? user_data.user_name : ""
   );
-  return (
+  return  (localization === "en" || localization === "ur") ? (
+
     <Navbar
       fixed="top"
       expand="lg"
@@ -55,19 +69,19 @@ function SideNavbarMobile(props) {
         <Navbar.Collapse id="navbarScroll">
           <Nav className="me-auto nav-container" /*style={{ maxHeight: "100px" }} */> 
             <Nav.Link href="dashboard" className="nav-links">
-              Dashboard
+                {sideMenu.dashboard[localization]}
             </Nav.Link>
             <Nav.Link href="all-tests" className="nav-links">
-              Perform Tests
+            {sideMenu.performTests[localization]}
             </Nav.Link>
             <Nav.Link href="test-results" className="nav-links">
-              Test Results
+              {sideMenu.testResult[localization]}
             </Nav.Link>
             <Nav.Link href="profit-loss" className="nav-links">
-              Crop Budget
+            {sideMenu.cropBudget[localization]}
             </Nav.Link>
             <Nav.Link href="reports" className="nav-links">
-              All Budgets
+            {sideMenu.allBudgets[localization]}
             </Nav.Link>
             <hr/>
             <Nav.Link href="reports" className="nav-links">
@@ -81,12 +95,12 @@ function SideNavbarMobile(props) {
                 </div>
             </Nav.Link>
             <Nav.Link href="profile" className="nav-links">
-              Profile
+            {sideMenu.profile[localization]}
             </Nav.Link>
             <NavDropdown title="Setting" id="navbarScrollingDropdown">
               {/* <NavDropdown.Item href="#action3">Configure Setting</NavDropdown.Item> */}
               <NavDropdown.Item href="#">
-                Select Lanaguage
+              {sideMenu.sectLang[localization]}
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#">
@@ -100,11 +114,11 @@ function SideNavbarMobile(props) {
             </NavDropdown>
             <NavDropdown title="Others" id="navbarScrollingDropdown">
               <NavDropdown.Item href="contact_us">
-                Contact Us
+              {sideMenu.contact[localization]}
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="about_us">
-                About Us
+              {sideMenu.about[localization]}
               </NavDropdown.Item>
             </NavDropdown>
             
@@ -114,12 +128,12 @@ function SideNavbarMobile(props) {
           </Nav>
            <div className="linear-dr-blue" onClick={handle_logout}>
             {/* <FiLogOut fontSize="1.5rem" color="white" /> */}
-             <p className="out">Logout</p>
+             <p className="out"> {sideMenu.logout[localization]}</p>
           </div>
         </Navbar.Collapse>
       </Container>
     </Navbar>
-  );
-}
+  ): null
+  }
 
 export default SideNavbarMobile;

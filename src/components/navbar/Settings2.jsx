@@ -296,7 +296,7 @@ function Settings2(props) {
                 >
                   About Us
                 </div>
-                <div className="linear-gr outlined">View Documentation</div>
+                {/* <div className="linear-gr outlined">View Documentation</div> */}
               </Row>
             </Row>
           </div>

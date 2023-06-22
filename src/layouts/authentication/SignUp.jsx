@@ -284,7 +284,7 @@ const SignUp = () => {
             style={{ height: "20px" }}
           />
         </Row>
-        <Row className="center-row">
+        {/* <Row className="center-row">
           <Col
             style={{
               margin: "0px",
@@ -346,7 +346,7 @@ const SignUp = () => {
               </div>
             </div>
           </Col>
-        </Row>
+        </Row> */}
         <Row className="center-m-r">
           <p style={{ color: "red" }}>{text_error}</p>
         </Row>
