@@ -7,16 +7,34 @@ import { crop_budget_clearErrors, get_crop_budget } from "../../store";
 const TestContainer = styled.div`
   width: 100%;
   height: 100%;
-  display: flex;
+  // display: flex;
   align-items: center;
   justify-content: center;
   .container {
-    width: 90%;
-    height: 90%;
+   
+    width: 100%;
+    height: 100%;
     border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    overflow-x: scroll;
+  overflow-y: hidden;
+  
+  white-space: nowrap;
+  }
+  @media only screen and (max-width: 650px){
+    // width: 131%;
+    width:100%;
+    margin-top: 82px !important;
+    margin-left: 20px !important;
+   .container {
+      // padding: 10px !important;
+      width: 67vh;
+      // width: 131%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      margin-top: -95px;
   }
 `;
 
@@ -42,6 +60,7 @@ const Reports = ({ handleUpdate }) => {
   console.log(crop_budget);
   return (
     <TestContainer>
+      <h4>Budgets</h4>
       <div className="container">
         {loading ? (
           <p>loading</p>

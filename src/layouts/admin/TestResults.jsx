@@ -7,7 +7,8 @@ import { all_test_clearErrors, get_test, test_clearErrors } from "../../store";
 import { Row, Col } from "react-bootstrap";
 
 const TestContainer = styled.div`
-  width: 100%;
+
+width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -27,21 +28,26 @@ const TestContainer = styled.div`
   .mobileTitle {
     display: none;
   }
+  .titleMobile.row {
+    display:  !important;
+}
 
-  .titleMobile{
-    display:none !important;
-  }
+.container h4{
+  display:none;
+}
   @media only screen and (max-width: 650px) {
-    width: 62vh;
+    // width: 62vh;
     display: flex;
     flex-direction: column;
     margin-top: -35px;
     .container {
       padding: 10px !important;
-      width: 67vh;
+      // width: 67vh;
       // margin-top: 60px;
       overflow-x: auto;
       overflow-y: hidden;
+      
+  margin-top: 120px;
     }
     .mobileTitle {
       display: block;
@@ -50,6 +56,9 @@ const TestContainer = styled.div`
   .titleMobile{
     display:block !important;
     margin-top: 60px !important;
+  }
+  .container h4{
+    display:block;
   }
   }
 `;
@@ -74,15 +83,11 @@ const TestResults = () => {
   ];
 
   return (
-    <>
-    <Row style={{  padding: "20px", width:"100%",justifyContent: "center", marginLeft:"0px" }} className="titleMobile">
-          <Col lg={12} md={12} sm ={12} >
-            <h5 style={{marginTop:"50px"}}>Test Results</h5>
-          </Col>
-      </Row>
+   
     <TestContainer>
        
       <div className="container">
+        <h4>Test Results</h4>
         {test_loading ? (
           <p>loading</p>
         ) : (
@@ -90,7 +95,7 @@ const TestResults = () => {
         )}
       </div>
     </TestContainer>
-    </>
+    
   );
 };
 

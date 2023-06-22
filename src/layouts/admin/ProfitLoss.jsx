@@ -636,6 +636,7 @@ const ProfitLoss = ({ updateState }) => {
             </Col>
             <Col />
           </Row>
+          <br/>
           <Row>
             <Col xm={12} sm={6} md={4} lg={4}>
               <TextField

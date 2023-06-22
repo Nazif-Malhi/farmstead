@@ -164,6 +164,32 @@ const TableContainer = styled.div`
       //   //   rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
     }
   }
+
+  .col-full.col_hide.col{
+    display:inherit;
+    }
+  .col-body-full.col_hide.col{
+    display:inherit;
+    
+  }
+  @media only screen and (max-width: 650px) {
+    .col-full.col_hide.col{
+    display:none !important;
+    }
+  .col-body-full.col_hide.col{
+    display:none !important;
+    
+  }
+  .button.edit {
+    width: 35px !important;
+  }
+  .button.del {
+    width: 35px !important;
+  }
+  .button.print {
+    width: 35px !important;
+  }
+  }
 `;
 
 const CustomProgress = styled(ProgressBar)`
@@ -246,11 +272,13 @@ const ReportTable = ({ col, row, pending, handleUpdate }) => {
     }
   };
   return (
-    <TableContainer>
+    <TableContainer style={{marginTop:"100px"}}>
+      
       <Row className="header">
         {col.map((val, id) => {
           return (
-            <Col className={`${id === 0 ? "col-start" : "col-full"}`} key={id}>
+          
+            <Col className={`${(id === 0) ? "col-start" : "col-full" }  ${(id ==1 || id == 2) ? "col_hide" :"" }`  } key={id}>
               <h6>{val.name}</h6>
             </Col>
           );
@@ -260,14 +288,15 @@ const ReportTable = ({ col, row, pending, handleUpdate }) => {
         <div className="table-body-content">
           {row?.crop_budget_by_farmers.map((element, id) => {
             return (
+              
               <Row className="row-body-full" key={id}>
-                <Col className="col-body-full-start">
+                <Col className="col-body-full-start ">
                   <h6>{element[0]["crop_budget"]["cropbudget_name"]}</h6>
                 </Col>
-                <Col className="col-body-full">
+                <Col className={`col-body-full col_hide `}>
                   <p>{element[0]["crop_budget"]["created_at"]}</p>
                 </Col>
-                <Col className="col-body-full">
+                <Col className={`col-body-full col_hide`}>
                   <div className="prog">
                     <p>{getProgress(element)}%</p>
                     <CustomProgress

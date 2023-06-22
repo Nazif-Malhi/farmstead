@@ -176,7 +176,14 @@ const TableContainer = styled.div`
   }
 }
 
-
+@media only screen and (max-width: 650px) {
+  .col-full.col_hide.col{
+    display:none !important;
+  }
+  .col-body-full.col_hide.col{
+    display:none !important;
+  }
+}
 `;
 
 const Table = ({ col, row }) => {
@@ -189,7 +196,7 @@ const Table = ({ col, row }) => {
       <Row className="header">
         {col.map((val, id) => {
           return (
-            <Col className={`${id === 0 ? "col-start" : "col-full"}`} key={id}>
+            <Col className={`${id === 0 ? "col-start" : "col-full"}  ${(id ==1) ? "col_hide" :"" }` } key={id}>
               <h6>{val.name}</h6>
             </Col>
           );
@@ -204,7 +211,7 @@ const Table = ({ col, row }) => {
                   <Col className={`${"col-body-full-start"}`}>
                     <h6>{element.test_name}</h6>
                   </Col>
-                  <Col className={`${"col-body-full"}`}>
+                  <Col className={`${"col-body-full"} col_hide`}>
                     <p>{element.created_at}</p>
                   </Col>
                   <Col className={`${"col-body-full"}`}>
