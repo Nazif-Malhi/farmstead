@@ -11,13 +11,18 @@ const Wrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   .card {
+    height: 170px;
+    // display: flex;
+    // align-items: center;
+    // text-align: center;
+    // justify-conent: center;
+    // flex-direction: column;
     display: flex;
-    align-items: center;
-    text-align: center;
-    justify-conent: center;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     max-width: 300px;
-    padding: 60px;
+    // padding: 60px;
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     cursor: pointer;
@@ -67,13 +72,17 @@ const AllTest = () => {
       case 5:
         navigate("/farmstead/models/advance-crop-recomendation");
         break;
+      // case 6:
+      //   navigate(
+
+      //   );
       default:
         break;
     }
   };
   return (
     <Wrapper>
-       <Row className="titleMobile">
+      <Row className="titleMobile">
         <Col>
           <h4>All Tests</h4>
         </Col>
@@ -101,7 +110,16 @@ const AllTest = () => {
             Crop Recomendation (Simple)
           </div>
         </Col>
-        {/* <Col></Col> */}
+        <Col>
+          <a
+            style={{ color: "inherit", textDecoration: "none" }}
+            className="card"
+            href={process.env.PUBLIC_URL + "/CropsLifeCalendar.pdf"}
+            download={"Crops Life Calendar.pdf"}
+          >
+            Calendar
+          </a>
+        </Col>
         <Col className="cropcard">
           <div className="card" onClick={() => onClickRoute(5)}>
             Crop Recomendation (Advance)
