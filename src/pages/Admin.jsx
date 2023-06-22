@@ -5,7 +5,7 @@ import {
   TestResults,
   Profile,
   ProfitLoss,
-  AllTest,
+  AllTest
 } from "../layouts/admin";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import {
@@ -14,6 +14,7 @@ import {
   UpperNavbar,
   SideNavbarMobile,
 } from "../components";
+
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { get_user, user_data_clearErrors } from "../store";

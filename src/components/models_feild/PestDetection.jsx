@@ -95,7 +95,8 @@ const PestDetection = () => {
         <div className="header">
           <h1>Pest Detection</h1>
         </div>
-        {ansState ? (
+        {
+        ansState ? (
           <>
             <h6>{pest["result"]}</h6>
             <Row className="center-row btn">
@@ -112,7 +113,8 @@ const PestDetection = () => {
               </CustomButton>
             </Row>
           </>
-        ) : (
+        ) : 
+        (
           <>
             <Container>
               <p style={{ color: "#a2abb6" }}>*.jpeg/*.jpg/*.png</p>
@@ -185,7 +187,8 @@ const PestDetection = () => {
               </Row>
             </Container>
           </>
-        )}
+        )
+      }
       </Wrapper>
     </StyledContainer>
   );

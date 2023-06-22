@@ -42,6 +42,9 @@ const Wrapper = styled.div`
     justify-content: center;
 }
   }
+  .card {
+    text-align: center;
+  }
   @media only screen and (max-width: 650px) {
     margin-top: 86px;
     .titleMobile {
@@ -49,6 +52,7 @@ const Wrapper = styled.div`
     }
     .card {
       margin: 15px auto;
+      text-align: center;
     }
   }
 `;
