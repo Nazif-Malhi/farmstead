@@ -233,6 +233,29 @@ import { useNavigate } from "react-router-dom";
 
 function Settings2(props) {
   const router = useNavigate();
+  const handleLang = () => {
+    let lang = localStorage.getItem("lang");
+
+    if (lang !== null && lang !== undefined) {
+      if (lang == "en") {
+        localStorage.setItem("lang", "ur");
+      } else if ((lang = "ur")) {
+        localStorage.setItem("lang", "en");
+      } else {
+        localStorage.setItem("lang", "en");
+      }
+    }
+  };
+  const getLang = () => {
+    let lang = localStorage.getItem("lang");
+    if (lang !== null && lang !== undefined) {
+      if (lang == "en" || lang == "ur") {
+        return lang;
+      } else {
+        return "en";
+      }
+    }
+  };
   return (
     <>
       <Offcanvas
@@ -269,12 +292,9 @@ function Settings2(props) {
             </Row>
             <Row className="body">
               <Col className="language">
-                <h5>Select Language</h5>
+                <h5>Language</h5>
                 <Row className="setting">
-                  <Switch defaultChecked color="secondary" />
-                  <p>
-                    <b>Urdu</b>
-                  </p>
+                  <p>Go to main page for change language</p>
                 </Row>
               </Col>
               <hr className="horizontal-dark" />
