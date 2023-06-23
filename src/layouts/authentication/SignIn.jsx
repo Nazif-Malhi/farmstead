@@ -134,7 +134,7 @@ const SignIn = () => {
         dispatch(user_data_clearErrors());
       } else {
         if (user_last_login.length > 1) {
-          navigate("/farmstead/admin/dashboard");
+          navigate("/farmstead/admin/test-results");
           dispatch(login_clearErrors());
           dispatch(user_data_clearErrors());
         }

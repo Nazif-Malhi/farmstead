@@ -1,9 +1,9 @@
 import axios from "axios";
 export const isHandled_AuthToken = (user) => {
   try {
-    if (localStorage.getItem("token") !== null) {
-      localStorage.clear();
-    }
+    // if (localStorage.getItem("token") !== null) {
+    //   localStorage.clear();
+    // }
     localStorage.setItem("token", user.access);
     set_authtoken_toHeader(user.access);
     return true;
